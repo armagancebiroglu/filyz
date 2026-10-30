@@ -1,0 +1,46 @@
+﻿
+
+<div class="SurvyeListWrp AnsweredCount">
+    @try
+    {
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="survey-item" style="animation-delay:0.5s">
+                    <div class="survey-header">
+                        <div class="survey-quote">
+                            <i class="fa fa-quote-left"></i>
+                            <a href="@Url.Action("ProfilSurveyDetails", "Profil", new { survey_id = item.id, whom_id = item.member_id })"> @item.text</a>
+                            <i class="fa fa-quote-right"></i>
+                        </div>
+                        <div class="survey-date"><i class="fa fa-calendar-o"></i> @item.date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.date.Month) @item.date.Year <i class="fa fa-clock-o"></i>@item.date.Hour.ToString() :@item.date.Minute.ToString()</div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="action-badge">
+                            @Html.Action("NoticeEventHeart", "Home", new { obje_id = item.id, sort = item.sort, whom_id = item.member_id, noticeTableSort = 0 })
+                        </span>
+                        <span class="action-badge">
+                            @Html.Action("SurveyCheck", "Profil", new { whom_id = item.member_id, obje_id = item.id })
+                        </span>
+                        <span class="action-badge">
+                            @Html.Action("TagMyCheck", "MyProfil", new { whom_id = item.member_id, obje_id = item.id })
+                        </span>
+                    </div>
+                </div>
+            }
+
+        }
+        else
+        {
+            //Response.Redirect("/Home/Home");
+            <div class="empty-msg"><i class="fa fa-pencil-square-o"></i>Henüz hiç anket yanıtlamadınız.</div>
+        }
+
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Home", "Home")); }
+    }
+</div>

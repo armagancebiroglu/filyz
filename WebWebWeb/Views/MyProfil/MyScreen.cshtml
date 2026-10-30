@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "My Album Details";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+
+@model WebWebWeb.Models.albums
+
+
+<div class="SSContainer">
+    <div class="empty80">&nbsp;</div>
+    <div class="row">
+        <!-- ══ LIKES PANEL ══ -->
+        <div class="PDglass panel open" id="likesPanel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    @Html.Action("NoticeEventHeartMyProfil", "MyProfil", new { obje_id = Model.id, sort = Model.sort, noticeTableSort = 1 }) Beğenenler
+                </div>
+                <i class="fa fa-chevron-down panel-chevron" id="likesChevron"></i>
+            </div>
+            <div class="panel-body" id="likesBody">
+                <div class="likes-grid" id="likesGrid">
+                    @Html.Action("EnjoyShared", "MyProfil", new { shareObje_id = Model.id, noticeTableSort = 1 })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="refresh">
+        <div class="card post-card">
+            <div class="PdDeleteicon" id="PdDeleteicon"><i class="fa fa-trash"></i></div>
+            <div class="MsdDelete" id="MsdDelete">
+                <div class="PdDeleteCenter">Bunu Albümden Silmek İstediğinize Emin misiniz?</div>
+                <div class="PdDeleteAction">
+                    <i class="fa fa-close" id="PdDeleteClose"></i> &nbsp;&nbsp; | &nbsp;&nbsp;  @Html.ActionLink(" ", "AlbumDelete", "MyProfil", new { album_id = Model.id }, new { @class = "fa fa-trash" })
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="SharePostCardInside">
+                    <div class="post-time"></div>
+                    <div class="post-time"></div>
+                </div>
+                <div class="shareStreemContent">
+                    @try
+                    {
+                        if (Request.QueryString["sort"] != null && !string.IsNullOrEmpty(Session["id"].ToString()))
+                        {
+                            if (Model != null)
+                            {
+                                if (Request.QueryString["sort"] == "0")
+                                { //image
+                                    <img src="@Model.media_url" id="@Model.id" class="post-img mb-3" />
+                                }
+                                if (Request.QueryString["sort"] == "4")
+                                {//  video
+                                    <div class="post-img mb-3">
+                                        <video id="video1" style="width:100%;" controls>
+                                            <source src="@Model.media_url" type="video/mp4" />
+                                            <source src="@Model.media_url" type="video/ogg" />
+                                            <source src="@Model.media_url" type="video/webm" />
+                                            İnternet tarayıcınız eski sürüm olduğundan bu videoyu oynatamıyor.
+                                        </video>
+                                        <script type="text/javascript">
+                                            $(document).ready(function () {
+                                                var myVideo = document.getElementById("video1");
+                                                //$("#video1").attr('src', $("#video1").children("source").attr("src"));
+
+                                                function playPaus() {
+                                                    if (myVideo.paused) {
+                                                        myVideo.play();
+                                                    }
+                                                    myVideo.pause();
+                                                }
+                                            });
+                                        </script>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                Response.Redirect(Url.Action("Uppss", "Error", new { P = 0 }));
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        if (!Response.IsRequestBeingRedirected)
+                        { Response.Redirect(Url.Action("Info", "Default")); }
+                    }
+                </div>
+                <div class="actionWr d-flex align-items-center gap-2 mb-3">
+                    <div class="actionW">
+                        @Html.Action("NoticeEventHeartMyProfil", "MyProfil", new { obje_id = Model.id, sort = Model.sort, noticeTableSort = 1 })
+                    </div>
+                    <div class="flex-grow-1"></div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="PDglass panel actionW">
+            @Html.Action("CommentMyProfil", "MyProfil", new { obje_id = Model.id, sort = Model.sort, noticeTableSort = 1 })
+        </div>
+    </div>
+    <div class="empty80">&nbsp;</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#likesChevron").click(function () {
+            $("#likesBody").stop(true, true).slideToggle("slow");
+            // ikon değişimi
+            if ($(this).hasClass("fa-chevron-down")) {
+                $(this).removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            } else {
+                $(this).removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            }
+        });
+
+        $("#PdDeleteicon").click(function () {
+            $("#MsdDelete").stop(true, true).slideDown("slow");
+        });
+        $("#PdDeleteClose").click(function () {
+            $("#MsdDelete").stop(true, true).slideUp("slow");
+        });
+    });
+</script>
+

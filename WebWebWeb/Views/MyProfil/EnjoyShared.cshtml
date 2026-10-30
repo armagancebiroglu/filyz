@@ -1,0 +1,29 @@
+﻿@model List<WebWebWeb.Models.MemberShortCard>
+
+@try
+{
+    if (Model != null && Model.Count > 0)
+    {
+        foreach (var member in Model)
+        {
+            int yas = (int)(DateTime.Now.Year) - (int)((member.age).Year);
+
+            <div class="like-item" title="@member.nick_name">
+                <a href="@Url.Action("Profil", "Profil", new { member_id = member.id })"><img src="@member.profil_media" class="like-avatar" alt="@member.nick_name"></a>
+                <div class="like-nick">@member.nick_name</div>
+                <div class="like-age">@yas yaş</div>
+                <div class="like-age">@member.city</div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="like-item">Henüz kimse beğenmedi.</div>
+    }
+}
+catch (Exception)
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}
+

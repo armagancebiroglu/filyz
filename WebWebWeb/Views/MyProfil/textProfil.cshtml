@@ -1,0 +1,28 @@
+﻿@model WebWebWeb.Models.MemberFullCard
+
+@try
+{
+<div class="profile-description">
+    <span>@ViewBag.p</span>
+    <div class="enterDate">
+      Online:  @ViewBag.memberfullcard.last_enter_date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(ViewBag.memberfullcard.last_enter_date.Month) 
+        <i class="fa fa-clock-o"></i> @ViewBag.memberfullcard.last_enter_date.Hour.ToString() :@ViewBag.memberfullcard.last_enter_date.Minute.ToString()
+    </div>
+    <div class="description-header">
+        <i class="fa fa-user"></i>
+        Hakkımda
+    </div>
+    <div class="description-text">
+        <p> @ViewBag.p1 &nbsp;@ViewBag.p3  &nbsp;@ViewBag.p2 &nbsp; @ViewBag.p4</p>
+    </div>
+    <div class="quote-section">
+        <i class="fa fa-quote-left"></i>&nbsp;@ViewBag.p5
+    </div>
+</div>
+
+}
+catch
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}

@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Smile";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+@model List<WebWebWeb.Models.MemberShortCard>
+
+<div class="SSContainer">
+    <div class="empty80">&nbsp;</div>
+    <div class="timeline-line"></div>
+    <div class="timeline-headers">
+        <div class="header-tag">Gülümsediklerim</div>
+        <div class="header-tag">Bana Gülümseyenler</div>
+    </div>
+    <br /><br />
+    @try
+    {
+        if (Model.Count > 0)
+        {
+            foreach (var member in Model)
+            {
+                int yas = (int)(DateTime.Now.Year) - (int)((member.age).Year);
+                <div class="HistoryMemberListWrp">
+                    @if (member.who_id == Convert.ToInt32(Session["id"]))
+                    {
+                        <div class="timeline-item">
+                            <div class="Tcard-wrapper left-card">
+                                <div class="Tprofile-item">
+                                    <a href="@Url.Action("Profil", "Profil", new { member_id = member.id })">
+                                        <img src="@member.profil_media" class="Tprofile-avatar" />
+                                    </a>
+                                    <span class="Tprofile-name">@member.nick_name</span>
+                                    <div class="time-stamp">
+                                        @member.matiral_status , @yas yaş, @member.city
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-dot"><div class="LeftT"> @member.eventDate.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(member.eventDate.Month) @member.eventDate.Hour.ToString() :@member.eventDate.Minute.ToString()</div><i class="fa fa-clock"></i></div>
+                            <div class="empty-side"></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="timeline-item">
+                            <div class="empty-side"></div>
+                            <div class="timeline-dot"><div class="RightT"> @member.eventDate.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(member.eventDate.Month)&nbsp;&nbsp; @member.eventDate.Hour.ToString():@member.eventDate.Minute.ToString() </div><i class="fa fa-clock"></i></div>
+                            <div class="Tcard-wrapper right-card">
+                                <div class="Tprofile-item">
+                                    <a href="@Url.Action("Profil", "Profil", new { member_id = member.id })">
+                                        <img src="@member.profil_media" class="Tprofile-avatar" />
+                                    </a>
+                                    <span class="Tprofile-name">@member.nick_name</span>
+                                    <div class="time-stamp">
+                                        @member.matiral_status , @yas yaş, @member.city
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <br /><br /><br />
+            <div class="siteNot">Henüz hiç Gülümseme Yok</div>
+        }
+
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Home", "Home")); }
+    }
+    <div class="empty80">&nbsp;</div>
+</div>
+

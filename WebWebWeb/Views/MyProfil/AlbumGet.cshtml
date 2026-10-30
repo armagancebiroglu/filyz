@@ -1,0 +1,35 @@
+﻿@model List<WebWebWeb.Models.albums>
+@try
+{
+    foreach (var album in Model)
+    {
+        if (album.sort == 0)
+        {
+<div class="album-item">
+    <a href="@Url.Action("MyScreen", "MyProfil", new { album_id = album.id, sort = album.sort })">
+        <img src="@album.media_url" alt="Albüm 1">
+    </a>
+</div>   
+        }
+        else
+        {
+            if (album.sort == 4)
+            {
+             <div class="album-item album-add">
+               <a href="@Url.Action("MyScreen", "MyProfil", new { album_id = album.id, sort = album.sort })">
+                 <i class="fa fa-play-circle"></i>
+               </a>
+             </div>
+            }
+            else
+            {
+
+            }
+        }
+    }
+}
+catch
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Info", "Default")); }
+}

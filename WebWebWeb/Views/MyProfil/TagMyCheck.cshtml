@@ -1,0 +1,27 @@
+﻿
+
+<div class="TagMyCheck" id="refresh">
+    @try
+    {
+        if (ViewBag.result)
+        {
+        <span class="fa fa-tag glyphicon-outlined selected"></span>       
+        }
+        else
+        {
+        <span class="fa fa-tag glyphicon-outlined un-selected"></span>
+        }
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Home", "Home")); }
+    }
+    <script>
+        $(document).ready(function () {
+            $("#SvDelete").stop(true, true).slideUp("slow");
+        });
+    </script>
+</div>
+
+

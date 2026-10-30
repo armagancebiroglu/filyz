@@ -1,0 +1,20 @@
+﻿@model List<WebWebWeb.Models.shareStreem>
+<div class="SurvyeListWrp">
+    @try
+    {
+        foreach (var item in Model)
+        {
+            <div class="SurveyItemFrame">
+                <span class="fa fa-plus"></span>&nbsp; @item.text
+                <span>@DateTime.Now.Day</span>
+                <span>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month)</span>
+                <span>@DateTime.Now.Year</span>
+            </div>
+        }
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Home", "Home")); }
+    }
+</div>

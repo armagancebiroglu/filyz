@@ -1,0 +1,49 @@
+﻿
+@model List<WebWebWeb.Models.MemberShortCard>
+
+@try
+{
+
+    if (Model != null && Model.Count > 0)
+    {
+        foreach (var member in Model)
+        {
+            int yas = (int)(DateTime.Now.Year) - (int)((member.age).Year);
+            <div class="enjoy-list">
+                <a class="enjoy-card" href="@Url.Action("SurveyAnswerDetails", "Profil", new { whom_id = member.id, obje_id = ViewBag.Obje_id })">
+                    <div class="enjoy-avatar-wrap">
+                        <img src="@member.profil_media"
+                             class="enjoy-avatar" width="48" height="48" alt="C3DBRU" />
+                        @if (Convert.ToInt32(member.is_online) == 0)
+                        {
+                            <span id="is_online" class="enjoy-dot offline" title="Çevrimiçi"></span>
+                        }
+                        else
+                        {
+                            <span id="is_online" class="enjoy-dot online" title="Çevrimiçi"></span>
+                        }
+                    </div>
+                    <div class="enjoy-info">
+                        <div class="enjoy-nick">@member.nick_name</div>
+                        <div class="enjoy-meta">
+                            <span class="enjoy-tag"><i class="fa fa-calendar" aria-hidden="true"></i>@yas yaş</span>
+                            <span class="enjoy-tag"><i class="fa fa-map-marker" aria-hidden="true"></i>@member.city</span>
+                            <span class="enjoy-tag"><i class="fa fa-home" aria-hidden="true"></i>@member.country</span>
+                            <span class="enjoy-tag"><i class="fa fa-graduation-cap" aria-hidden="true"></i>@member.educational_status</span>
+                            <span class="enjoy-tag"><i class="fa fa-heart" aria-hidden="true"></i>@member.matiral_status</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="sc-section"> Henüz kimse cevaplamadı</div>       
+    }
+}
+catch (Exception)
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}

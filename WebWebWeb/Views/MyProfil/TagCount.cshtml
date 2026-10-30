@@ -1,0 +1,21 @@
+﻿
+@try
+{
+    if (ViewBag.Count > 0)
+    {
+        <div class="glyphicon-outlined selected" style="display:block;">
+            <span class="fa fa-tags"></span><i>@ViewBag.Count</i>
+        </div>
+    }
+    else
+    {
+        <div class="glyphicon-outlined un-selected" style="display:block;">
+            <span class="fa fa-tags"></span><i>0</i>
+            </div>
+    }
+}
+catch
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}

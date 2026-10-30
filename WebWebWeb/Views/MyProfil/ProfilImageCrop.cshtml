@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+
+@model WebWebWeb.Models.albums
+<script type="text/javascript">
+
+</script>
+
+<div class="Cr-container">
+    <div class="empty80"></div>
+    <!-- Crop Card -->
+    <div class="Cr-crop-card">
+        <!-- Upload Section -->
+        <div class="Cr-upload-section" id="uploadSection">
+            <label for="fileInput" class="Cr-upload-button">
+                <i class="fa fa-image"></i>
+                Fotoğraf Seç
+            </label>
+            <input type="file" id="fileInput" accept="image/*">
+        </div>
+        <!-- Crop Area -->
+        <div class="Cr-crop-area" id="cropArea">
+            <img id="cropImage" src="">
+        </div>
+        <!-- Preview Section -->
+        <div class="Cr-preview-section" id="previewSection">
+            <div class="Cr-preview-title">Önizleme</div>
+            <div class="Cr-preview-image-wrapper">
+                <img id="previewImage" src="">
+            </div>
+        </div>
+        <!-- Action Buttons -->
+        <div class="Cr-action-buttons" id="actionButtons">
+            <button class="Cr-action-btn Cr-btn-cancel" id="cancelBtn">
+                <i class="fa fa-times"></i>
+                İptal
+            </button>
+            <button class="Cr-action-btn Cr-btn-save" id="saveBtn">
+                <i class="fa fa-check"></i>
+                Kaydet
+            </button>
+        </div>
+        <!-- Instructions -->
+        <div class="Cr-instructions" id="instructions">
+            <h3>
+                <i class="fa fa-info-circle"></i>
+                Nasıl Kullanılır?
+            </h3>
+            <ul>
+                <li>Fare ile görseli sürükleyerek konumlandırın</li>
+                <li>Tekerlek ile yakınlaştırıp uzaklaştırın</li>
+                <li>Kırpma alanını ayarlayın</li>
+                <li>Kaydet butonuna basın</li>
+            </ul>
+        </div>
+        <!-- Success Message -->
+        <div class="Cr-success-message" id="successMessage">
+            <i class="fa fa-check-circle"></i>
+            Profil fotoğrafınız başarıyla güncellendi!
+        </div>
+    </div>
+    @using (Html.BeginForm("ProfilImageCrop", "MyProfil", FormMethod.Post, new { @id = "formId" }))
+    {
+        @Html.AntiForgeryToken()
+        try
+        {
+
+            <input type="hidden" id="profilhidden" name="profilhidden" />
+
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Home", "Home")); }
+        }
+
+    }
+</div>
+
+
+<!-- Cropper.js Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+<script>
+
+    // Image Cropper functionality
+    let cropper;
+    const fileInput = document.getElementById('fileInput');
+    const cropImage = document.getElementById('cropImage');
+    const previewImage = document.getElementById('previewImage');
+    const cropArea = document.getElementById('cropArea');
+    const uploadSection = document.getElementById('uploadSection');
+    const previewSection = document.getElementById('previewSection');
+    const actionButtons = document.getElementById('actionButtons');
+    const instructions = document.getElementById('instructions');
+    const successMessage = document.getElementById('successMessage');
+    const saveBtn = document.getElementById('saveBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+
+    fileInput.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                cropImage.src = event.target.result;
+                cropArea.classList.add('Cr-active');
+                actionButtons.classList.add('Cr-active');
+                instructions.classList.add('Cr-active');
+                uploadSection.style.display = 'none';
+
+                // Destroy previous cropper if exists
+                if (cropper) {
+                    cropper.destroy();
+                }
+
+                // Initialize new cropper
+                cropper = new Cropper(cropImage, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    dragMode: 'move',
+                    autoCropArea: 1,
+                    restore: false,
+                    guides: true,
+                    center: true,
+                    highlight: false,
+                    cropBoxMovable: true,
+                    cropBoxResizable: true,
+                    toggleDragModeOnDblclick: false,
+                    crop: function (event) {
+                        // Update preview
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 300,
+                            height: 300
+                        });
+                        if (canvas) {
+                            previewImage.src = canvas.toDataURL();
+                            previewSection.classList.add('Cr-active');
+                        }
+                    }
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Cancel button
+    cancelBtn.addEventListener('click', function () {
+        if (cropper) {
+            cropper.destroy();
+        }
+        cropArea.classList.remove('Cr-active');
+        previewSection.classList.remove('Cr-active');
+        actionButtons.classList.remove('Cr-active');
+        instructions.classList.remove('Cr-active');
+        uploadSection.style.display = 'block';
+        fileInput.value = '';
+        cropImage.src = '';
+        previewImage.src = '';
+    });
+
+    // Save button
+    saveBtn.addEventListener('click', function () {
+        if (cropper) {
+            const canvas = cropper.getCroppedCanvas({
+                width: 500,
+                height: 500
+            });
+
+            if (canvas) {
+                // 🔥 base64 üret
+                const base64 = canvas.toDataURL('image/png');
+
+                // hidden input içine koy
+                document.getElementById("profilhidden").value = base64;
+
+                // formu submit et
+                document.getElementById("formId").submit();
+            }
+        }
+    });
+</script>
+
+
+
+
+

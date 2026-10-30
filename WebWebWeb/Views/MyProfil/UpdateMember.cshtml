@@ -1,0 +1,548 @@
+﻿
+@{ 
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+@model WebWebWeb.Models.MemberProfil
+
+<div class="container">
+    <div class="topMargin"></div>
+    @try
+    {
+        <div class="" id="infoRefresh">
+            <a type="button" class="modal-close" href="javascript:window.history.go(-1)">&times;</a>
+            <h4 class="modal-title">Kişi Bilgilerinizi Yenileyin.</h4>
+
+            @using (Html.BeginForm("UpdateMember", "MyProfil", FormMethod.Post))//Ajax.BeginForm("CreateMember", "Default", new AjaxOptions { UpdateTargetId = "modalAlb", HttpMethod = "Post", InsertionMode = InsertionMode.InsertAfter })
+            {
+                @Html.AntiForgeryToken()
+                <div class="glass-card">
+                    <form>
+                        <div class="step-tabs">
+                            <div class="step-tab active" data-step="1">1</div>
+                            <div class="step-tab" data-step="2">2</div>
+                            <div class="step-tab" data-step="3">3</div>
+                            <div class="step-tab" data-step="4">4</div>
+                            <div class="step-tab" data-step="5">5</div>
+                        </div>
+                        <div class="step-content active" data-step="1">
+                            @{ string nick_name = ViewBag.kod; }
+                            @Html.HiddenFor(mbox => mbox.id)
+                            <p><strong> Üye Kodu:  @Html.Label("nick_name", Model.nick_name, new { @id = "nick_name", style = "font-size:20pt" })</strong></p>
+                            <div id="hicap_div">
+                                <p>
+                                    <strong><i class="fa fa-check" aria-hidden="true"></i> Tesettürlü müsünüz?</strong><br>
+                                    <label>@Html.RadioButtonFor(mbox => mbox.hicap, true, new { @id = "hicap", style = "width:20px; height:20px;" })Evet</label>&nbsp;&nbsp;
+                                    <label>@Html.RadioButtonFor(mbox => mbox.hicap, false, new { @id = "hicap", style = "width:20px; height:20px;" }) Hayır</label>
+                                </p>
+                            </div>
+                            @Html.ValidationMessageFor(mbox => mbox.hicap, "", new { @class = "erorMessage" })
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-calendar" aria-hidden="true"></i> Doğum Yılınız: @Html.Label("age", Model.age.ToShortDateString(), new { id = "age", name = "age" })</strong></label>
+                                @Html.TextBoxFor(mbox => mbox.age, "", new { id = "age",  @class = "form-control-text" })
+                                <date-util format="dd/MM/yyyy"></date-util>
+                                @Html.ValidationMessageFor(mbox => mbox.age, "", new { @class = "erorMessage" })
+                            </div>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-heart" aria-hidden="true"></i> Medeni Durumunuz:</strong></label>
+                                @Html.DropDownListFor(mbox => mbox.matiral_status, new[] {
+                                        new SelectListItem {Text="Seçiniz...", Value="" },
+                                        new SelectListItem { Text = "Bekar", Value = "Bekar" },
+                                        new SelectListItem { Text = "Eşinden Ayrılmış", Value = "Eşinden Ayrılmış" },
+                                        new SelectListItem { Text = "Eşi Vefat Etmiş", Value = "Eşi Vefat Etmiş" } }, new { @id = "matiral_status", @class = "form-control" })
+                                @Html.ValidationMessageFor(mbox => mbox.matiral_status, "", new { @class = "erorMessage" })
+                            </div>
+                            <div id="matiral_status_div" style="display:none;">
+                                <p>
+                                    <strong><i class="fa fa-child" aria-hidden="true"></i> Çocuğunuz var mı?</strong><br>
+                                    <label>@Html.RadioButtonFor(mbox => mbox.children, "Evet", new { @id = "children", style = "width:20px; height:20px;" }) Evet</label>&nbsp;&nbsp;
+                                    <label>@Html.RadioButtonFor(mbox => mbox.children, "Hayır", new { @id = "children", style = "width:20px; height:20px;" }) Hayır</label>
+                                </p>
+                            </div>
+                            @Html.ValidationMessageFor(mbox => mbox.children, "", new { @class = "erorMessage" })
+
+                        </div>
+                        <div class="step-content" data-step="2">
+                            <p><strong>ÜYE KODU: <span class="txtNick">@nick_name</span></strong></p>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-graduation-cap" aria-hidden="true"></i> Eğitim Durumunuz:</strong></label>
+                                @Html.DropDownListFor(mbox => mbox.educational_status, new[] {
+                                                                                                                new SelectListItem { Text = "Seçiniz...", Value = "" },
+                                                                                                                new SelectListItem { Text = "İlk Öğretim", Value = "İlk Öğretim" },
+                                                                                                                new SelectListItem { Text = "Lise", Value = "Lise" },
+                                                                                                                new SelectListItem { Text = "Lisans", Value = "Lisans" },
+                                                                                                                new SelectListItem { Text = "Yüksek Lisans", Value = "Yüksek Lisans" } }, new { @id = "educational_status", @class = "form-control" })
+                                @Html.ValidationMessageFor(mbox => mbox.educational_status, "", new { @class = "erorMessage" })
+                            </div>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-map-marker" aria-hidden="true"></i> Yaşadığınız Şehir:</strong></label>
+                                @Html.DropDownListFor(mbox => mbox.city, new[] {
+                                                                                                                new SelectListItem { Text="Seçiniz...",Value="" },
+                                                                                                                new SelectListItem { Text = "Adana", Value = "Adana" },
+                                                                                                                new SelectListItem { Text = "Adıyaman", Value = "Adıyaman" },
+                                                                                                                new SelectListItem { Text = "Afyonkarahisar", Value = "Afyonkarahisar" },
+                                                                                                                new SelectListItem { Text = "Ağrı", Value = "Ağrı" },
+                                                                                                                new SelectListItem { Text = "Aksaray", Value = "Aksaray" },
+                                                                                                                new SelectListItem { Text = "Amasya", Value = "Amasya" },
+                                                                                                                new SelectListItem { Text = "Ankara", Value = "Ankara" },
+                                                                                                                new SelectListItem { Text = "Antalya", Value = "Antalya" },
+                                                                                                                new SelectListItem { Text = "Ardahan", Value = "Ardahan" },
+                                                                                                                new SelectListItem { Text = "Artvin", Value = "Artvin" },
+                                                                                                                new SelectListItem { Text = "Aydın", Value = "Aydın" },
+                                                                                                                new SelectListItem { Text = "Balıkesir", Value = "Balıkesir" },
+                                                                                                                new SelectListItem { Text = "Bartın", Value = "Bartın" },
+                                                                                                                new SelectListItem { Text = "Batman", Value = "Batman" },
+                                                                                                                new SelectListItem { Text = "Bayburt", Value = "Bayburt" },
+                                                                                                                new SelectListItem { Text = "Bilecik", Value = "Bilecik" },
+                                                                                                                new SelectListItem { Text = "Bingöl", Value = "Bingöl" },
+                                                                                                                new SelectListItem { Text = "Bitlis", Value = "Bitlis" },
+                                                                                                                new SelectListItem { Text = "Bolu", Value = "Bolu" },
+                                                                                                                new SelectListItem { Text = "Burdur", Value = "Burdur" },
+                                                                                                                new SelectListItem { Text = "Bursa", Value = "Bursa" },
+                                                                                                                new SelectListItem { Text = "Çanakkale", Value = "Çanakkale" },
+                                                                                                                new SelectListItem { Text = "Çankırı", Value = "Çankırı" },
+                                                                                                                new SelectListItem { Text = "Çorum", Value = "Çorum" },
+                                                                                                                new SelectListItem { Text = "Denizli", Value = "Denizli" },
+                                                                                                                new SelectListItem { Text = "Diyarbakır", Value = "Diyarbakır" },
+                                                                                                                new SelectListItem { Text = "Düzce", Value = "Düzce" },
+                                                                                                                new SelectListItem { Text = "Edirne", Value = "Edirne" },
+                                                                                                                new SelectListItem { Text = "Elazığ", Value = "Elazığ" },
+                                                                                                                new SelectListItem { Text = "Erzincan", Value = "Erzincan" },
+                                                                                                                new SelectListItem { Text = "Erzurum", Value = "Erzurum" },
+                                                                                                                new SelectListItem { Text = "Eskişehir", Value = "Eskişehir" },
+                                                                                                                new SelectListItem { Text = "Gaziantep", Value = "Gaziantep" },
+                                                                                                                new SelectListItem { Text = "Giresun", Value = "Giresun" },
+                                                                                                                new SelectListItem { Text = "Gümüşhane", Value = "Gümüşhane" },
+                                                                                                                new SelectListItem { Text = "Hakkâri", Value = "Hakkâri" },
+                                                                                                                new SelectListItem { Text = "Hatay", Value = "Hatay" },
+                                                                                                                new SelectListItem { Text = "Isparta", Value = "Isparta" },
+                                                                                                                new SelectListItem { Text = "Iğdır", Value = "Iğdır" },
+                                                                                                                new SelectListItem { Text = "İstanbul", Value = "İstanbul" },
+                                                                                                                new SelectListItem { Text = "İzmir", Value = "İzmir" },
+                                                                                                                new SelectListItem { Text = "Kahramanmaraş", Value = "Kahramanmaraş" },
+                                                                                                                new SelectListItem { Text = "Karaman", Value = "Karaman" },
+                                                                                                                new SelectListItem { Text = "Karabük", Value = "Karabük" },
+                                                                                                                new SelectListItem { Text = "Kars", Value = "Kars" },
+                                                                                                                new SelectListItem { Text = "Kastamonu", Value = "Kastamonu" },
+                                                                                                                new SelectListItem { Text = "Kayseri", Value = "Kayseri" },
+                                                                                                                new SelectListItem { Text = "Kırıkkale", Value = "Kırıkkale" },
+                                                                                                                new SelectListItem { Text = "Kırklareli", Value = "Kırklareli" },
+                                                                                                                new SelectListItem { Text = "Kırşehir", Value = "Kırşehir" },
+                                                                                                                new SelectListItem { Text = "Kilis", Value = "Kilis" },
+                                                                                                                new SelectListItem { Text = "Kocaeli", Value = "Kocaeli" },
+                                                                                                                new SelectListItem { Text = "Konya", Value = "Konya" },
+                                                                                                                new SelectListItem { Text = "Kütahya", Value = "Kütahya" },
+                                                                                                                new SelectListItem { Text = "Malatya", Value = "Malatya" },
+                                                                                                                new SelectListItem { Text = "Manisa", Value = "Manisa" },
+                                                                                                                new SelectListItem { Text = "Mersin", Value = "Mersin" },
+                                                                                                                new SelectListItem { Text = "Mardin", Value = "Mardin" },
+                                                                                                                new SelectListItem { Text = "Muğla", Value = "Muğla" },
+                                                                                                                new SelectListItem { Text = "Muş", Value = "Muş" },
+                                                                                                                new SelectListItem { Text = "Nevşehir", Value = "Nevşehir" },
+                                                                                                                new SelectListItem { Text = "Niğde", Value = "Niğde" },
+                                                                                                                new SelectListItem { Text = "Ordu", Value = "Ordu" },
+                                                                                                                new SelectListItem { Text = "Osmaniye", Value = "Osmaniye" },
+                                                                                                                new SelectListItem { Text = "Rize", Value = "Rize" },
+                                                                                                                new SelectListItem { Text = "Sakarya", Value = "Sakarya" },
+                                                                                                                new SelectListItem { Text = "Samsun", Value = "Samsun" },
+                                                                                                                new SelectListItem { Text = "Siirt", Value = "Siirt" },
+                                                                                                                new SelectListItem { Text = "Sinop", Value = "Sinop" },
+                                                                                                                new SelectListItem { Text = "Sivas", Value = "Sivas" },
+                                                                                                                new SelectListItem { Text = "Şanlıurfa", Value = "Şanlıurfa" },
+                                                                                                                new SelectListItem { Text = "Şırnak", Value = "Şırnak" },
+                                                                                                                new SelectListItem { Text = "Tekirdağ", Value = "Tekirdağ" },
+                                                                                                                new SelectListItem { Text = "Tokat", Value = "Tokat" },
+                                                                                                                new SelectListItem { Text = "Trabzon", Value = "Trabzon" },
+                                                                                                                new SelectListItem { Text = "Tunceli", Value = "Tunceli" },
+                                                                                                                new SelectListItem { Text = "Uşak", Value = "Uşak" },
+                                                                                                                new SelectListItem { Text = "Van", Value = "Van" },
+                                                                                                                new SelectListItem { Text = "Yozgat", Value = "Yozgat" },
+                                                                                                                new SelectListItem { Text = "Yalova", Value = "Yalova" },
+                                                                                                                new SelectListItem { Text = "Zonguldak", Value = "Zonguldak" }
+                                                                                                                }, new { @id = "city", @class = "form-control" })
+                                @Html.ValidationMessageFor(mbox => mbox.city, "", new { @class = "erorMessage" })
+                            </div>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-home" aria-hidden="true"></i> Memleketiniz:</strong></label>
+                                @Html.DropDownListFor(mbox => mbox.country, new[] {
+                                                                                                                new SelectListItem { Text="Seçiniz...",Value="" },
+                                                                                                                new SelectListItem { Text = "Adana", Value = "Adana" },
+                                                                                                                new SelectListItem { Text = "Adıyaman", Value = "Adıyaman" },
+                                                                                                                new SelectListItem { Text = "Afyonkarahisar", Value = "Afyonkarahisar" },
+                                                                                                                new SelectListItem { Text = "Ağrı", Value = "Ağrı" },
+                                                                                                                new SelectListItem { Text = "Aksaray", Value = "Aksaray" },
+                                                                                                                new SelectListItem { Text = "Amasya", Value = "Amasya" },
+                                                                                                                new SelectListItem { Text = "Ankara", Value = "Ankara" },
+                                                                                                                new SelectListItem { Text = "Antalya", Value = "Antalya" },
+                                                                                                                new SelectListItem { Text = "Ardahan", Value = "Ardahan" },
+                                                                                                                new SelectListItem { Text = "Artvin", Value = "Artvin" },
+                                                                                                                new SelectListItem { Text = "Aydın", Value = "Aydın" },
+                                                                                                                new SelectListItem { Text = "Balıkesir", Value = "Balıkesir" },
+                                                                                                                new SelectListItem { Text = "Bartın", Value = "Bartın" },
+                                                                                                                new SelectListItem { Text = "Batman", Value = "Batman" },
+                                                                                                                new SelectListItem { Text = "Bayburt", Value = "Bayburt" },
+                                                                                                                new SelectListItem { Text = "Bilecik", Value = "Bilecik" },
+                                                                                                                new SelectListItem { Text = "Bingöl", Value = "Bingöl" },
+                                                                                                                new SelectListItem { Text = "Bitlis", Value = "Bitlis" },
+                                                                                                                new SelectListItem { Text = "Bolu", Value = "Bolu" },
+                                                                                                                new SelectListItem { Text = "Burdur", Value = "Burdur" },
+                                                                                                                new SelectListItem { Text = "Bursa", Value = "Bursa" },
+                                                                                                                new SelectListItem { Text = "Çanakkale", Value = "Çanakkale" },
+                                                                                                                new SelectListItem { Text = "Çankırı", Value = "Çankırı" },
+                                                                                                                new SelectListItem { Text = "Çorum", Value = "Çorum" },
+                                                                                                                new SelectListItem { Text = "Denizli", Value = "Denizli" },
+                                                                                                                new SelectListItem { Text = "Diyarbakır", Value = "Diyarbakır" },
+                                                                                                                new SelectListItem { Text = "Düzce", Value = "Düzce" },
+                                                                                                                new SelectListItem { Text = "Edirne", Value = "Edirne" },
+                                                                                                                new SelectListItem { Text = "Elazığ", Value = "Elazığ" },
+                                                                                                                new SelectListItem { Text = "Erzincan", Value = "Erzincan" },
+                                                                                                                new SelectListItem { Text = "Erzurum", Value = "Erzurum" },
+                                                                                                                new SelectListItem { Text = "Eskişehir", Value = "Eskişehir" },
+                                                                                                                new SelectListItem { Text = "Gaziantep", Value = "Gaziantep" },
+                                                                                                                new SelectListItem { Text = "Giresun", Value = "Giresun" },
+                                                                                                                new SelectListItem { Text = "Gümüşhane", Value = "Gümüşhane" },
+                                                                                                                new SelectListItem { Text = "Hakkâri", Value = "Hakkâri" },
+                                                                                                                new SelectListItem { Text = "Hatay", Value = "Hatay" },
+                                                                                                                new SelectListItem { Text = "Isparta", Value = "Isparta" },
+                                                                                                                new SelectListItem { Text = "Iğdır", Value = "Iğdır" },
+                                                                                                                new SelectListItem { Text = "İstanbul", Value = "İstanbul" },
+                                                                                                                new SelectListItem { Text = "İzmir", Value = "İzmir" },
+                                                                                                                new SelectListItem { Text = "Kahramanmaraş", Value = "Kahramanmaraş" },
+                                                                                                                new SelectListItem { Text = "Karaman", Value = "Karaman" },
+                                                                                                                new SelectListItem { Text = "Karabük", Value = "Karabük" },
+                                                                                                                new SelectListItem { Text = "Kars", Value = "Kars" },
+                                                                                                                new SelectListItem { Text = "Kastamonu", Value = "Kastamonu" },
+                                                                                                                new SelectListItem { Text = "Kayseri", Value = "Kayseri" },
+                                                                                                                new SelectListItem { Text = "Kırıkkale", Value = "Kırıkkale" },
+                                                                                                                new SelectListItem { Text = "Kırklareli", Value = "Kırklareli" },
+                                                                                                                new SelectListItem { Text = "Kırşehir", Value = "Kırşehir" },
+                                                                                                                new SelectListItem { Text = "Kilis", Value = "Kilis" },
+                                                                                                                new SelectListItem { Text = "Kocaeli", Value = "Kocaeli" },
+                                                                                                                new SelectListItem { Text = "Konya", Value = "Konya" },
+                                                                                                                new SelectListItem { Text = "Kütahya", Value = "Kütahya" },
+                                                                                                                new SelectListItem { Text = "Malatya", Value = "Malatya" },
+                                                                                                                new SelectListItem { Text = "Manisa", Value = "Manisa" },
+                                                                                                                new SelectListItem { Text = "Mersin", Value = "Mersin" },
+                                                                                                                new SelectListItem { Text = "Mardin", Value = "Mardin" },
+                                                                                                                new SelectListItem { Text = "Muğla", Value = "Muğla" },
+                                                                                                                new SelectListItem { Text = "Muş", Value = "Muş" },
+                                                                                                                new SelectListItem { Text = "Nevşehir", Value = "Nevşehir" },
+                                                                                                                new SelectListItem { Text = "Niğde", Value = "Niğde" },
+                                                                                                                new SelectListItem { Text = "Ordu", Value = "Ordu" },
+                                                                                                                new SelectListItem { Text = "Osmaniye", Value = "Osmaniye" },
+                                                                                                                new SelectListItem { Text = "Rize", Value = "Rize" },
+                                                                                                                new SelectListItem { Text = "Sakarya", Value = "Sakarya" },
+                                                                                                                new SelectListItem { Text = "Samsun", Value = "Samsun" },
+                                                                                                                new SelectListItem { Text = "Siirt", Value = "Siirt" },
+                                                                                                                new SelectListItem { Text = "Sinop", Value = "Sinop" },
+                                                                                                                new SelectListItem { Text = "Sivas", Value = "Sivas" },
+                                                                                                                new SelectListItem { Text = "Şanlıurfa", Value = "Şanlıurfa" },
+                                                                                                                new SelectListItem { Text = "Şırnak", Value = "Şırnak" },
+                                                                                                                new SelectListItem { Text = "Tekirdağ", Value = "Tekirdağ" },
+                                                                                                                new SelectListItem { Text = "Tokat", Value = "Tokat" },
+                                                                                                                new SelectListItem { Text = "Trabzon", Value = "Trabzon" },
+                                                                                                                new SelectListItem { Text = "Tunceli", Value = "Tunceli" },
+                                                                                                                new SelectListItem { Text = "Uşak", Value = "Uşak" },
+                                                                                                                new SelectListItem { Text = "Van", Value = "Van" },
+                                                                                                                new SelectListItem { Text = "Yozgat", Value = "Yozgat" },
+                                                                                                                new SelectListItem { Text = "Yalova", Value = "Yalova" },
+                                                                                                                new SelectListItem { Text = "Zonguldak", Value = "Zonguldak" }
+                                                                                                                }, new { @id = "country", @class = "form-control" })
+                                @Html.ValidationMessageFor(mbox => mbox.country, "", new { @class = "erorMessage" })
+                            </div>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-plane" aria-hidden="true"></i> Yaşamak İstediğiniz Şehir:</strong></label>
+                                @Html.DropDownListFor(mbox => mbox.city_wants_to_live, new[] {
+                                                                                                                new SelectListItem { Text="Seçiniz...",Value="" },
+                                                                                                                new SelectListItem { Text = "Adana", Value = "Adana" },
+                                                                                                                new SelectListItem { Text = "Adıyaman", Value = "Adıyaman" },
+                                                                                                                new SelectListItem { Text = "Afyonkarahisar", Value = "Afyonkarahisar" },
+                                                                                                                new SelectListItem { Text = "Ağrı", Value = "Ağrı" },
+                                                                                                                new SelectListItem { Text = "Aksaray", Value = "Aksaray" },
+                                                                                                                new SelectListItem { Text = "Amasya", Value = "Amasya" },
+                                                                                                                new SelectListItem { Text = "Ankara", Value = "Ankara" },
+                                                                                                                new SelectListItem { Text = "Antalya", Value = "Antalya" },
+                                                                                                                new SelectListItem { Text = "Ardahan", Value = "Ardahan" },
+                                                                                                                new SelectListItem { Text = "Artvin", Value = "Artvin" },
+                                                                                                                new SelectListItem { Text = "Aydın", Value = "Aydın" },
+                                                                                                                new SelectListItem { Text = "Balıkesir", Value = "Balıkesir" },
+                                                                                                                new SelectListItem { Text = "Bartın", Value = "Bartın" },
+                                                                                                                new SelectListItem { Text = "Batman", Value = "Batman" },
+                                                                                                                new SelectListItem { Text = "Bayburt", Value = "Bayburt" },
+                                                                                                                new SelectListItem { Text = "Bilecik", Value = "Bilecik" },
+                                                                                                                new SelectListItem { Text = "Bingöl", Value = "Bingöl" },
+                                                                                                                new SelectListItem { Text = "Bitlis", Value = "Bitlis" },
+                                                                                                                new SelectListItem { Text = "Bolu", Value = "Bolu" },
+                                                                                                                new SelectListItem { Text = "Burdur", Value = "Burdur" },
+                                                                                                                new SelectListItem { Text = "Bursa", Value = "Bursa" },
+                                                                                                                new SelectListItem { Text = "Çanakkale", Value = "Çanakkale" },
+                                                                                                                new SelectListItem { Text = "Çankırı", Value = "Çankırı" },
+                                                                                                                new SelectListItem { Text = "Çorum", Value = "Çorum" },
+                                                                                                                new SelectListItem { Text = "Denizli", Value = "Denizli" },
+                                                                                                                new SelectListItem { Text = "Diyarbakır", Value = "Diyarbakır" },
+                                                                                                                new SelectListItem { Text = "Düzce", Value = "Düzce" },
+                                                                                                                new SelectListItem { Text = "Edirne", Value = "Edirne" },
+                                                                                                                new SelectListItem { Text = "Elazığ", Value = "Elazığ" },
+                                                                                                                new SelectListItem { Text = "Erzincan", Value = "Erzincan" },
+                                                                                                                new SelectListItem { Text = "Erzurum", Value = "Erzurum" },
+                                                                                                                new SelectListItem { Text = "Eskişehir", Value = "Eskişehir" },
+                                                                                                                new SelectListItem { Text = "Gaziantep", Value = "Gaziantep" },
+                                                                                                                new SelectListItem { Text = "Giresun", Value = "Giresun" },
+                                                                                                                new SelectListItem { Text = "Gümüşhane", Value = "Gümüşhane" },
+                                                                                                                new SelectListItem { Text = "Hakkâri", Value = "Hakkâri" },
+                                                                                                                new SelectListItem { Text = "Hatay", Value = "Hatay" },
+                                                                                                                new SelectListItem { Text = "Isparta", Value = "Isparta" },
+                                                                                                                new SelectListItem { Text = "Iğdır", Value = "Iğdır" },
+                                                                                                                new SelectListItem { Text = "İstanbul", Value = "İstanbul" },
+                                                                                                                new SelectListItem { Text = "İzmir", Value = "İzmir" },
+                                                                                                                new SelectListItem { Text = "Kahramanmaraş", Value = "Kahramanmaraş" },
+                                                                                                                new SelectListItem { Text = "Karaman", Value = "Karaman" },
+                                                                                                                new SelectListItem { Text = "Karabük", Value = "Karabük" },
+                                                                                                                new SelectListItem { Text = "Kars", Value = "Kars" },
+                                                                                                                new SelectListItem { Text = "Kastamonu", Value = "Kastamonu" },
+                                                                                                                new SelectListItem { Text = "Kayseri", Value = "Kayseri" },
+                                                                                                                new SelectListItem { Text = "Kırıkkale", Value = "Kırıkkale" },
+                                                                                                                new SelectListItem { Text = "Kırklareli", Value = "Kırklareli" },
+                                                                                                                new SelectListItem { Text = "Kırşehir", Value = "Kırşehir" },
+                                                                                                                new SelectListItem { Text = "Kilis", Value = "Kilis" },
+                                                                                                                new SelectListItem { Text = "Kocaeli", Value = "Kocaeli" },
+                                                                                                                new SelectListItem { Text = "Konya", Value = "Konya" },
+                                                                                                                new SelectListItem { Text = "Kütahya", Value = "Kütahya" },
+                                                                                                                new SelectListItem { Text = "Malatya", Value = "Malatya" },
+                                                                                                                new SelectListItem { Text = "Manisa", Value = "Manisa" },
+                                                                                                                new SelectListItem { Text = "Mersin", Value = "Mersin" },
+                                                                                                                new SelectListItem { Text = "Mardin", Value = "Mardin" },
+                                                                                                                new SelectListItem { Text = "Muğla", Value = "Muğla" },
+                                                                                                                new SelectListItem { Text = "Muş", Value = "Muş" },
+                                                                                                                new SelectListItem { Text = "Nevşehir", Value = "Nevşehir" },
+                                                                                                                new SelectListItem { Text = "Niğde", Value = "Niğde" },
+                                                                                                                new SelectListItem { Text = "Ordu", Value = "Ordu" },
+                                                                                                                new SelectListItem { Text = "Osmaniye", Value = "Osmaniye" },
+                                                                                                                new SelectListItem { Text = "Rize", Value = "Rize" },
+                                                                                                                new SelectListItem { Text = "Sakarya", Value = "Sakarya" },
+                                                                                                                new SelectListItem { Text = "Samsun", Value = "Samsun" },
+                                                                                                                new SelectListItem { Text = "Siirt", Value = "Siirt" },
+                                                                                                                new SelectListItem { Text = "Sinop", Value = "Sinop" },
+                                                                                                                new SelectListItem { Text = "Sivas", Value = "Sivas" },
+                                                                                                                new SelectListItem { Text = "Şanlıurfa", Value = "Şanlıurfa" },
+                                                                                                                new SelectListItem { Text = "Şırnak", Value = "Şırnak" },
+                                                                                                                new SelectListItem { Text = "Tekirdağ", Value = "Tekirdağ" },
+                                                                                                                new SelectListItem { Text = "Tokat", Value = "Tokat" },
+                                                                                                                new SelectListItem { Text = "Trabzon", Value = "Trabzon" },
+                                                                                                                new SelectListItem { Text = "Tunceli", Value = "Tunceli" },
+                                                                                                                new SelectListItem { Text = "Uşak", Value = "Uşak" },
+                                                                                                                new SelectListItem { Text = "Van", Value = "Van" },
+                                                                                                                new SelectListItem { Text = "Yozgat", Value = "Yozgat" },
+                                                                                                                new SelectListItem { Text = "Yalova", Value = "Yalova" },
+                                                                                                                new SelectListItem { Text = "Zonguldak", Value = "Zonguldak" }
+                                                                                                                }, new { @id = "city_wants_to_live", @class = "form-control" })
+                                @Html.ValidationMessageFor(mbox => mbox.city_wants_to_live, "", new { @class = "erorMessage" })
+                            </div>
+                        </div>
+                        <div class="step-content" data-step="3">
+                            <p><strong>ÜYE KODU: <span class="txtNick">@nick_name</span></strong></p>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-arrows-v" aria-hidden="true"></i> Boy (cm):</strong></label>
+                                @Html.TextBoxFor(mbox => mbox.height, "", new { @id = "height", @class = "form-control", placeholder = "Örn: 175cm" })
+                                @Html.ValidationMessageFor(mbox => mbox.height, "", new { @class = "erorMessage" })
+                            </div>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-tachometer" aria-hidden="true"></i> Kilo (kg):</strong></label>
+                                @Html.TextBoxFor(mbox => mbox.kilo, "", new { @id = "kilo", @class = "form-control", placeholder = "Kilonuzu kg Olarak Giriniz." })
+                                @Html.ValidationMessageFor(mbox => mbox.kilo, "", new { @class = "erorMessage" })
+                            </div>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-scissors" aria-hidden="true"></i> Saç Renginiz:</strong></label>
+                                @Html.DropDownListFor(mbox => mbox.hair_color, new[] {
+                                                                                                                new SelectListItem { Text="Seçiniz...",Value="" },
+                                                                                                                new SelectListItem { Text = "Siyah", Value = "Siyah" },
+                                                                                                                new SelectListItem { Text = "Kahverengi", Value = "Kahverengi" },
+                                                                                                                new SelectListItem { Text = "Sarı", Value = "Sarı" },
+                                                                                                                new SelectListItem { Text = "Kızıl", Value = "Kızıl" },
+                                                                                                                new SelectListItem { Text = "Kırlaşmış", Value = "Kırlaşmış" } }, new { @id = "hair_color", @class = "form-control" })
+                                @Html.ValidationMessageFor(mbox => mbox.hair_color, "", new { @class = "erorMessage" })
+                            </div>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-eye" aria-hidden="true"></i> Göz Renginiz:</strong></label>
+                                @Html.DropDownListFor(mbox => mbox.eye_color, new[] {
+                                                                                                                new SelectListItem { Text="Seçiniz...",Value="" },
+                                                                                                                new SelectListItem { Text = "Siyah", Value = "Siyah" },
+                                                                                                                new SelectListItem { Text = "Kahverengi", Value = "Kahverengi" },
+                                                                                                                new SelectListItem { Text = "Ela", Value = "Ela" },
+                                                                                                                new SelectListItem { Text = "Yeşil", Value = "Yeşil" },
+                                                                                                                new SelectListItem { Text = "Mavi", Value = "Mavi" }}, new { @id = "eye_color", @class = "form-control" })
+                                @Html.ValidationMessageFor(mbox => mbox.eye_color, "", new { @class = "erorMessage" })
+                            </div>
+                            <p>
+                                <strong><i class="fa fa-wheelchair" aria-hidden="true"></i> Fiziksel Engeliniz Var mı?</strong><br>
+                                <label> @Html.RadioButton("disableSelect", "Evet", new { @id = "disable_Yes", style = "width:20px; height:20px;" }) Evet</label>&nbsp;&nbsp;
+                                <label>@Html.RadioButton("disableSelect", "Hayır", new { @id = "disable_No", style = "width:20px; height:20px;" }) Hayır</label>
+                            </p>
+                            <div id="disable_div" style="display:none;">
+                                <div class="form-group">
+                                    <label><strong>Engel Türü:</strong></label>
+                                    @Html.DropDownListFor(mbox => mbox.disable, new[] {
+                                                                                                                                            new SelectListItem {Text="Seçiniz...",Value="" },
+                                                                                                                                            new SelectListItem { Text = "Görme Engelli", Value = "Görme Engelli" },
+                                                                                                                                            new SelectListItem { Text = "İşitme Engelli", Value = "İşitme Engelli" },
+                                                                                                                                            new SelectListItem { Text = "Bedensel Engelli", Value = "Bedensel Engelli" } }, new { @id = "disable", @class = "form-control" })
+                                    @Html.ValidationMessageFor(mbox => mbox.disable, "", new { @class = "erorMessage" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-content" data-step="4">
+                            <p><strong>ÜYE KODU: <span class="txtNick">@nick_name</span></strong></p>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-user" aria-hidden="true"></i> Ne söylemek istersiniz? (Maks. 300 karakter)</strong></label>
+                                @Html.TextAreaFor(mbox => mbox.my_story, new { @id = "my_story", @class = "form-control", rows = "4", Placeholder = "Kendinizden ve beklentilerinizden kısaca bahsedin..." })
+                                @Html.ValidationMessageFor(mbox => mbox.my_story, "", new { @class = "erorMessage" })
+                            </div>
+                        </div>
+                        <div class="step-content" data-step="5">
+                            <p><strong>ÜYE KODU: <span class="txtNick">@nick_name</span></strong></p>
+                            <div class="form-group">
+                                <label><strong><i class="fa fa-envelope"></i> E-mail:</strong></label>
+                                @Html.TextBoxFor(mbox => mbox.e_mail, "", new { @id = "e_mail", @class = "form-control", placeholder = "Email." })
+                                <small>*Üye kodu ve şifreniz e-posta ile gönderilecektir.</small>
+                                @Html.ValidationMessageFor(mbox => mbox.e_mail, "", new { @class = "erorMessage" })
+                            </div>                          
+                        </div>
+                        <!-- Gezinme Butonları -->
+                        <div class="text-center">
+                            <button type="button" class="btn btn-default btn-prev" style="display:none;">Önceki</button>
+                            <button type="button" class="btn btn-primary btn-next">Sonraki</button>
+                            <button type="submit" class="btn btn-success btn-save" style="display:none;">Kaydet</button>                           
+                        </div>
+                    </form>
+
+                </div>
+                <div>
+                    <strong>@Html.ValidationSummary()</strong>
+                </div>
+            }
+        </div>
+    }
+    catch (Exception)
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Info", "Default")); }
+    }
+    <script type='text/javascript'>
+        $(document).ready(function () {
+                       
+            $("#matiral_status_div").slideDown();
+            $("#matiral_status").change(function () {
+                $("#matiral_status option:selected").each(function () {
+                    if ($(this).text() == "Eşinden Ayrılmış" || $(this).text() == "Eşi Vefat Etmiş") {
+                        $("#matiral_status_div").css("visibility", "visible");
+                        $("#matiral_status_div").slideDown();
+                    } if ($(this).text() == "Bekar") {
+                        $("#matiral_status_div").css("visibility", "hidden");
+                        $('#children').prop('checked', false);
+                        $("#matiral_status_div").slideUp();
+                    }
+                });
+            });
+
+            if ($("#disable").val() != "") {              
+                $("#disable_Yes").prop('checked', true);
+                $("#disable_div").slideDown();
+            } else { $("#disable_No").prop('checked', true); }
+           
+            $('input:radio[name=disableSelect]').change(function () {
+                if ($('input:radio[name=disableSelect]:checked').val() == "Evet") {
+                    $("#disable_div").css("visibility", "visible");
+                    $("#disable_div").slideDown();
+                }
+                if ($('input:radio[name=disableSelect]:checked').val() == "Hayır") {
+                    $("#disable_div").css("visibility", "hidden");
+                    $("#disable_div").slideUp();
+                    $('#disable').val("");                  
+                }
+            });
+
+            document.getElementById("nick_name").readOnly = true;
+
+            jQuery.fn.NumericOnly = function () {
+                return this.each(function () {
+                    $(this).keydown(function (e) {
+                        var key = e.charCode || e.keyCode || 0;
+                        return (
+                            key == 8 ||
+                            key == 9 ||
+                            key == 46 ||
+                            (key >= 37 && key <= 40) ||
+                            (key >= 48 && key <= 57) ||
+                            (key >= 96 && key <= 105));
+                    });
+                });
+            };
+            $('#age').NumericOnly();
+            $('#kilo').NumericOnly();
+            $('#height').NumericOnly();
+
+            $("#height, #kilo ").keydown(function (event) {
+                var value = $(this).val();
+                value = value.replace(/[^0-9]/g, '');
+                value = value.substr(0, 2);
+                $(this).val(value);
+            });
+
+            $(document).ready(function () {
+                $("#my_story").keypress(function (evt) {
+                    var charCode = (evt.which) ? evt.which : event.keyCode
+                    if (((charCode <= 93 && charCode >= 65) || (charCode <= 122 && charCode >= 97) || charCode == 8) || charCode == 32 || charCode == 33 || charCode == 39 || charCode == 63 || charCode == 96 || charCode == 46 || charCode == 350 || charCode == 351 || charCode == 304 || charCode == 286 || charCode == 287 || charCode == 231 || charCode == 199 || charCode == 305 || charCode == 214 || charCode == 246 || charCode == 220 || charCode == 252) {
+                        return true;
+                    }
+                    return false;
+                });
+            });
+
+            $('.tabb').click(function () {
+                var attr_ = $(this).attr("href");
+                $(".tb").each(function () {
+                    if ($(this).attr("href") == attr_) {
+                        $(this).parent().addClass("active");
+                    } else {
+                        $(this).parent().removeClass("active");
+                    }
+                });
+            });
+            // Adım geçişleri
+            let currentStep = 1;
+
+            function showStep(step) {
+                $(".step-tab").removeClass("active");
+                $(`.step-tab[data-step=${step}]`).addClass("active");
+
+                $(".step-content").removeClass("active");
+                $(`.step-content[data-step=${step}]`).addClass("active");
+
+                if (step === 1) $(".btn-prev").hide(); else $(".btn-prev").show();
+                if (step === 5) {
+                    $(".btn-next").hide();
+                    $(".btn-save").show();
+                } else {
+                    $(".btn-next").show();
+                    $(".btn-save").hide();
+                }
+                currentStep = step;
+            }
+
+            $(".step-tab").click(function () {
+                const step = $(this).data("step");
+                showStep(step);
+            });
+
+            $(".btn-next").click(function () {
+                if (currentStep < 5) showStep(currentStep + 1);
+            });
+
+            $(".btn-prev").click(function () {
+                if (currentStep > 1) showStep(currentStep - 1);
+            });
+        });
+    </script>
+
+</div>
+

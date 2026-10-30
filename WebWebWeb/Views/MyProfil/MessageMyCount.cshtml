@@ -1,0 +1,23 @@
+﻿
+@model WebWebWeb.Models.Messages
+
+@try
+{
+<a href="@Url.Action("MessageMy", "MyProfil")">
+    @if (ViewBag.messageMyCount > 0)
+    {
+        <i class="fa fa-envelope  stat-icon selected"></i><br />
+        <span class="stat-value">@ViewBag.messageMyCount</span>
+    }
+    else
+    {
+        <i class="fa fa-envelope stat-icon un-selected"></i><br />
+        <span class="stat-value">0</span>
+    }
+</a>
+}
+catch
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Info", "Default")); }
+}

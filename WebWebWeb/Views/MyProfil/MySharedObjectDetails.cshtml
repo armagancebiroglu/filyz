@@ -1,0 +1,220 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+
+@model WebWebWeb.Models.shareStreem
+
+<div class="SSContainer">
+    <div class="empty80">&nbsp;</div>
+
+    <div class="row">
+        <!-- ══ LIKES PANEL ══ -->
+        <div class="PDglass panel" id="likesPanel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    @Html.Action("NoticeEventHeartMyProfil", "MyProfil", new { obje_id = Model.id, sort = Model.sort, noticeTableSort = 0 }) Beğenenler
+                </div>
+                <i class="fa fa-chevron-down panel-chevron" id="likesChevron"></i>
+            </div>
+            <div class="panel-body" id="likesBody">
+                <div class="likes-grid" id="likesGrid">
+                    @Html.Action("EnjoyShared", "MyProfil", new { shareObje_id = Model.id, noticeTableSort = 0 })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- ══ TAG PANEL ══ -->
+        <div class="PDglass panel" id="tagPanel">
+            <div class="panel-header">
+                <div class="panel-title">
+                    @Html.Action("TagCount", "MyProfil", new { obje_id = Model.id }) Etiket
+                </div>
+                <i class="fa fa-chevron-down panel-chevron" id="tagChevron"></i>
+            </div>
+            <div class="panel-body" id="tagBody">
+                @Html.Action("TagMemberList", "MyProfil", new { shareObje_id = Model.id, sort = Model.sort })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card post-card" id="ShareStreemObjectWrapper">
+            <div class="PdDeleteicon" id="PdDeleteicon"><i class="fa fa-trash"></i></div>
+            <div class="MsdDelete" id="MsdDelete">
+                <div class="PdDeleteCenter">Paylaşımınızı Silmek İstediğinize Emin misiniz?</div>
+                <div class="PdDeleteAction">
+                    <i class="fa fa-close" id="PdDeleteClose"></i> &nbsp;&nbsp; | &nbsp;&nbsp; @Html.ActionLink(" ", "MySharedObjectDetails", "MyProfil", new { eventAction = "delete", obje_id = Model.id, sort = Model.sort }, new { @class = "fa fa-trash" })
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="SharePostCardInside">
+                    <div class="post-time">@Model.date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.date.Month)</div><br />
+                    <div class="post-time"><span class="fa fa-clock-o"></span> @Model.date.Hour.ToString() :@Model.date.Minute.ToString()</div>
+                </div>
+            </div>
+            <div class="shareStreemContent">
+                @try
+                {
+                    if (!string.IsNullOrEmpty(Model.image_url))
+                    {
+                        if (Model.sort == 0)
+                        {
+                            <img src="@Model.image_url" class="post-img mb-3" />
+                            <div class="PDpost-text">
+                                <i class="fa fa-quote-left"></i>&nbsp;
+                                @Model.text
+                                &nbsp;<i class="fa fa-quote-right"></i>
+                            </div>
+                        }
+                        else
+                        {
+                            if (Model.sort == 4)
+                            {
+                                string videoid = "video" + Model.number.ToString();
+                                <div class="post-img mb-3">
+                                    <video id="@videoid" src="@Model.image_url" style="width:100%;" controls>
+                                        <source src="@Model.image_url" type="video/mp4" />
+                                        <source src="@Model.image_url" type="video/ogg" />
+                                        <source src="@Model.image_url" type="video/webm" />
+                                        İnternet tarayıcınız eski sürüm olduğundan bu videoyu oynatamıyor.
+                                    </video>
+                                    <script type="text/javascript">
+                              $(document).ready(function () {
+                                 var myVideo = document.getElementById("video"+@Model.number.ToString());
+                                 function playPaus() {
+                                    if (myVideo.paused) {
+                                          myVideo.play();
+                                     }
+                                   myVideo.pause();
+                                 }
+                              });
+                                    </script>
+                                </div>
+                                <div class="PDpost-text">
+                                    <i class="fa fa-quote-left"></i>&nbsp;
+                                    @Model.text
+                                    &nbsp;<i class="fa fa-quote-right"></i>
+                                </div>
+                            }
+                            else
+                            {
+                                if (Model.sort == 8)
+                                {
+                                    <div class="post-img mb-3">
+                                        <audio id="audio" style="width:100%;" controls="controls">
+                                            <source src="@Model.image_url" type="audio/mpeg" />
+                                            <source src="@Model.image_url" type="audio/mp3" />
+                                            <source src="@Model.image_url" type="audio/ogg" />
+                                            İnternet tarayıcınız eski sürüm olduğundan bu ses kaydını oynatamıyor.
+                                        </audio>
+                                    </div>
+                                    <div class="PDpost-text">
+                                        <i class="fa fa-quote-left"></i>&nbsp;
+                                        @Model.text
+                                        &nbsp;<i class="fa fa-quote-right"></i>
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    if (Model.sort == 16)
+                                    {
+                                        <div class="post-img mb-3">
+                                            <img src="@Model.image_url" class="post-img mb-3" />
+                                        </div>
+                                        <div class="PDpost-text">
+                                            <i class="fa fa-quote-left"></i>&nbsp;
+                                            @Model.text
+                                            &nbsp;<i class="fa fa-quote-right"></i>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        if (Model.sort == 32)
+                                        {
+                                        <div class="Surveycard">
+                                            <div class="post-img mb-3">
+                                                <div class="shareStreemSurveyIcon">
+                                                    <div class="survey-icon-circle">
+                                                        <a href="@Url.Action("MySurveyDetails", "MyProfil", new { obje_id = Model.id })"><i class="fa fa-file-text" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="shareStreemSurveyFooter">
+                                                    <div>
+                                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                        <div class="shareStreemSurvey-post-text"> @Model.text </div>
+                                                    </div>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                        else if (Model.sort == 0 && Model.sort == 2)
+                                        {
+                                            Response.Redirect(Url.Action("Uppss", "Error", new { P = 24 }));
+                                        }
+                                        else
+                                        {
+                                            Response.Redirect(Url.Action("Info", "Default"));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect(Url.Action("Info", "Default"));
+                    }
+                }
+                catch
+                {
+                    Response.Redirect(Url.Action("Info", "Default"));
+                }
+                @*<br />*@ &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="PDglass panel actionW" id="commentSv">
+            @Html.Action("CommentMyProfil", "MyProfil", new { obje_id = Model.id, sort = Model.sort, noticeTableSort = 0 })
+        </div>
+    </div>
+    <div class="empty80">&nbsp;</div>
+</div>
+
+<script type="text/javascript">
+    $(Document).ready(function () {
+        ////
+        $("#likesChevron").click(function () {
+            $("#likesBody").stop(true, true).slideToggle("slow");
+            // ikon değişimi
+            if ($(this).hasClass("fa-chevron-down")) {
+                $(this).removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            } else {
+                $(this).removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            }
+        });
+        $("#tagChevron").click(function () {
+            $("#tagBody").stop(true, true).slideToggle("slow");
+            // ikon değişimi
+            if ($(this).hasClass("fa-chevron-down")) {
+                $(this).removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            } else {
+                $(this).removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            }
+        });
+        $("#PdDeleteicon").click(function () {
+            $("#MsdDelete").stop(true, true).slideDown("slow");
+        });
+        $("#PdDeleteClose").click(function () {
+            $("#MsdDelete").stop(true, true).slideUp("slow");
+        });
+        if ($("#commentSv").find(".shareStreemComment .commentList").html().trim() === "") {           
+            $("#commentSv").parent().hide();
+        }    
+    });
+</script>
+

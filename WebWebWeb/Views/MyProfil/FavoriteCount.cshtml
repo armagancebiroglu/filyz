@@ -1,0 +1,18 @@
+﻿@try
+{
+    if (ViewBag.Count > 0)
+    {
+        <i class="fa fa-star stat-icon selected"></i><br />
+        <span class="stat-value">@ViewBag.Count</span>
+    }
+    else
+    {
+        <i class="fa fa-star stat-icon un-selected"></i><br />
+        <span class="stat-value">0</span>
+    }
+}
+catch (Exception)
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}

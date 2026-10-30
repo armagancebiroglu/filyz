@@ -1,0 +1,180 @@
+﻿
+@{
+    /**/
+
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+
+
+@try
+{
+    string url = "";
+    url = Session["profil_media"].ToString();
+    <div class="SSContainer">
+        <div class="topMargin"></div>
+        <div class="row">
+            <div class="profile-card">
+                <div class="profile-header">
+                    @if (!(Session["profil_media"] == null))
+                    {
+                        <div class="profile-image-wrapper">
+                            <img src="@url" data-bs-toggle="modal" data-bs-target="#myModalProfilFoto" class="profile-image" id="profileImage" />
+                            <div class="profile-settings" id="settingsBtn">
+                                <span class="fa fa-cog" data-bs-toggle="dropdown"></span>
+                                <div class="dropdown">
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <span class="fa fa-caret-up ceret"></span>
+                                        </li>
+                                        <li>
+                                            <div class="dropdown-item">
+                                                <span class="fa fa-pencil"></span>&nbsp;@Html.ActionLink(" Profil Düzenle", "UpdateMember", "MyProfil")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="dropdown-item">
+                                                <span class="fa fa-lock"></span>&nbsp;@Html.ActionLink(" Şifre Değiştir", "ChangePassword", "MyProfil")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="dropdown-item">
+                                                <span class="fa fa-user-circle"></span>&nbsp;@Html.ActionLink(" Fotoğraf Düzenle", "ProfilImageCrop", "MyProfil")
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        Response.Redirect(Url.Action("Info", "Default"));
+                    }
+                    <div class="profile-info">
+                        <h1 class="profile-name"></h1>
+                        <div class="profile-stats">
+                            <div class="stat-item"><a href="@Url.Action("FavoriteList", "MyProfil")">@Html.Action("FavoriteCount", "MyProfil", new { who_id = Convert.ToInt32(Session["id"]) })</a></div>
+                            <div class="stat-item"><a href="@Url.Action("SmileList", "MyProfil")">  @Html.Action("SmileCount", "MyProfil", new { who_id = Convert.ToInt32(Session["id"]) })</a></div>
+                            <div class="stat-item"><a href="@Url.Action("ProfilView", "MyProfil")">  @Html.Action("ProfilCount", "MyProfil", new { who_id = Convert.ToInt32(Session["id"]) })</a></div>
+                            <div class="stat-item"><a href="@Url.Action("MessageMyAll", "MyProfil")">  @Html.Action("MessageMyCount", "MyProfil", new { who_id = Convert.ToInt32(Session["id"]) })</a></div>
+                            <div class="stat-item"><a href="@Url.Action("TagProfilShared", "MyProfil")">  @Html.Action("TagMyCount", "MyProfil")</a></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @try
+            {
+                @Html.Action("textProfil", "MyProfil")
+            }
+            catch
+            {
+                Response.Redirect(Url.Action("Info", "Default"));
+            }
+        </div>
+        <div class="row">
+            <div class="album-section">
+                <div class="section-title">
+                    <i class="fa fa-image"></i>
+                    Albüm
+                </div>
+                <div class="album-grid">
+                    @try
+                    {
+                        int member_id_ = Convert.ToInt32(Session["id"]);
+                        @Html.Action("AlbumGet", "MyProfil", new { member_id = member_id_ })
+                    }
+                    catch
+                    {
+                        Response.Redirect(Url.Action("Info", "Default"));
+                    }
+                    <div class="album-item album-add" id="addAlbumBtn">
+                        @try
+                        {
+                            <a data-bs-toggle="modal" data-bs-target="#ModalAlbumInsert" data-backdrop="static"><span class="fa fa-plus"></span></a>
+                        }
+                        catch
+                        {
+                            Response.Redirect(Url.Action("Info", "Default"));
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        @try
+        {
+            <div class="row" id="refresh">
+                @Html.Action("ShareStreemMy", "MyProfil", new { page = 0 })
+            </div>
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Info", "Default")); }
+        }
+
+        <div class="emptyBottom">&nbsp;</div>
+    </div>
+
+    <div class="modal fade glass" id="ModalAlbumInsert" role="dialog" tabindex="10000">
+        <div class="modal-dialog albinsertmodal">
+            @Html.Action("AlbumInsert", "MyProfil")
+        </div>
+    </div>
+    <div class="modal fade glass" id="myModalProfilFoto" role="dialog" tabindex="10000">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <span type="button" class="modal-close" data-bs-dismiss="modal">&times;</span>
+                <h4 class="modal-title">profil fotoğrafım</h4>
+                <img src="@url" style="width:100%; height:auto; box-shadow:0px 5px 5px grey;">
+            </div>
+        </div>
+    </div>
+}
+catch
+{
+    Response.Redirect(Url.Action("Info", "Default"));
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var page = 0;
+        var _inCallback = false;
+
+        function loadNotice() {
+            if (page > -1 && !_inCallback) {
+                _inCallback = true;
+                page++;
+
+                //$('div#loading').html('<p><img src="/Content/img/loading.gif"></p>');
+
+                $.get("/MyProfil/ShareStreemMy?page=" + page, function (data) {
+                    if (data != '') {
+                        $("#refresh").append(data);
+                    }
+                    else {
+                        page = -1;
+                    }
+
+                    _inCallback = false;
+                    $('div#loading').empty();
+                });
+            }
+        }
+
+        var dcList = true;
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
+                loadNotice();
+            }
+        });
+    });
+</script>
+
+
+
+
+

@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Favorite";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+@try
+{
+    @model List<WebWebWeb.Models.MemberShortCard>
+<div class="container">
+    <div class="ShareObjectDetailsBanner"><a href="@Url.Action("myProfil", "MyProfil")" class="fa fa-chevron-left"></a><span>Favori Listesine Ekleyenler</span></div>
+    <div class="ShareObjectDetailsBannerEmpty">&nbsp;</div>
+    <div class="row">
+        <div class="memberCardListCaption">
+            <div>
+                <div>@Ajax.ActionLink(" ", "FavoriteMeList", "MyProfil", new AjaxOptions { UpdateTargetId = "favoriteFrame", InsertionMode = InsertionMode.Replace, OnComplete = "" }, new { @class = "fa fa-users" })</div>
+            </div>
+            <div>
+                <div>@Ajax.ActionLink(" ", "FavoriteMyAllList", "MyProfil", new AjaxOptions { UpdateTargetId = "favoriteFrame", InsertionMode = InsertionMode.Replace, OnComplete = "" }, new { @class = "fa fa-user" })</div>
+            </div>
+        </div>
+        <div id="favoriteFrame">
+            @if (Model.Count > 0)
+            {
+                foreach (var member in Model)
+                {
+                    int yas = (int)(DateTime.Now.Year) - (int)((member.age).Year);
+                    <div>
+                        <div class="memberCardListItem">
+                            <div class="memberCardListItemTable">
+                                <div class="memberCardListItemTableImg">
+                                    <div class="memberCardListItemTableImgIsonlineIco">
+                                        @if (Convert.ToInt32(member.is_online) == 0)
+                                        {
+                                            <span id="is_online" class="glyphicon glyphicon-record" style="color:#c0c0c0;"></span>
+                                        }
+                                        else
+                                        {
+                                            <span id="is_online" class="glyphicon glyphicon-record" style="color:#43ee0f;"></span>
+                                        }
+                                    </div>
+                                    <figure>
+                                        <a href="@Url.Action("Profil", "Profil", new { member_id = member.id })">
+                                            <img src="@member.profil_media" />  @*class="img-circle" width="100%" style=" box-shadow:0px 5px 5px grey"*@
+                                        </a>
+                                    </figure>
+                                    <div class="memberCardListItemTableImgEvent">
+                                        <div>@Html.Action("Favorite", "Profil", new { whom_id = member.id })</div>
+                                        <div>@Html.Action("Smile", "Profil", new { whom_id = member.id })</div>
+                                        <div>@Html.Action("MessageCount", "Profil", new { whom_id = member.id })</div>
+                                    </div>
+                                </div>
+                                <div class="memberCardListItemTableInformation">
+                                    <div class="memberCardListItemNick">@member.nick_name</div>
+                                    <div class="memberCardListItemTableInformationRow">Yaş: @yas</div>
+                                    <div class="memberCardListItemTableInformationRow">Şehir: @member.city</div>
+                                    <div class="memberCardListItemTableInformationRow">Eğitim: @member.educational_status</div>
+                                    <div class="memberCardListItemTableInformationRow">Memleket: @member.country</div>
+                                    <div class="memberCardListItemTableInformationRow">Medeni Hali: @member.matiral_status</div>
+                                    <div class="memberCardListItemDate">@member.eventDate.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(member.eventDate.Month)&nbsp;<span class="glyphicon glyphicon-time"></span>&nbsp; @member.eventDate.Hour.ToString() :@member.eventDate.Minute.ToString()</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="siteNot">Favori Listesinde Kimse Yok</div>
+            }
+        </div>
+    </div>
+    <div class="ShareObjectDetailsFooterEmpty">&nbsp;</div>
+</div>
+
+}
+catch (Exception)
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}
+
