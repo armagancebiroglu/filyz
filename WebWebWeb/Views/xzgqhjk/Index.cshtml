@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+@model WebWebWeb.Models.Editor
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.css">
+    <link href="~/StyleSheetDefault.css" rel="stylesheet" />
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.intellisense.js"></script>
+    <title>puspura.com</title>
+    <style>
+        body {
+            background-image: url('../../Content/img/flowers.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+    <title>Index</title>
+</head>
+<body>
+    <div class="emptyTop"></div>
+    <div class="container">
+        <div id="loginForm" class="FormLogin col-sm-6 shadowDiv">
+
+            @using (Html.BeginForm("Index", "xzgqhjk", FormMethod.Post))////Ajax.BeginForm("Index", "xzgqhjk", new AjaxOptions { UpdateTargetId = "loginForm", HttpMethod = "POST", InsertionMode = InsertionMode.Replace })
+            {
+                @Html.AntiForgeryToken()
+                try
+                {
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <fieldset>
+                                    <legend>Login</legend>
+                                    <strong>Editör Kodu:</strong>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <strong> @Html.TextBoxFor(mbox => mbox.nick_name, "nick_name_login", new { id = "nick_name_login", @class = "form-control", @placeholder = "Üye Kodunuzu Giriniz" })</strong>
+                                    </div>
+                                    <strong>Şifre:</strong>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <strong> @Html.PasswordFor(mbox => mbox.password, new { @class = "form-control", @placeholder = "Şifrenizi Giriniz" })</strong>
+                                    </div>
+                                    <div>@Html.ValidationMessageFor(mbox => mbox.nick_name, "", new { @class = "erorMessage" })</div>
+                                    <div>@Html.ValidationMessageFor(mbox => mbox.password, "", new { @class = "erorMessage" })</div>
+                                    <div>
+                                        @Html.CheckBox("remember_me", false, new { @class = "checkbox-inline", style = "width:20px; height:20px;" })
+                                        <strong>Beni Hatırla</strong>
+                                    </div>
+                                    <br />
+                                    <strong><input type="submit" name="enter" value="Giriş" class="form-control backgrounFontColor" /></strong>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                }
+                catch
+                {
+                    if (!Response.IsRequestBeingRedirected)
+                    { Response.Redirect(Url.Action("Info", "Default")); }
+                }
+            }
+        </div>
+    </div>
+</body>
+</html>

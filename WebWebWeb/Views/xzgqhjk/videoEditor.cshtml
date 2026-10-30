@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "videoEditor";
+    Layout = "~/Views/Shared/_LayoutEditor.cshtml";
+}
+
+@model WebWebWeb.Models.ShareObject
+<style>
+    .modalAlb-backdrop {
+        z-index: -1;
+    }
+
+    #ShareAudioGet {
+        text-decoration: none;
+        cursor: pointer;
+        color: #808080;
+    }
+
+    video {
+        height: 60vh;
+    }
+</style>
+
+<!-- modalAlb -->
+<div class="ShareMaterialheaderContent">
+    @using (Html.BeginForm("videoEditor", "xzgqhjk", new { sort = 4 }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {//video
+        @Html.AntiForgeryToken()
+        try
+        {       
+        <div class="ShareStreemObjectWrapper">
+            <p>
+                <strong>Kimler İçin Paylaşılacak?:</strong>
+                <strong>
+                    @Html.DropDownListFor(mbox => mbox.sex, new[] {
+new SelectListItem {Text="Seçiniz...", Value="" },
+new SelectListItem { Text = "Yalnızca Kadınlar İçin Paylaşım", Value = "Erkek" },
+new SelectListItem { Text = "Yalnızca Erkekler İçin Paylaşım", Value = "Kadın" },
+new SelectListItem { Text = "Herkes İçin Paylaşım", Value = "XYX" } },
+                new { @id = "sex", @class = "form-control" })
+                </strong>
+            </p>
+            <p>
+                <strong>Paylaşımın Statüsü Nedir?:</strong>
+                <strong>
+                    @Html.DropDownListFor(mbox => mbox.confrim, new[] {
+new SelectListItem {Text="Seçiniz...", Value="" },
+new SelectListItem { Text = "Paylaşım", Value = "1" },
+new SelectListItem { Text = "Reklam", Value = "2" },
+new SelectListItem { Text = "Duyuru ve Etkinlik", Value = "4" },
+new SelectListItem { Text = "Öğretici Bilgi", Value = "8" }
+           }, new { @id = "confrim", @class = "form-control" })
+                </strong>
+            </p>
+            <div class="shareLocationItemHeader">
+                <div class="ShareLocationIco">
+                    <label for="ShareObjectVideoFileUpload"><i class="glyphicon glyphicon-facetime-video"></i></label><div>Video Kaydı Seç</div>
+                    <input id="ShareObjectVideoFileUpload" class="custom-file-upload" name="file" type="file" accept="video/*" capture="camcorder" />
+                </div>
+            </div>
+            <div class="shareStreemContent">
+                <!--içerik başlangıç-->
+                <div class="ShareObjectWrapper">
+                    <div class="ShareObjectFrame">
+                        <video id="videoPreview" style="width:100%; height:100%;" controls>
+                            <source src="#" type="video/mp4" />
+                            <source src="#" type="video/ogg" />
+                            <source src="#" type="video/webm" />
+                            İnternet tarayıcınız eski sürüm olduğundan bu videoyu oynatamıyor.
+                        </video>
+
+                    </div>
+
+                </div>
+                <!--içerik bitiş-->
+            </div>
+            <div class="shareStreemFooterElementWrapper">
+                <div class="ShareObjectTextWrp">
+                    <div class="ShareObjectText">
+                        @Html.TextArea("ShareObjectVideoText", new { @id = "ShareObjectVideoText", @class = "ShareTextInput", style = "height:100px", rows = "10", Placeholder = "...yazın" })
+                    </div>
+                    <div class="ShareObjectSend">
+                        <label for="ShareObjectVideoBtn"><i class="glyphicon glyphicon-send"></i></label>
+                        <input id="ShareObjectVideoBtn" type="submit" value="Kaydet" class="ButtonHiden" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+        }
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#ShareObjectVideoFileUpload').change(function (event) {
+                    $(File).each(function (e) {
+                        if (e != this) {
+                            $(this).val('');
+                        }
+                    });
+                    var Uri = URL.createObjectURL(event.target.files[0]);
+                    $("#videoPreview").attr('src', Uri);
+                });
+
+                var myVideo = document.getElementById("videoPreview");
+                function playPaus() {
+                    if (myVideo.paused) {
+                        myVideo.play();
+                    }
+                    myVideo.pause();
+                }
+            });
+        </script>
+    }
+</div>
+
+<div>
+    @try
+    {
+        @Html.Action("EditorShareObjeList", "xzgqhjk", new { sort = 4 })
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+    }
+</div>
+<div class="ShareObjectDetailsFooterEmpty">&nbsp;</div>

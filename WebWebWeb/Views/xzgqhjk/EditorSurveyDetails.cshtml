@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "EditorSurveyDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model WebWebWeb.Models.shareStreem
+
+<div class="container">
+    <div id="SurveyShare">
+        <div class="ShareObjectDetailsBanner"><a href="@Url.Action("SurveyEditor", "xzgqhjk")" class="fa fa-chevron-left"></a><span>Anket Detayı</span></div>
+      
+        <div class="SurveyDetailsFrame">
+
+            @try
+            {
+            <div class="SurveyDetailsCaption"><span class="fa fa-quote-left"></span> @ViewBag.survey.text <span class="fa fa-quote-right"></span> </div>
+            <div class="SurveyDetailsSend">
+                <span class="fa fa-send-o SurveyShareTrigger"></span>
+                <span class="fa fa-trash-o SurveyDeleteTr"></span>
+                <div class="SurveyItemDeleteDiv">
+                    <div>Anketinizi yayınlamak istediğinize emin misiniz?</div>
+                    <div class="SurveyItemDeleteDivRight">
+                        <span class="fa fa-close SurveyShareCancel"></span>|
+                        @Html.ActionLink(" ", "EditorSurveyDetails", "xzgqhjk", new { surveyEvent = "update", obje_id = ViewBag.survey.id }, new { @class = "fa fa-send-o" })
+                    </div>
+                </div>
+                <div class="surveyDelete">
+                    <div>Bu anketi silmek istediğinize emin misiniz? </div>
+                    <div class="SurveyItemDeleteDivRight">
+                        <span class="fa fa-close SurveyCancel"></span> |
+                        @Html.ActionLink(" ", "EditorSurveyDetails", "xzgqhjk", new { surveyEvent = "delete", obje_id = ViewBag.survey.id }, new { @class = "fa fa-trash-o" })
+                    </div>
+                </div>
+            </div>
+            if(ViewBag.result != 0 && ViewBag.result != null)
+            {
+                <div class="warningSurvey">( * Bu anket şuanda yayında.)</div>
+            }
+            else
+            {
+                <div class="warningSurvey">( * Hazırladığınız anketin adaylar tarafından görülebilmesi için buradan yayınlamanız gerekir.)</div>
+            }
+            @Html.Action("EditorSurveyEditQeustion", "xzgqhjk", new { obje_id = Model.id })          
+            }
+            catch
+            {
+                if (!Response.IsRequestBeingRedirected)
+                { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+            }
+        
+        </div>
+
+        <div class="ShareObjectDetailsFooterEmpty">&nbsp;</div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".SurveyShareTrigger").click(function () {
+            $(this).parent().children(".SurveyItemDeleteDiv").stop().slideDown();
+        });
+        $(".SurveyShareCancel").click(function () {
+            $(this).parent().parent(".SurveyItemDeleteDiv").stop().slideUp();
+        });
+        function complate() {
+            $(".SurveyShareWrp").stop().slideUp().css("display", "none");
+        }
+        //////////////////////
+        $(".SurveyDeleteTr").click(function () {
+            $(this).parent().children(".surveyDelete").stop().slideDown();
+        });
+        $(".SurveyCancel").click(function () {
+            $(this).parent().parent(".surveyDelete").stop().slideUp();
+        });
+       //////////////////
+
+        $(".SSTags").children("span").click(function () {
+            $(".ShareObjectDetailsTagsWrp").stop(true).slideDown();
+        });
+        $(".ShareObjectDetailsTags").children("div").children("span").click(function () {
+            $(".ShareObjectDetailsTagsWrp").stop(true).slideUp();
+        });
+        //////
+        $(".SSEnjoyment").children("div").children("div").children("span").click(function () {
+            $(".ShareObjectDetailsEnjoyWrp").stop(true).slideDown();
+        });
+        $(".ShareObjectDetailsEnjoyClose").children("span").click(function () {
+            $(".ShareObjectDetailsEnjoyWrp").stop(true).slideUp();
+        });
+        ///////
+        $(".SSComplaint").children("span").click(function () {
+            $(".ShareObjectDetailsSurveyWrp").stop(true).slideDown();
+        });
+        $(".ShareObjectDetailsSurveyClose").children("span").click(function () {
+            $(".ShareObjectDetailsSurveyWrp").stop(true).slideUp();
+        });
+    });
+</script>
+

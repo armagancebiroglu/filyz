@@ -1,0 +1,317 @@
+﻿
+
+
+
+@model List<WebWebWeb.Models.shareEditorObje>
+<style>
+    input[type=submit] {
+        display: none;
+    }
+</style>
+<script src="~/Scripts/FunctionS.js"></script>
+<div id="wrp" class="EditorShareWrep">
+    <div>       
+        @using (Ajax.BeginForm("EditorShareObjeList", "xzgqhjk", new { EditorEvent = "selection", sort = ViewBag.sort, confrim = ViewBag.confrim }, new AjaxOptions { UpdateTargetId = "wrp", HttpMethod = "POST", InsertionMode = InsertionMode.ReplaceWith, OnComplete = "" }))
+        {
+            @Html.AntiForgeryToken()
+            try
+            {
+                <p>
+                    <strong>Kimlerin Paylaşımları?:</strong>
+                    <strong>
+                        @Html.DropDownList("editor_id", new[] { new SelectListItem { Text = "Tüm Editörlerin Paylaşımları", Value = "0" }, new SelectListItem { Text = "Yalnızca Benim Paylaşımlarım", Value = Session["id"].ToString() }, }, new { @id = "sex", @class = "form-control" })
+                    </strong>
+                </p>
+                <p>
+                    <strong>Kimler İçin Olan Paylaşımlar?:</strong>
+                    <strong>
+                        @Html.DropDownList("sex", new[] { new SelectListItem { Text = "Tümü...", Value = "" }, new SelectListItem { Text = "Yalnızca Kadınlar İçin Paylaşım", Value = "Erkek" }, new SelectListItem { Text = "Yalnızca Erkekler İçin Paylaşım", Value = "Kadın" }, new SelectListItem { Text = "Herkes İçin Paylaşım", Value = "XYX" } }, new { @id = "sex", @class = "form-control" })
+                    </strong>
+                </p>
+                <p>
+                    <strong>Paylaşımın Cinsi?:</strong>
+                    <strong>
+                        @Html.DropDownList("confrim", new[] { new SelectListItem { Text = "Tümü...", Value = "0" }, new SelectListItem { Text = "Paylaşım", Value = "1" }, new SelectListItem { Text = "Reklam", Value = "2" }, new SelectListItem { Text = "Duyuru ve Etkinlik", Value = "4" }, new SelectListItem { Text = "Öğretici Bilgi", Value = "8" } }, new { @id = "confrim", @class = "form-control" })
+                    </strong>
+                </p>
+                <input type="hidden" id="page" name="page" value="@ViewBag.page" />
+                if (ViewBag.count > 10)
+                {
+                    for (int i = 0; i <= ViewBag.count / 10; i++)
+                    {
+                        string id = "btn_id" + i.ToString();
+                        int count = i + 1;
+                        <input id="@id" type="submit" class="btnCount" name="btnCount" value="@i" />
+                        <label for="@id" class="badge">@count</label>
+                    }
+                }
+                else
+                {
+                    <input id="sayfa" type="submit" class="btnCount" name="btnCount" value="0" />
+                    <label for="sayfa" class="badge">1</label>
+                }
+                <input type="submit" name="sbmt" value="Getir" style="display:block" />
+            }
+            catch
+            {
+                if (!Response.IsRequestBeingRedirected)
+                { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+            }
+        }
+    </div>
+    <div class="row" id="refresh">
+        @try
+        {
+            if (Model != null)
+            {
+                foreach (var shareEditorObje in Model)
+                {
+                    <div class="ShareStreemObjectWrapper" id="ShareStreemObjectWrapper">
+                        <div class="shareStreemContent">
+
+                            @try
+                            {
+                                //if (!string.IsNullOrEmpty(shareEditorObje.image_url))
+                                //{
+                                if (shareEditorObje.sort == 0)
+                                {
+                                        <div class="shareStreemImgWrp">
+                                            <a href="@Url.Action("imageEditorDetails", "xzgqhjk", new { obje_id = shareEditorObje.id })" class="fa fa-edit EditorListEditIco"></a><br />
+                                            <div class="shareStreemContentImage">
+                                                <img src="@shareEditorObje.image_url" />
+                                            </div>
+                                            <div class="shareStreemImageText">
+                                                <i class="fa fa-quote-left" aria-hidden="true"></i>&nbsp; @shareEditorObje.text&nbsp;<i class="fa fa-quote-right" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        if (shareEditorObje.sort == 1)
+                                        {
+                                            string shareStreemImgPanoramicWrp180_id = "shareStreemImgPanoramicWrp180_id" + shareEditorObje.number.ToString();
+                                            string ShareObjectPanaromaPreview180 = "ShareObjectPanaromaPreview180" + shareEditorObje.number.ToString();
+                                            <a href="@Url.Action("imagePanoramicEditorDetails", "xzgqhjk", new { obje_id = shareEditorObje.id })" class="fa fa-edit EditorListEditIco"></a>
+                                            <div class="shareStreemImgPanoramicWrp" id="@shareStreemImgPanoramicWrp180_id" style="background-image:url('@shareEditorObje.image_url'); background-size:cover; background-repeat:no-repeat;">
+
+                                                <div class="AlbumAddIco">
+                                                    <div class="share180icon">
+                                                        <div class="AlbumItemTypesIconWrapper">
+                                                            <div class="AlbumItemTypesDiv">
+                                                                <i class="fa fa-photo iconZ"></i>
+                                                                <span class="fa fa-male AlbumTrigger iconX"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <img id="@ShareObjectPanaromaPreview180" class="ShareObjectPanaromaPreview" src="@shareEditorObje.image_url" style="display:none; width:auto; height:auto;" />
+                                            </div>
+                                            <div class="shareStreemImageText">
+                                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                                &nbsp;
+                                                @shareEditorObje.text
+                                                &nbsp;
+                                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            if (shareEditorObje.sort == 2)
+                                            {
+                                                string shareStreemImgPanoramicWrp360_id = "shareStreemImgPanoramicWrp360_id" + shareEditorObje.number.ToString();
+                                                string ShareObjectPanaromaPreview360 = "ShareObjectPanaromaPreview360" + shareEditorObje.number.ToString();
+                                                <a href="@Url.Action("imagePanoramic360EditorDetails", "xzgqhjk", new { obje_id = shareEditorObje.id })" class="fa fa-edit EditorListEditIco"></a>
+                                                <div class="shareStreemImgPanoramicWrp" id="@shareStreemImgPanoramicWrp360_id" style="background-image:url('@shareEditorObje.image_url'); background-size:cover; background-repeat:no-repeat;">
+
+                                                    <div class="AlbumAddIco">
+                                                        <div class="share360icon">
+                                                            <div class="AlbumItemTypesIconWrapper">
+                                                                <div class="AlbumItemTypesDiv">
+                                                                    <i class="fa fa-photo iconZ"></i>
+                                                                    <div class="AlbumdivIconY">
+                                                                        <i class="fa fa-refresh fa-spin iconY"></i>
+                                                                    </div>
+                                                                    <span class="fa fa-male AlbumTrigger iconX"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <img id="@ShareObjectPanaromaPreview360" class="ShareObjectPanaromaPreview" src="@shareEditorObje.image_url" style="display:none; width:auto; height:auto;" />
+                                                </div>
+                                                <div class="shareStreemImageText">
+                                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                                    &nbsp;
+                                                    @shareEditorObje.text
+                                                    &nbsp;
+                                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                if (shareEditorObje.sort == 4)
+                                                {
+                                                    string videoid = "video" + shareEditorObje.number.ToString();
+                                                    <a href="@Url.Action("videoEditorDetails", "xzgqhjk", new { obje_id = shareEditorObje.id })" class="fa fa-edit EditorListEditIco"></a>
+                                                    <div class="shareStreemVideoWrp">
+                                                        <video id="@videoid" src="@shareEditorObje.image_url" style="width:100%;" controls>
+                                                            <source src="@shareEditorObje.image_url" type="video/mp4" />
+                                                            <source src="@shareEditorObje.image_url" type="video/ogg" />
+                                                            <source src="@shareEditorObje.image_url" type="video/webm" />
+                                                            İnternet tarayıcınız eski sürüm olduğundan bu videoyu oynatamıyor.
+                                                        </video>
+                                                        <script type="text/javascript">
+                                                    $(document).ready(function () {
+                                                        var myVideo = document.getElementById("video"+@shareEditorObje.number.ToString());
+                                                        function playPaus() {
+                                                            if (myVideo.paused) {
+                                                                myVideo.play();
+                                                            }
+                                                            myVideo.pause();
+                                                        }
+                                                    });
+                                                        </script>
+                                                    </div>
+                                                    <div class="shareStreemImageText">
+                                                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                                        &nbsp;@shareEditorObje.text&nbsp;
+                                                        <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    if (shareEditorObje.sort == 8)
+                                                    {
+                                                        <a href="@Url.Action("audioEditorDetails", "xzgqhjk", new { obje_id = shareEditorObje.id })" class="fa fa-edit EditorListEditIco"></a>
+                                                        <div class="shareStreemAudioWrp">
+                                                            <audio id="audio" width="100%" controls="controls">
+                                                                <source src="@shareEditorObje.image_url" type="audio/mpeg" />
+                                                                <source src="@shareEditorObje.image_url" type="audio/mp3" />
+                                                                <source src="@shareEditorObje.image_url" type="audio/ogg" />
+                                                                İnternet tarayıcınız eski sürüm olduğundan bu ses kaydını oynatamıyor.
+                                                            </audio>
+                                                            <div class="shareStreemImageText">
+                                                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                                                &nbsp;
+                                                                @shareEditorObje.text
+                                                                &nbsp;
+                                                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (shareEditorObje.sort == 16)
+                                                        {
+                                                            <a href="@Url.Action("LocationEditorDetails", "xzgqhjk", new { obje_id = shareEditorObje.id })" class="fa fa-edit EditorListEditIco"></a>
+                                                            <div class="shareStreemLocationWrp">
+                                                                <div class="shareStreemLocationImg">
+                                                                    <img src="@shareEditorObje.image_url" />
+                                                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                                                    &nbsp;
+                                                                    @shareEditorObje.text
+                                                                    &nbsp;
+                                                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            Response.Redirect(Url.Action("Index", "xzgqhjk"));
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    //}
+                                    //else
+                                    //{
+                                    //    Response.Redirect(Url.Action("Index", "xzgqhjk"));
+                                    //}
+
+                                }
+                            catch
+                            {
+                                Response.Redirect(Url.Action("Index", "xzgqhjk"));
+                            }
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div> Sonuç Bulunamadı....</div>
+            }
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+        }
+        <div class="ShareObjectDetailsFooterEmpty">&nbsp;</div>
+    </div>
+</div>
+
+<script src=" ~/Scripts/360Viewer.js"></script>
+<script src=" ~/Scripts/180Viewer.js"></script>
+<script type="text/javascript">
+    $(Document).ready(function () {
+        var removable_items=null;
+        var W_H;
+       $('.share180icon').click(function ()
+       {
+           removable_items=$(this).parent().parent().attr("id");
+           $(".shareStreemImgPanoramicWrp").each(function () {
+               $(this).children("canvas").remove();
+           });
+           $(this).parent().parent().children().add("canvas");
+           $(this).parent().css("visibility", "hidden");
+
+           var Uri = $(this).parent().parent().children("img").attr("src");
+
+           var img = document.getElementById($(this).parent().parent().children("img").attr("id"));
+           W_H = img.naturalWidth / img.naturalHeight;
+           if (W_H >= 4)
+           {
+               W_H = 6.3;
+           }
+            var container_id = $(this).parent().parent().attr("id");
+            var modalAlb = container_id;
+            img=null;
+            screen180View(W_H, container_id, modalAlb, Uri);
+        });
+
+       $(".share360icon").click(function ()
+       {
+            removable_items=$(this).parent().parent().attr("id");
+
+            $(this).parent().css("visibility", "hidden");
+
+            var URL = $(this).parent().parent().children("img").attr("src");
+            var container_id2 = $(this).parent().parent().attr("id");
+            var modalAlb2 = container_id2;
+            screen360View(container_id2, modalAlb2, URL);
+        });
+
+        $(window).scroll(function ()
+        {
+            if (removable_items!=null)
+            {
+                $(".shareStreemImgPanoramicWrp").each(function () {
+                    $(this).children("canvas").remove();
+                });
+                $('.AlbumAddIco').each(function () {
+                    $(this).css("visibility", "visible");
+                });
+                removable_items =null;
+                screen180View(0, "", "", "");
+                screen360View("", "", "");
+            }
+       });
+
+        $(".btnCount").click(function () {
+            $("#page").val($(this).val());
+        });
+
+    });
+</script>

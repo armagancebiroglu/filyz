@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "LocationEditor";
+    Layout = "~/Views/Shared/_LayoutEditor.cshtml";
+}
+@model WebWebWeb.Models.Location
+
+
+<div class="ShareMaterialheaderContent">
+    @using (Html.BeginForm("LocationEditor", "xzgqhjk", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        try
+        {
+
+        
+        <div class="ShareStreemObjectWrapper">
+            <p>
+                <strong>Kimler İçin Paylaşılacak?:</strong>
+                <strong>
+                    @Html.DropDownListFor(mbox => mbox.sex, new[] {
+new SelectListItem {Text="Seçiniz...", Value="" },
+new SelectListItem { Text = "Yalnızca Kadınlar İçin Paylaşım", Value = "Erkek" },
+new SelectListItem { Text = "Yalnızca Erkekler İçin Paylaşım", Value = "Kadın" },
+new SelectListItem { Text = "Herkes İçin Paylaşım", Value = "XYX" } },
+                new { @id = "sex", @class = "form-control" })
+                </strong>
+            </p>
+            <p>
+                <strong>Paylaşımın Statüsü Nedir?:</strong>
+                <strong>
+                    @Html.DropDownListFor(mbox => mbox.confrim, new[] {
+new SelectListItem {Text="Seçiniz...", Value="" },
+new SelectListItem { Text = "Paylaşım", Value = "1" },
+new SelectListItem { Text = "Reklam", Value = "2" },
+new SelectListItem { Text = "Duyuru ve Etkinlik", Value = "4" },
+new SelectListItem { Text = "Öğretici Bilgi", Value = "8" }
+           }, new { @id = "confrim", @class = "form-control" })
+                </strong>
+            </p>
+
+            <div class="shareLocationItemHeader">
+                <div class="ShareLocationIco">
+                    <label for="ShareLocationShowBtn"><i class="glyphicon glyphicon-map-marker"></i></label><div>Konumu Bul</div>
+                    <input id="ShareLocationShowBtn" onclick="ShareLocationShowBtnclick()" type="button" value="Göster" class="ButtonHiden" />
+                </div>
+            </div>
+            <div class="shareStreemContent">
+                <!--içerik başlangıç-->
+                <div class="ShareObjectWrapper">
+                    <div class="ShareObjectFrame" id="ShareLocationFrame"></div>
+                    @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMXHBMVNzhN_gmq828ISUjzmyfLIq97qU&callback=ShareLocationShowBtnclick"></script>*@
+                    @*key buradan alınacak https://developers.google.com/maps/documentation/javascript/?refresh=1*@
+
+                    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+                    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+                    <script src="https://unpkg.com/leaflet-image@0.4.0/leaflet-image.js"></script>
+
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+
+                            var map;
+
+                            //const uploadAreaLocation = document.getElementById('uploadAreaLocation');
+                            //uploadAreaLocation.addEventListener('click', () => {
+                            //    document.getElementById('ShareLocationShowBtn').click();
+                            //});
+
+                            $("#ShareLocationShowBtn").click(function () {
+                                if (!navigator.geolocation) {
+                                    alert('Tarayıcınız bu özelliği desteklemiyor.');
+                                    return;
+                                }
+
+                                navigator.geolocation.getCurrentPosition(
+                                    function (position) {
+                                        var lat = position.coords.latitude;
+                                        var lng = position.coords.longitude;
+
+                                       // $("#uploadAreaLocation").parent(0).css("display", "none");
+                                        $("#previewSectionLocation").css("display", "block");
+                                        $("#latitude").val(lat);
+                                        $("#longitude").val(lng);
+
+                                        $("#ShareLocationFrame").html("");
+                                        $("#ShareLocationFrame").css({ "width": "800px", "height": "600px" });
+
+                                        map = L.map('ShareLocationFrame').setView([lat, lng], 15);
+
+                                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                            attribution: '&copy; OpenStreetMap',
+                                            crossOrigin: true
+                                        }).addTo(map);
+
+                                        var marker = L.marker([lat, lng], { draggable: true }).addTo(map);
+                                        marker.bindPopup("Sen Buradasın!").openPopup();
+
+                                        // Tile'lar yüklendikten sonra yakala
+                                        map.whenReady(function () {
+                                            setTimeout(captureMap, 1500);
+                                        });
+
+                                        marker.on('dragend', function () {
+                                            var pos = marker.getLatLng();
+                                            $("#latitude").val(pos.lat);
+                                            $("#longitude").val(pos.lng);
+                                            setTimeout(captureMap, 500);
+                                        });
+                                    },
+                                    function (error) {
+                                        var mesajlar = {
+                                            1: "Konum izni verilmedi.",
+                                            2: "Konum bilgisi alınamadı.",
+                                            3: "Konum isteği zaman aşımına uğradı."
+                                        };
+                                        alert(mesajlar[error.code] || "Bilinmeyen bir hata oluştu.");
+                                    }
+                                );
+                            });
+                            function captureMap() {
+                                leafletImage(map, function (err, canvas) {
+                                    if (err) {
+                                        console.error("Harita yakalanamadı:", err);
+                                        return;
+                                    }
+                                    var imgData = canvas.toDataURL("image/png");
+                                    $("#mapsImgSrc").val(imgData);
+                                    $("#ImgSrc").attr("src", imgData); // img src güncelle
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+                <!--içerik bitiş-->
+            </div>
+            <div class="shareStreemFooterElementWrapper">
+                <div class="ShareObjectTextWrp">
+                    <div class="ShareObjectText">
+                        @Html.TextAreaFor(mbox => mbox.text, new { @id = "ShareLocationText", @class = "ShareTextInput", style = "height:100px", rows = "10", Placeholder = "...yazın" })
+                    </div>
+                    <div class="ShareObjectSend">
+                        <label for="ShareLocationBtn"><span class="glyphicon glyphicon-send"></span></label>
+                        <input id="ShareLocationBtn" type="submit" value="Paylaş" class="ButtonHiden" />
+                    </div>
+                    @Html.Hidden("latitude")
+                    @Html.Hidden("longitude")
+                    @Html.Hidden("mapsImgSrc")
+                </div>
+
+            </div>
+        </div>
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+        }
+    }
+</div>
+
+<div>
+    @try
+    {
+        @Html.Action("EditorShareObjeList", "xzgqhjk", new { sort = 16 })
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+    }
+</div>
+<div class="ShareObjectDetailsFooterEmpty">&nbsp;</div>

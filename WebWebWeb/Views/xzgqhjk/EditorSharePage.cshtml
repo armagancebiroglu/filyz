@@ -1,0 +1,90 @@
+﻿@model List<WebWebWeb.Models.shareStreem>
+<div class="container">
+    @try
+    {
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+    <div class="EditorShareItemWRP">
+        <div class="EditorShareItemCaption">
+            <div class="EditorShareItemProfilImage">
+                <div class="ShareStreemOnline">
+                    @if (Convert.ToInt32(item.member_isonline) == 0)
+                {<span id="is_online" class="glyphicon glyphicon-record" style="color:#c0c0c0;"></span>}
+                    else
+                    {<span id="is_online" class="glyphicon glyphicon-record" style="color:#43ee0f;"></span>}
+                </div>
+                <figure>
+                    <a href="@Url.Action("Profil", "Profil", new { member_id = item.member_id })">
+                        <img src="@item.member_profil_media" class="img-circle" width="46" height="46" style=" box-shadow:0px 5px 5px grey" />
+                    </a>
+                </figure>
+                @item.member_nick_name
+            </div>
+        </div>
+        <div class="EditorShareItemBody">
+            @if (item.sort == 4)
+            {
+            <div class="shareStreemVideoWrp">
+                <video id="videoid" src="@item.image_url" style="width:100%;" controls>
+                    <source src="@item.image_url" type="video/mp4" />
+                    <source src="@item.image_url" type="video/ogg" />
+                    <source src="@item.image_url" type="video/webm" />
+                    İnternet tarayıcınız eski sürüm olduğundan bu videoyu oynatamıyor.
+                </video>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        var myVideo = document.getElementById("videoid");
+                        function playPaus() {
+                            if (myVideo.paused) {
+                                myVideo.play();
+                            }
+                            myVideo.pause();
+                        }
+                    });
+                </script>
+            </div>
+            }
+            else if (item.sort == 8)
+            {
+        <div class="shareStreemAudioWrp">
+            <audio id="audio" width="100%" controls="controls">
+                <source src="@item.image_url" type="audio/mpeg" />
+                <source src="@item.image_url" type="audio/mp3" />
+                <source src="@item.image_url" type="audio/ogg" />
+                İnternet tarayıcınız eski sürüm olduğundan bu ses kaydını oynatamıyor.
+            </audio>
+        </div>
+            }
+            else
+            {
+    <img src="@item.image_url" />
+            }
+        </div>
+        <div class="EditorShareItemTXT">@item.text</div>
+       
+        <div class="EditorShareItemFooter">
+            <div>
+                @if (item.sort == 32)
+                {<a href="@Url.Action("EditorCompSurveyDetails", "xzgqhjk", new { obje_id = item.id })">Anket Detayına git </a>}
+                else
+                {
+            @*<div>@Ajax.ActionLink("Paylaşım Listesine Ekle", "EditorSharePage", "xzgqhjk", new { Event = "ShareShare", obje_id = item.id, page = 0 }, new AjaxOptions { UpdateTargetId = "EditorSharePage", InsertionMode = InsertionMode.Replace })</div>*@
+            <div><a href="@Url.Action("EditorShareDetails", "xzgqhjk", new { obje_id = item.id, sort = item.sort, whom_id = item.member_id })">Detaya git</a></div>
+                }
+            </div>
+
+            <div>@Ajax.ActionLink("paylaşımı sil", "EditorSharePage", "xzgqhjk", new { Event = "ShareDelete", obje_id = item.id, page = 0 }, new AjaxOptions { UpdateTargetId = "EditorSharePage", InsertionMode = InsertionMode.Replace })</div>
+            <div>@Ajax.ActionLink("Kontrol edildi", "EditorSharePage", "xzgqhjk", new { Event = "ShareUpdate", obje_id = item.id, page = 0 }, new AjaxOptions { UpdateTargetId = "EditorSharePage", InsertionMode = InsertionMode.Replace })</div>
+        </div>
+    </div>
+            }
+        }
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+    }
+</div> 

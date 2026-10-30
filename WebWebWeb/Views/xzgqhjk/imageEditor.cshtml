@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "imageEditor";
+    Layout = "~/Views/Shared/_LayoutEditor.cshtml";
+}
+
+@model WebWebWeb.Models.ShareObject
+<style>
+    input[type=submit] {
+        display: none;
+    }
+</style>
+
+<div class="ShareMaterialheaderContent">
+    @using (Html.BeginForm("imageEditor", "xzgqhjk", new { sort = 0 }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {//image
+        @Html.AntiForgeryToken()
+        try
+        {
+            <div class="ShareStreemObjectWrapper">
+                <p>
+                    <strong>Kimler İçin Paylaşılacak?:</strong>
+                    <strong>
+                        @Html.DropDownListFor(mbox => mbox.sex, new[] {
+new SelectListItem {Text="Seçiniz...", Value="" },
+new SelectListItem { Text = "Yalnızca Kadınlar İçin Paylaşım", Value = "Erkek" },
+new SelectListItem { Text = "Yalnızca Erkekler İçin Paylaşım", Value = "Kadın" },
+new SelectListItem { Text = "Herkes İçin Paylaşım", Value = "XYX" } },
+              new { @id = "sex", @class = "form-control" })
+                    </strong>
+                </p>
+                <p>
+                    <strong>Paylaşımın Statüsü Nedir?:</strong>
+                    <strong>
+                        @Html.DropDownListFor(mbox => mbox.confrim, new[] {
+new SelectListItem {Text="Seçiniz...", Value="" },
+new SelectListItem { Text = "Paylaşım", Value = "1" },
+new SelectListItem { Text = "Reklam", Value = "2" },
+new SelectListItem { Text = "Duyuru ve Etkinlik", Value = "4" },
+new SelectListItem { Text = "Öğretici Bilgi", Value = "8" }
+               }, new { @id = "confrim", @class = "form-control" })
+                    </strong>
+                </p>
+                <div class="shareLocationItemHeader">
+                    <div class="ShareLocationIco">
+                        <label for="ShareObjectImageFileUpload"><i class="glyphicon glyphicon-picture"></i></label><div>Fotoğraf Seç</div>
+                        <input id="ShareObjectImageFileUpload" class="custom-file-upload" name="file" type="file" accept="image/*" capture="camera" />
+                    </div>
+                </div>
+                <div class="shareStreemContent">
+                    <!--içerik başlangıç-->
+                    <div class="ShareObjectWrapper">
+                        <div class="ShareObjectFrame">
+                            <img id="ShareObjectImagePreview" src="#" style="width:100%; height:auto; display:none;" />
+                        </div>
+                    </div>
+                    <!--içerik bitiş-->
+                </div>
+                <div class="shareStreemFooterElementWrapper">
+                    <div class="ShareObjectTextWrp">
+                        <div class="ShareObjectText" style="height:100px">
+                            @Html.TextAreaFor(mbox => mbox.text, new { @id = "ShareObjectImageText", @class = "ShareTextInput", style = "height:100px", rows = "10", Placeholder = "...yazın" })
+                        </div>
+                        <div class="ShareObjectSend">
+                            <label for="ShareObjectImageBtn"><i class="glyphicon glyphicon-send"></i></label>
+                            <input id="ShareObjectImageBtn" type="submit" value="Kaydet" class="ButtonHiden" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $("#ShareObjectImagePreview").attr('src', e.target.result).css('visibility', 'visible');
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    $('#ShareObjectImageFileUpload').change(function () {
+                        $(File).each(function (e) {
+                            if (e != this) {
+                                $(this).val('');
+                            }
+                        });
+                        $('#ShareObjectImagePreview').css("display", "block");
+                        readURL(this);
+
+                    });
+                });
+            </script>
+        }
+            catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+        }
+    }
+</div>
+
+<div>
+    @try
+    {
+        @Html.Action("EditorShareObjeList", "xzgqhjk", new { sort = 0 })
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Index", "xzgqhjk")); }
+    }
+
+</div>
+<div class="ShareObjectDetailsFooterEmpty">&nbsp;</div>

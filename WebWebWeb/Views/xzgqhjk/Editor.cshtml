@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Editor";
+    Layout = "~/Views/Shared/_LayoutEditor.cshtml";
+}
+
+<br />
+<br />
+<br />
+<div class="EditorSharePage" id="EditorSharePage">
+    @Html.Action("EditorSharePage", "xzgqhjk",new { page=0})
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var page = 0;
+        var _inCallback = false;
+
+        function loadNotice() {
+            if (page > -1 && !_inCallback) {
+                _inCallback = true;
+                page++;
+
+                $('div#loading').html('<p><img src="/Images/loading.gif"></p>');
+
+                $.get("/xzgqhjk/EditorSharePage?page=" + page, function (data) {
+                    if (data != '') {
+                        $("#EditorSharePage").append(data);
+                    }
+                    else {
+                        page = -1;
+                    }
+
+                    _inCallback = false;
+                    $('div#loading').empty();
+                });
+            }
+        }
+        var dcList = true;
+        $(window).scroll(function () {
+            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                loadNotice();
+            }
+        });
+    });
+</script>
