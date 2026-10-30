@@ -1,0 +1,104 @@
+﻿
+@model WebWebWeb.Models.ShareObject
+
+<div class="row share-card" id="refresh shareCard">
+    @using (Html.BeginForm("ShareVideo", "Home", new { sort = 4 }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {//video
+        @Html.AntiForgeryToken()
+        try
+        {
+            <!-- Yükleme Alanı baslangic-->
+            <div class="upload-section" id="uploadSectionVideo" for="ShareObjectVideoFileUpload">
+                <div class="upload-area" id="uploadAreaVideo">
+                    <div class="upload-icon">
+                        <i class="fa fa-video-camera" id="uploadIcon"></i>
+                    </div>
+                    <div class="upload-text" id="uploadText">Video Kaydı Seç</div>
+                    <div class="upload-hint" id="uploadHint">MP4, WebM · Max 10MB / 10sn</div>
+                    <input id="ShareObjectVideoFileUpload" class="custom-file-upload" name="file" type="file" accept="video/*" style="display:none" />
+                </div>
+            </div>
+            <!-- Yükleme Alanı bitis-->
+            <!-- Önizleme Alanı baslangic-->
+            <div class="preview-section" id="previewSectionVideo">
+                <div class="preview-container" id="previewContainerVideo">
+                    <video id="videoPreview" style="width:100%; height:100%; display:none" controls>
+                        <source src="#" type="video/mp4" />
+                        <source src="#" type="video/ogg" />
+                        <source src="#" type="video/webm" />
+                        İnternet tarayıcınız eski sürüm olduğundan bu videoyu oynatamıyor.
+                    </video>
+                </div>
+            </div>
+            <!-- Önizleme Alanı bitis-->
+            <!-- Metin Alanı baslangic-->
+                    <div class="text-section">
+                        @Html.TextArea("ShareObjectVideoText", new { @id = "ShareObjectVideoText", @class = "share-textarea", rows = "5", Placeholder = "Paylaşımınıza açıklama ekleyin..." })
+                        <div class="char-counter">
+                            <span id="charCountVideo">0</span> / 1500
+                        </div>
+                    </div>
+            <!-- Metin Alanı bitis-->
+            <!-- Gönder Butonu baslangic-->
+            <div class="send-section">
+                <button class="send-btn" id="ShareObjectVideoBtn" type="submit" value="Kaydet">
+                    <i class="fas fa fa-paper-plane"></i>
+                    Paylaş
+                </button>
+            </div>
+            <!-- Gönder Butonu bitis-->
+            
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    const input = document.getElementById("ShareObjectVideoFileUpload"); 
+                    const previewContainerVideo = document.getElementById("previewContainerVideo");
+                    const uploadAreaVideo = document.getElementById('uploadAreaVideo'); 
+                    const videoPreview = document.getElementById('videoPreview'); 
+                    uploadAreaVideo.addEventListener('click', () => {
+                        input.click();
+                    });
+                    
+                    ////////////////dosya seçilince videoya kaynak değişimi ve görüntüsü kaldırılacak alanlar//////////////////////
+                    $('#ShareObjectVideoFileUpload').change(function (event) {
+                        const file = event.target.files[0];
+                        if (!file) return;
+                        const url = URL.createObjectURL(file);
+
+                        $("#uploadAreaVideo").parent(0).css("display", "none");                       
+                        $("#previewSectionVideo").css("display", "block");                       
+                        $("#videoPreview").css("display", "block");                       
+
+                        $("#videoPreview").attr('src', url).show();
+
+                    });
+                    ////////////////////
+                    var myVideo = document.getElementById("videoPreview");
+                    function playPaus() {
+                        if (myVideo.paused) {
+                            myVideo.play();
+                        }
+                        myVideo.pause();
+                    }
+                    ///////////karakter sayıcı///////////
+                    const shareText = document.getElementById('ShareObjectVideoText');
+                    const charCount = document.getElementById('charCountVideo');
+                    shareText.addEventListener('input', function () {
+                        const length = this.value.length;
+                        charCount.textContent = length;
+                        if (length > 1500) {
+                            this.value = this.value.substring(0, 1500);
+                            charCount.textContent = 1500;
+                        }
+                    });
+                });
+            </script>
+
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Home", "Home")); }
+        }
+    }
+</div>
+<div class="ShareObjectDetailsFooterEmpty">&nbsp;</div>

@@ -1,0 +1,176 @@
+﻿@model List<WebWebWeb.Models.shareStreem>
+@try
+{
+
+    if (Model != null && Model.Count > 0)
+    {
+        foreach (var shareStreemObje in Model)
+        {
+            <div class="card post-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="HomeFavoriItem">
+                            @if (Convert.ToInt32(shareStreemObje.member_isonline) == 0)
+                            { <span class="fa fa-circle un-selected"></span> }
+                            else
+                            { <span class="fa fa-circle active-color"></span> }
+                            <figure>
+                                <a href="@Url.Action("Profil", "Profil", new { member_id = shareStreemObje.member_id })">
+                                    <img src="@shareStreemObje.member_profil_media" class="img-circle"/>
+                                </a>
+                            </figure>
+                        </div>
+                        <div class="SharePostCardInside">
+                            @if (shareStreemObje.member_nick_name != null)
+                            {
+                                //int year = DateTime.Now.Year - shareStreemObje.member_age.Year;
+                                <div class="post-author">@shareStreemObje.member_nick_name </div>
+                            }
+                            @if (shareStreemObje.member_age != null)
+                            {
+                                int year = DateTime.Now.Year - shareStreemObje.member_age.Year;
+                                <div class="postInfo">yaş: @year </div>
+                            }
+                            @if (shareStreemObje.member_city != null)
+                            {
+                                <div class="postInfo">şehir: @shareStreemObje.member_city</div>
+                            }
+
+                            <div class="post-time">@shareStreemObje.date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(shareStreemObje.date.Month)</div><br />
+                            <div class="post-time"><span class="fa fa-clock-o"></span> @shareStreemObje.date.Hour.ToString() :@shareStreemObje.date.Minute.ToString()</div>
+                        </div>
+                    </div>
+                    <div class="shareStreemContent">
+
+                        @try
+                        {
+                            if (!string.IsNullOrEmpty(shareStreemObje.image_url))
+                            {
+                                if (shareStreemObje.sort == 0)
+                                {
+                                    <img src="@shareStreemObje.image_url" class="post-img" />
+                                    <div class="post-text"> @shareStreemObje.text</div>
+                                }
+                                else
+                                {
+
+                                    if (shareStreemObje.sort == 4)
+                                    {
+                                        string videoid = "video" + shareStreemObje.number.ToString();
+                                        <div class="post-img mb-3">
+                                            <video id="@videoid" src="@shareStreemObje.image_url" style="width:100%;" controls="controls">
+                                                <source src="@shareStreemObje.image_url" type="video/mp4" />
+                                                <source src="@shareStreemObje.image_url" type="video/ogg" />
+                                                <source src="@shareStreemObje.image_url" type="video/webm" />
+                                                İnternet tarayıcınız eski sürüm olduğundan bu videoyu oynatamıyor.
+                                            </video>
+                                            <script type="text/javascript">
+                                                    $(document).ready(function () {
+                                                        var myVideo = document.getElementById(@videoid);
+                                                        function playPaus() {
+                                                            if (myVideo.paused) {myVideo.play();}
+                                                            else { myVideo.pause();}
+                                                        }
+                                                    });
+
+                                            </script>
+                                        </div>
+                                        <div class="post-text">@shareStreemObje.text</div>
+
+                                    }
+                                    else
+                                    {
+                                        if (shareStreemObje.sort == 8)
+                                        {
+                                            <div class="post-img">
+                                                <audio id="audio" style="width:100%;" controls="controls">
+                                                    <source src="@shareStreemObje.image_url" type="audio/mpeg" />
+                                                    <source src="@shareStreemObje.image_url" type="audio/mp3" />
+                                                    <source src="@shareStreemObje.image_url" type="audio/ogg" />
+                                                    İnternet tarayıcınız eski sürüm olduğundan bu ses kaydını oynatamıyor.
+                                                </audio>
+                                            </div>
+                                            <div class="post-text"> @shareStreemObje.text</div>
+                                        }
+                                        else
+                                        {
+                                            if (shareStreemObje.sort == 16)
+                                            {
+                                                <div class="post-img">                                                    
+                                                    <a href="https://www.google.com/maps/dir/?api=1&destination=@shareStreemObje.LATITUDE,@shareStreemObje.LONGITUDE" target="_blank">
+                                                        <img src="@shareStreemObje.image_url" class="post-img" />
+                                                    </a>                                                 
+                                                </div>
+                                                <div class="post-text"> @shareStreemObje.text</div>
+                                            }
+                                            else
+                                            {
+                                                if (shareStreemObje.sort == 32)
+                                                {
+                                                <div class="Surveycard">
+                                                    <div class="post-img">
+                                                        <div class="shareStreemSurveyIcon">
+                                                            <div class="survey-icon-circle">
+                                                                <a href="@Url.Action("ProfilSurveyDetails", "Profil", new { survey_id = shareStreemObje.id, whom_id = shareStreemObje.member_id })"><i class="fa fa-file-text" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="shareStreemSurveyFooter">
+                                                            <div>
+                                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                                <div class="shareStreemSurvey-post-text"> @shareStreemObje.text </div>
+                                                            </div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                }
+                                                else if(shareStreemObje.sort == 0 && shareStreemObje.sort == 2)
+                                                {
+                                                    Response.Redirect(Url.Action("Uppss", "Error", new { P = 24 }));
+                                                }
+                                                else
+                                                {
+                                                    Response.Redirect(Url.Action("Info", "Default"));
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Response.Redirect(Url.Action("Info", "Default"));
+                            }
+
+                        }
+                        catch
+                        {
+                            Response.Redirect(Url.Action("Info", "Default"));
+                        }
+                    </div>
+                    <div class="actionWr d-flex align-items-center gap-2">
+                        <div class="actionW">
+                            @Html.Action("NoticeEventHeart", "Home", new { obje_id = shareStreemObje.id, sort = shareStreemObje.sort, whom_id = shareStreemObje.member_id, noticeTableSort = 0 })
+                             </div>
+                        <div class="actionW">                        
+                            <a href="@Url.Action("SharedObjectDetails", "Home", new { obje_id = shareStreemObje.id, sort = shareStreemObje.sort, whom_id = shareStreemObje.member_id })"><span class="fa fa-sign-in glyphicon-outlined un-selected"></span></a>
+                        </div>
+                            <div class="flex-grow-1"></div>
+                            <div class="actionW">
+                                <a href="@Url.Action("SharedObjectDetails", "Home", new { obje_id = shareStreemObje.id, sort = shareStreemObje.sort, whom_id = shareStreemObje.member_id })">@Html.Action("TagMyCheck", "MyProfil", new { whom_id = shareStreemObje.member_id, obje_id = shareStreemObje.id })</a>
+                            </div>
+                            <div class="actionW">
+                                @Html.Action("Complaint", "Home", new { obje_id = shareStreemObje.id, sort = shareStreemObje.sort, whom_id = shareStreemObje.member_id, noticeTableSort = 0 })                               
+                            </div>
+                        </div>
+                        @Html.Action("Comment", "Home", new { obje_id = shareStreemObje.id, sort = shareStreemObje.sort, whom_id = shareStreemObje.member_id, noticeTableSort = 0 })
+                    </div>
+            </div>
+        }
+    }
+}
+catch
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Info", "Default")); }
+}

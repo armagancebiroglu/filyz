@@ -1,0 +1,43 @@
+﻿@model List<WebWebWeb.Models.MemberProfil>
+<div class="customSearch" id="CustomRefresh">
+    @try
+    {
+        if (Model != null && Model.Count > 0)
+        {
+            <div class="Srchmember-grid" id="CustomRefresh">
+                @foreach (var item in ViewBag.memberList)
+                {
+                    int yas = (int)(DateTime.Now.Year) - (int)((item.age).Year);
+
+                    string nick = item.nick_name;
+                    <div class="Srchmember-card">
+                        <img class="Srchmember-avatar" src="@item.profil_media" alt=" @nick">
+                        <div class="Srchmember-nick">
+                            @nick
+                            @if (Convert.ToInt32(item.is_online) != 0)
+                            {
+                                <span class="badge-online"></span>
+                            }
+                        </div>
+                        <div class="Srchmember-age">@yas yaşında</div>
+                        <div class="Srchmember-city"><i class="fas fa-map-marker-alt"></i> @item.city </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="glass-card">
+                <div class="survey-item draft" style="animation-delay:0.7s">
+                    online üye yok
+                </div>
+            </div>
+        }
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Uppss", "Error", new { P = 33 })); }
+    }
+    <input id="hiddenValue" type="hidden" value="online" />
+</div>

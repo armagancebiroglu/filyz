@@ -1,0 +1,30 @@
+﻿
+
+@model WebWebWeb.Models.shareStreem
+
+
+<div class="shareStreemComment">
+    @if (Model != null)
+    {
+        try
+        {
+            if (ViewBag.ListCount == 0)
+            {
+                <div class="shareStreemCommentIconCenterTop">
+                    <span id="commentIcon" class="fa fa-comment commentIcon" style="color:#c0c0c0;"></span><i style="color:#c0c0c0;">0</i>
+                </div>
+            }
+            else
+            {
+                <div class="shareStreemCommentIconCenterTop">
+                    <span id="commentIcon" class="fa fa-comment commentIcon" style="color:#ff0080;"></span><i style="color:#ff0080;">@ViewBag.ListCount</i>
+                </div>
+            }
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Info", "Default")); }
+        }
+    }
+</div>

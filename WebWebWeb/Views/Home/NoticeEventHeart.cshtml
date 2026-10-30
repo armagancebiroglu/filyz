@@ -1,0 +1,26 @@
+﻿@model WebWebWeb.Models.shareStreem  
+ @try
+ {
+     string id = "actionEventHeart" + ViewBag.obje_id;
+<div id="@id">
+    @if ((bool)ViewBag.result)
+    {
+        
+        <div class="glyphicon-outlined selected" style="display:block;">
+            @Ajax.ActionLink(" ", "NoticeEventHeart", "Home", new { whom_id = ViewBag.whom_id, sort = ViewBag.sort, obje_id = ViewBag.obje_id, noticeTableSort = ViewBag.noticeTableSort, eventAction = "dislike" }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace, OnComplete = "dislike" }, new { id = "delete", @class = "fa fa-heart  glyphicon-outlined selected" }) 
+        </div>
+    }
+    else
+    {
+        <div class="glyphicon-outlined un-selected" style="display:block;">
+            @Ajax.ActionLink(" ", "NoticeEventHeart", "Home", new { whom_id = ViewBag.whom_id, sort = ViewBag.sort, obje_id = ViewBag.obje_id, noticeTableSort = ViewBag.noticeTableSort, eventAction = "like" }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace, OnComplete = "like" }, new { id = "insert", @class = "fa fa-heart  glyphicon-outlined un-selected" })
+        </div>
+    }
+</div>
+ }
+ catch
+ {
+     if (!Response.IsRequestBeingRedirected)
+     { Response.Redirect(Url.Action("Info", "Default")); }
+ }
+

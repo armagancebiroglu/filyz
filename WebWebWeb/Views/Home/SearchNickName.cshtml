@@ -1,0 +1,99 @@
+﻿
+@model WebWebWeb.Models.MemberProfil
+@try
+{
+    <div class="" id="SearchNickName">
+        <div class="glass-card" style="width:100%;">
+            @using (Ajax.BeginForm("SearchNickName", "Home", new { searchEvent = "search" }, new AjaxOptions { UpdateTargetId = "SearchNickName", HttpMethod = "POST", InsertionMode = InsertionMode.Replace }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+                    <div class="input-group">
+                        @Html.TextBox("nickName", "", new { @class = "comment-input", Placeholder = "Üye kodu giriniz." })
+                        <button id="searchMember" type="submit" class="btn btn-send px-3" value="Ara"><i class="fa fa-search"></i> Ara</button>
+                    </div>
+                </div>
+            }
+
+            @if (Model != null && Model.id != 0)
+            {
+                int yas = (int)(DateTime.Now.Year) - (int)((Model.age).Year);
+
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-image-wrapper">
+                            <a href="@Url.Action("Profil", "Profil", new { member_id = Model.id })">
+                                <img class="profile-image" src="@Model.profil_media" alt="Profil fotoğrafı" />
+                            </a>
+                            <div class="profile-settings">
+                                @if (Convert.ToInt32(Model.is_online) == 0)
+                                {
+                                    <span class="fa fa-circle cancel-color" style=" font-size:18px;"></span>
+                                }
+                                else
+                                {
+                                    <span class="fa fa-circle active-color" style=" font-size:18px;"></span>
+                                }
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h1 class="profile-name">@Model.nick_name</h1>
+                            @*<div class="profile-stats">
+                                <div class="stat-item">@Html.Action("Favorite", "Profil", new { whom_id = Model.id })</div>
+                                <div class="stat-item">@Html.Action("Smile", "Profil", new { whom_id = Model.id })</div>
+                                <div class="stat-item">@Html.Action("SurveyCount", "Profil", new { whom_id = Model.id })</div>
+                                <div class="stat-item">@Html.Action("MessageCount", "Profil", new { whom_id = Model.id })</div>
+                            </div>*@
+                        </div>
+                    </div>
+
+                    <div class="album-grid">
+                        <div class="">
+                            <div class="info-row">
+                                <span class="info-ico"><i class="fa fa-calendar"></i></span>
+                                <span class="val"> @yas</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-ico"><i class="fa fa-map-marker"></i></span>
+                                <span class="val"> @Model.city</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-ico"><i class="fa fa-graduation-cap"></i></span>
+                                <span class="val"> @Model.educational_status</span>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="info-row">
+                                <span class="info-ico"><i class="fa fa-home"></i></span>
+                                <span class="val"> @Model.country</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-ico"><i class="fa fa-heart"></i></span>
+                                <span class="val"> @Model.matiral_status</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-ico"><i class="fa fa-clock"></i></span>
+                                <span class="val"> @Model.last_enter_date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.last_enter_date.Month) @Model.last_enter_date.Hour.ToString() : @Model.last_enter_date.Minute.ToString()</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+            else if (ViewBag.search == true)
+            {
+                <div class="survey-item draft" style="animation-delay:0.07s">             
+                       Kayıt bulunamadı
+                </div>
+            }
+        </div>
+    </div>
+
+}
+catch
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}
+

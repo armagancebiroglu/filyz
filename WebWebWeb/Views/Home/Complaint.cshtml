@@ -1,0 +1,35 @@
+﻿@model WebWebWeb.Models.shareStreem
+@{ string id = "actionEventComplaint" + ViewBag.obje_id;}
+<div id="@id">
+    @{
+        try
+        {           
+            <div class="dropdown dropup">
+                @if ((bool)ViewBag.result)
+                {
+                    <div data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="fa fa-bolt glyphicon-outlined like"></span>
+                    </div>
+                }
+                else
+                {
+                    <div data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="fa fa-bolt glyphicon-outlined dislike"></span>
+                    </div>
+                }
+                    <ul class="dropdown-menu dropdown-menu-end menu-dropdown" style="z-index:1000 !important; width:170px; font-size:9pt; line-height: 20px; position:absolute; top:-15px;">
+                        <li>@Ajax.ActionLink("Dini milli duygulara hakaret", "Complaint", "Home", new { whom_id = ViewBag.whom_id, sort = ViewBag.sort, obje_id = ViewBag.obje_id, eventAction = "action1", noticeTableSort = ViewBag.noticeTableSort }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace, OnComplete = "SpanComplaintYes" })</li>
+                        <li>@Ajax.ActionLink("Kişilik haklarını ihlal", "Complaint", "Home", new { whom_id = ViewBag.whom_id, sort = ViewBag.sort, obje_id = ViewBag.obje_id, eventAction = "action2", noticeTableSort = ViewBag.noticeTableSort }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace, OnComplete = "SpanComplaintYes" })</li>
+                        <li>@Ajax.ActionLink("İstismar yada suistimal", "Complaint", "Home", new { whom_id = ViewBag.whom_id, sort = ViewBag.sort, obje_id = ViewBag.obje_id, eventAction = "action3", noticeTableSort = ViewBag.noticeTableSort }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace, OnComplete = "SpanComplaintYes" })</li>
+                        <li>@Ajax.ActionLink("Ahlak ve terbiye dışı", "Complaint", "Home", new { whom_id = ViewBag.whom_id, sort = ViewBag.sort, obje_id = ViewBag.obje_id, eventAction = "action4", noticeTableSort = ViewBag.noticeTableSort }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace, OnComplete = "SpanComplaintYes" })</li>
+                        <li>@Ajax.ActionLink(" ", "Complaint", "Home", new { whom_id = ViewBag.whom_id, sort = ViewBag.sort, obje_id = ViewBag.obje_id, eventAction = "delete", noticeTableSort = ViewBag.noticeTableSort }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace, OnComplete = "SpanComplaintNo" }, new { @class = "fa fa-trash ComplaintDelete" }) şikayeti sil</li>
+                    </ul>
+            </div>
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Home", "Home")); }
+        }
+    }
+</div>

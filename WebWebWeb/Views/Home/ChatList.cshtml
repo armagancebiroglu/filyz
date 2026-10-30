@@ -1,0 +1,34 @@
+﻿
+<div class="contacts-strip" id="contactsStrip">
+    @try
+    {
+        foreach (var member in ViewBag.FavoriteMyList_)
+        {
+            int yas = (int)(DateTime.Now.Year) - (int)((member.age).Year);
+
+            <div class="contact-chip" data-user="@member.nick_name" data-tab="@member.nick_name"  data-target="@member.id">
+                <div class="chip-avatar-wrap">
+                    <img src="@member.profil_media" alt="@member.nick_name" class="chip-avatar">
+                    @if (Convert.ToBoolean(member.is_online))
+                    {
+                    <div class="status-dot Conline"></div>
+                    }
+                    else
+                    {
+                        <div class="status-dot Coffline"></div>
+                    }
+                </div>
+                <div class="chip-label">@member.nick_name</div>
+                @*<span class="Cunread-badge"></span>*@
+            </div>
+
+        }
+    }
+    catch (Exception)
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Home", "Home")); }
+    }
+
+</div>
+

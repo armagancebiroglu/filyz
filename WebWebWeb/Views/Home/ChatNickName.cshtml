@@ -1,0 +1,25 @@
+﻿<div class="ChatSearchNickName" id="ChatNickName">
+
+    @using (Ajax.BeginForm("ChatNickName", "Home", new AjaxOptions { UpdateTargetId = "ChatNickName", HttpMethod = "POST", InsertionMode = InsertionMode.ReplaceWith, OnSuccess = "chatFormSend"}))
+    {
+        @Html.AntiForgeryToken()
+        <div class="input-group">
+            @Html.TextBox("nickName", "", new { Placeholder = "Üye Kodu Girin", @class = "Get_nickName" })
+            <input id="searchMember" type="submit" class="ButtonHiden" /><label for="searchMember" class="fa fa-user-plus Get_NickNameBtn"></label>
+        </div>
+        if (ViewBag.sex == "no") {
+            <script>
+                $("#ChatHeader").empty().text("Bu üye online değil.");
+            </script>           
+        }
+        @*<input type="button" id="sendmessage" value="Send" class="ButtonHiden" />*@
+        <input type="hidden" value="@ViewBag.member_id" id="mbrID" />
+        <input type="hidden" value="@ViewBag.nick_name" id="nickNM" />
+        <input type="hidden" value="@ViewBag.img_url" id="hdnIMG" />
+        <input type="hidden" value="@ViewBag.age" id="ageMB" />
+        <input type="hidden" value="@ViewBag.sex" id="sex" />
+    }
+</div>   
+
+
+   

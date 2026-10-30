@@ -1,0 +1,66 @@
+﻿
+
+
+@try
+{
+
+    if (Model != null)
+    {
+        foreach (var NoticeListItem in Model)
+        {
+            <li role="presentation">
+                @if (NoticeListItem.active)
+                {                
+
+                    <a class="notice-chip Cactive" href="@Url.Action("NoticePassiveAndDistribution", "Home", new { id_ = NoticeListItem.id, obje_id_ = NoticeListItem.obje_id, who_id_ = NoticeListItem.who_id, sort_ = NoticeListItem.sort, noticeTableSort_ = NoticeListItem.noticeTableSort, active_ = NoticeListItem.active })">
+                        <div class="chip-avatar-wrap">
+                            <img src="@NoticeListItem.profil_media" alt="@NoticeListItem.nick_name" class="chip-avatar">
+                            @if (Convert.ToBoolean(NoticeListItem.is_online))
+                            {
+                                <div class="status-dot Conline"></div>
+                            }
+                            else
+                            {
+                                <div class="status-dot Coffline"></div>
+                            }
+                        </div>
+                        <div class="chip-label">@NoticeListItem.nick_name</div>
+                        @*<span class="Cunread-badge"></span>*@
+                        <div class="NoticePageText Nactive"> @NoticeListItem.text</div>
+                        <div class="NoticePageDate">@NoticeListItem.date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(NoticeListItem.date.Month)&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> @NoticeListItem.date.Hour.ToString() :@NoticeListItem.date.Minute.ToString()</div>
+
+                    </a>
+
+                }
+                else
+                {
+                    <a class="notice-chip" href="@Url.Action("NoticePassiveAndDistribution", "Home", new { id_ = NoticeListItem.id, obje_id_ = NoticeListItem.obje_id, who_id_ = NoticeListItem.who_id, sort_ = NoticeListItem.sort, noticeTableSort_ = NoticeListItem.noticeTableSort, active_ = NoticeListItem.active })">
+                        <div class="chip-avatar-wrap">
+                            <img src="@NoticeListItem.profil_media" alt="@NoticeListItem.nick_name" class="chip-avatar">
+                            @if (Convert.ToBoolean(NoticeListItem.is_online))
+                            {
+                                <div class="status-dot Conline"></div>
+                            }
+                            else
+                            {
+                                <div class="status-dot Coffline"></div>
+                            }
+                        </div>
+                        <div class="chip-label">@NoticeListItem.nick_name</div>
+                        @*<span class="Cunread-badge"></span>*@
+                        <div class="NoticePageText"> @NoticeListItem.text</div>
+                        <div class="NoticePageDate">@NoticeListItem.date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(NoticeListItem.date.Month)&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> @NoticeListItem.date.Hour.ToString() :@NoticeListItem.date.Minute.ToString()</div>
+
+                    </a>
+                }
+            </li>
+        }
+    }
+}
+catch
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}
+
+

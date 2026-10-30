@@ -1,0 +1,39 @@
+﻿@model List<WebWebWeb.Models.MemberSurveyAnswer>
+<div class="customSearch" id="refresh">
+    <div class="Srchmember-grid">
+        @try
+        {
+            if (Model.Count > 0)
+            {
+                foreach (var member in Model)
+                {
+                    int yas = (int)(DateTime.Now.Year) - (int)((member.age).Year);
+
+                    string nick = member.nick_name;
+                    <div class="Srchmember-card">
+                        <img class="Srchmember-avatar" src="@member.profil_media" alt="@nick">
+                        <div class="Srchmember-nick">
+                            @nick
+                            @if (Convert.ToInt32(member.is_online) != 0)
+                            {
+                                <span class="badge-online"></span>
+                            }
+                        </div>
+                        <div class="Srchmember-age">@yas yaşında</div>
+                        <div class="Srchmember-age">%@member.percent</div>
+                        <div class="Srchmember-city"><i class="fas fa-map-marker-alt"></i> @member.city </div>
+                        <div class="Srchmember-city">@member.last_enter_date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(member.last_enter_date.Month) saat @member.last_enter_date.Hour.ToString() : @member.last_enter_date.Minute.ToString()</div>
+                    </div>
+                }
+
+            }
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Survey", "Home")); }
+        }
+    </div>
+    <input type="hidden" id="survey_id" value="@ViewBag.survey_id" />
+</div>
+

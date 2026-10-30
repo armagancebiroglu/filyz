@@ -1,0 +1,62 @@
+﻿
+@*<a data-bs-toggle="modal" data-bs-target="#ModalAlbumInsert" data-backdrop="static"><span class="fa fa-plus"></span></a>*@
+
+<div class="modal" id="ModalmemberList" role="dialog" tabindex="10000" style="top:75px; background: rgba(0,0,0,0.18);">
+    <div class="modal-dialog">
+        <div class="modal-content" style="top:35px;">
+            <span type="button" class="modal-close modalCloseicon" data-bs-dismiss="modal">&times;</span>
+            <div class="SearchLocationListFrame" id="SearchRefresh">
+                @try
+                {
+                    if (ViewBag.LocationList != null && ViewBag.LocationList.Count > 0)
+                    {
+
+                    
+                    <div class="Srchmember-grid" id="CustomRefresh">
+                        @foreach (var item in ViewBag.LocationList)
+                        {
+                            string nick = item.member_nick_name;
+                            int yas = (int)(DateTime.Now.Year) - (int)((item.member_age).Year);
+
+                            <div class="Srchmember-card SearchLocationItem">
+                                <img class="Srchmember-avatar" src="@item.member_profil_media" alt=" @nick">
+                                <div class="Srchmember-nick">
+                                    @nick
+                                    @if (Convert.ToInt32(item.member_isonline) != 0)
+                                    {
+                                        <span class="badge-online"></span>
+                                    }
+                                </div>
+                                <div class="Srchmember-age">@yas yaşında</div>
+                                <div class="Srchmember-city"><i class="fas fa-map-marker-alt"></i> @item.member_city </div>
+                                <input type="hidden" class="LocationLat" value="@item.LATITUDE " />
+                                <input type="hidden" class="LocationLong" value="@item.LONGITUDE" />
+                                <input type="hidden" class="LocationProfilImg" value="@item.member_profil_media" />
+                                <input type="hidden" class="LocationMemberId" value="@item.member_id" />
+                                <input type="hidden" id="SearchStatus" value="@ViewBag.searchLocation" />
+                            </div>
+
+                        }
+                    </div>
+                    }
+                    else
+                    {
+                        <div>bu konum aramasında henüz kimse yok.</div>
+                    }
+
+                }
+                catch
+                {
+                    if (!Response.IsRequestBeingRedirected)
+                    { Response.Redirect(Url.Action("Home", "Home")); }
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ModalmemberList").modal('show');
+                });
+</script>
