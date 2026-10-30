@@ -1,0 +1,88 @@
+﻿@model List<WebWebWeb.Models.SurveyQA>
+
+<div class="SurveyQuestionList" id="SurveyFormList">
+    @try
+    {
+        if (Model != null)
+        {
+            if (Model.Count > 0)
+            {
+
+                int answerCount = 0;
+                foreach (var item in Model)
+                {
+                    answerCount = answerCount + 1;
+                    <div class="SapLcard">
+                        <div class="q-label">
+                            <span class="q-num">soru @answerCount</span>
+                            &nbsp;&nbsp;<span class="q-dot"></span>
+                        </div>
+                        <p class="q-text"> @item.questionText</p>
+                        <div class="divider"></div>
+                        <p class="a-label">yanıt</p>
+                        @*<span class="card-num-bg">@answerCount</span>*@
+                        @if (item.ABCD_options == "A")
+                        {
+                            <p class="a-text"> <i>a)</i>&nbsp;@item.A_text</p>
+                        }
+                        else
+                        {
+                            <p class="a-text unSelectText"><i>a)</i>&nbsp;@item.A_text</p>
+                        }
+                        @if (item.ABCD_options == "B")
+                        {
+                            <p class="a-text"> <i>b)</i>&nbsp;@item.B_text</p>
+                        }
+                        else
+                        {
+                            <p class="a-text unSelectText"><i>b)</i>&nbsp;@item.B_text</p>
+                        }
+                        @if (item.ABCD_options == "C")
+                        {
+                            <p class="a-text"><i>c)</i>&nbsp;@item.C_text</p>
+                        }
+                        else
+                        {
+                            <p class="a-text unSelectText"><i>c)</i>&nbsp;@item.C_text</p>
+                        }
+                        @if (item.ABCD_options == "D")
+                        {
+                            <p class="a-text"><i>d)</i>&nbsp;@item.D_text</p>
+                        }
+                        else
+                        {
+                            <p class="a-text unSelectText"><i>d)</i>&nbsp;@item.D_text</p>
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="survey-item draft" style="animation-delay:0.7s">
+                    Henüz hiçbir anket yanıtlamadı.
+                </div>
+            }
+        }
+
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Home", "Home")); }
+    }
+</div>
+<script>
+    $(Document).ready(function () {
+        $(".a-text").each(function () {
+            let text = $(this).clone()
+                .children("i")
+                .remove()
+                .end()
+                .text()
+                .trim();
+            if (text === "") {
+                $(this).hide();
+            }
+        });
+    });  
+</script>

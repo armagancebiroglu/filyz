@@ -1,0 +1,35 @@
+﻿
+<div id="tagCheck">
+    @try
+    {
+        if (ViewBag.result)
+        {
+            <div class="PdSlider" id="Slider">
+                <div>Etiketi kaldırmak ister misiniz?</div>
+                <div class="">
+                    <span class="fa fa-close" id="Close"></span> |
+                    @Ajax.ActionLink(" ", "TagCheck", "Profil", new { eventAction = "remove", whom_id = ViewBag.whom_id, obje_id = ViewBag.shareObje_id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "tagCheck", OnSuccess = "closeSlide" }, new { @class = "fa fa-trash" })
+                </div>
+            </div>
+            <span class="fa fa-tag glyphicon-outlined selected" id="Delete"></span>
+
+        }
+        else
+        {
+            <span class="fa fa-tag glyphicon-outlined un-selected"></span>
+        }
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Home", "Home")); }
+    }
+</div>
+<script>
+    $("#Delete").click(function () {
+        $("#Slider").stop(true).slideDown("slow");
+    });
+    $("#Close").click(function () {
+        $("#Slider").stop(true).slideUp("slow");
+    });
+</script>

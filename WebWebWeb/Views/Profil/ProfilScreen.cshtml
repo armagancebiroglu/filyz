@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Album Details";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+@model WebWebWeb.Models.albums
+
+@try
+{
+
+
+<div class="SSContainer">
+    <div class="empty80">&nbsp;</div>
+ 
+    <div class="row" id="refresh">
+        <div class="card post-card"  style="z-index:10;">           
+            <div class="card-body">
+                <div class="SharePostCardInside">
+                    <div class="post-time"></div>
+                    <div class="post-time"></div>
+                </div>
+                <div class="shareStreemContent">
+                    @try
+                    {
+                        if (Request.QueryString["sort"] != null && !string.IsNullOrEmpty(Session["id"].ToString()))
+                        {
+                            if (Model != null)
+                            {
+                                if (Request.QueryString["sort"] == "0")
+                                { //image
+                                    <img src="@Model.media_url" id="@Model.id" class="post-img mb-3" />
+                                }
+                                if (Request.QueryString["sort"] == "4")
+                                {//  video
+                                    <div class="post-img mb-3">
+                                        <video id="video1" style="width:100%;" controls>
+                                            <source src="@Model.media_url" type="video/mp4" />
+                                            <source src="@Model.media_url" type="video/ogg" />
+                                            <source src="@Model.media_url" type="video/webm" />
+                                            İnternet tarayıcınız eski sürüm olduğundan bu videoyu oynatamıyor.
+                                        </video>
+                                        <script type="text/javascript">
+                                            $(document).ready(function () {
+                                                var myVideo = document.getElementById("video1");
+                                                //$("#video1").attr('src', $("#video1").children("source").attr("src"));
+
+                                                function playPaus() {
+                                                    if (myVideo.paused) {
+                                                        myVideo.play();
+                                                    }
+                                                    myVideo.pause();
+                                                }
+                                            });
+                                        </script>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                Response.Redirect(Url.Action("Uppss", "Error", new { P = 0 }));
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        if (!Response.IsRequestBeingRedirected)
+                        { Response.Redirect(Url.Action("Info", "Default")); }
+                    }
+                </div>
+                <div class="actionWr d-flex align-items-center gap-2 mb-3">                   
+                    <div class="actionW">
+                        @Html.Action("NoticeEventHeart", "Home", new { obje_id = Model.id, sort = Model.sort, whom_id = Model.member_id, noticeTableSort = 1 })
+                    </div>
+                    <div class="actionW">
+
+                    </div>
+                    <div class="flex-grow-1"></div>
+                    <div class="actionW">
+                        @Html.Action("Complaint", "Home", new { obje_id = Model.id, sort = Model.sort, whom_id = Model.member_id, noticeTableSort = 1 })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="PDglass panel actionW">
+            <br />
+            @Html.Action("Comment", "Home", new { obje_id = Model.id, sort = Model.sort, whom_id = Model.member_id, noticeTableSort = 1 })
+        </div>
+    </div>
+    <div class="empty80">&nbsp;</div>
+</div>
+}
+catch (Exception)
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}
+<script>
+    $(document).ready(function () {     
+
+        $("#PdDeleteicon").click(function () {
+            $("#MsdDelete").stop(true, true).slideDown("slow");
+        });
+        $("#PdDeleteClose").click(function () {
+            $("#MsdDelete").stop(true, true).slideUp("slow");
+        });
+    });
+</script>

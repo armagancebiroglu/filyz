@@ -1,0 +1,31 @@
+﻿
+@model WebWebWeb.Models.Notice
+
+@try
+{
+    string id = "actionSmile" + ViewBag.whom_id;
+
+    if (ViewBag.result)
+    {
+        <div id="@id">
+            <div style="display:block;">
+                @Ajax.ActionLink(" ", "Smile", "Profil", new { whom_id = ViewBag.whom_id, eventAction = "delete" }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace, OnComplete = "dislike" }, new { id = "delete", @class = "fa fa-smile stat-icon selected" })
+            </div>
+        </div>
+    }
+    else
+    {
+        <div id="@id">
+            <div style="display:block;">
+                @Ajax.ActionLink(" ", "Smile", "Profil", new { whom_id = ViewBag.whom_id, eventAction = "insert" }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace, OnComplete = "like" }, new { id = "insert", @class = "fa fa-smile stat-icon un-selected" })
+            </div>            
+        </div>
+    }
+}
+catch
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}
+
+

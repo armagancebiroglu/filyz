@@ -1,0 +1,46 @@
+﻿
+
+<div>
+    @try
+    {
+        int questionCount = 0;
+        foreach (var question in ViewBag.questionList)
+        {
+
+            questionCount = questionCount + 1;
+            <div>no:@questionCount</div>
+            <div>@question.id</div>
+            <div>@question.survey_id</div>
+            <div>@question.questionText</div>
+
+            string A = question.A_text;
+            string B = question.B_text;
+            string C = question.C_text;
+            string D = question.D_text;
+
+            if (!String.IsNullOrEmpty(A))
+            {
+                <div>@question.A_text @Ajax.ActionLink(A, "SurveyQuestionProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, eventAction = "answer", question_id = question.id, ABCD_options = "A" }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace })</div>
+            }
+            if (!String.IsNullOrEmpty(B))
+            {
+                <div>@question.B_text @Ajax.ActionLink(B, "SurveyQuestionProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, eventAction = "answer", question_id = question.id, ABCD_options = "B" }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace })</div>
+            }
+            if (!String.IsNullOrEmpty(C))
+            {
+                <div>@question.C_text @Ajax.ActionLink(C, "SurveyQuestionProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, eventAction = "answer", question_id = question.id, ABCD_options = "C" }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace })</div>
+            }
+            if (!String.IsNullOrEmpty(D))
+            {
+                <div>@question.D_text @Ajax.ActionLink(D, "SurveyQuestionProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, eventAction = "answer", question_id = question.id, ABCD_options = "D" }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace })</div>
+            }
+
+        }
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Home", "Home")); }
+    }
+</div>
+

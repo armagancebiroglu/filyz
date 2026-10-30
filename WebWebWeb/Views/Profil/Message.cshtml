@@ -1,0 +1,106 @@
+﻿
+
+@model WebWebWeb.Models.MemberShortCard
+
+@{string id = "MessageContent" + ViewBag.whom_id; }
+<div class="commentList" id="@id">
+    <div class="conversation-area">
+        @try
+        {
+            if (ViewBag.MessageList != null)
+            {
+                foreach (var message in ViewBag.MessageList)
+                {
+                    <div class="conversation-messages">
+                        @if (ViewBag.who_id == message.who_id)
+                        {
+                            <div class="chat-message sent">
+                                <div class="chat-message-content">
+                                    <div class="chat-bubble">
+                                        @message.text
+                                    </div>
+                                    <div class="chat-time">
+                                        <i class="fa fa-clock"></i>
+                                        <span>
+                                            @message.date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(message.date.Month)
+                                            <span class="fa fa-clock-o"></span> @message.date.Hour.ToString() :@message.date.Minute.ToString()
+                                        </span>
+                                    </div>
+                                    <div class="delete-message-btn">
+                                        @Ajax.ActionLink(" ", "Message", "Profil", new { eventAction = "delete", obje_id = message.id, whom_id = ViewBag.whom_id }, new AjaxOptions { UpdateTargetId = id, InsertionMode = InsertionMode.Replace }, new { @class = "fa fa-trash" })
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="chat-message received">
+                                <div class="chat-message-content">
+                                    <div class="chat-bubble">
+                                        @message.text
+                                    </div>
+                                    <div class="chat-time">
+                                        <i class="fa fa-clock"></i>
+                                        <span>
+                                            @message.date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(message.date.Month)
+                                            <span class="fa fa-clock-o"></span> @message.date.Hour.ToString() :@message.date.Minute.ToString()
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+
+            }
+            else
+            {
+                <div class="siteNot">Hiç Mesaj Yok</div>
+            }
+            using (Ajax.BeginForm("Message", "Profil", new { eventAction = "message", whom_id = ViewBag.whom_id }, new AjaxOptions { UpdateTargetId = id, HttpMethod = "GET", InsertionMode = InsertionMode.Replace }))
+            {
+                @Html.AntiForgeryToken()
+                string btnComment = "btnComment" + ViewBag.whom_id;
+                <div class="mb-3">
+                    <div class="input-group">
+                        @*@Html.TextArea("text", new { @class = "comment-input", rows = "1", Placeholder = " Mesajınızı yazın..." })*@
+                        @Html.TextBox("text", "", new { @class = "comment-input", Placeholder = "yorum yazın" })
+                        <input id="@btnComment" type="submit" class="btn btn-send px-3" value="Gönder" />
+                    </div>
+                </div>
+            }
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Home", "Home")); }
+        }
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('input[type="text"]').each(function () {
+                $(this).val('');
+            });
+        });
+    </script>
+   
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $(".ShareCommentTextInput").each(function () { $(this).val(""); });
+        $(".commentDeleteTrigger").click(function () {
+            $(this).parent().parent().children(".deleteCommenthide").stop(true).slideDown("slow");
+        });
+        //////////////
+        $(".commentDeleteTrigger").click(function () {
+            $(this).parent().parent().children(".deleteCommenthide").stop(true).slideDown("slow");
+        });
+        $(".commentDeleteClose").click(function () {
+            $(this).parent().parent().stop(true).slideUp("slow");
+        });
+    });
+</script>
+

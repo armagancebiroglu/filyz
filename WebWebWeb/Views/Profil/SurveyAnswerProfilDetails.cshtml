@@ -1,0 +1,197 @@
+﻿
+
+@model WebWebWeb.Models.shareStreem
+
+<div id="answerRefresh">
+    <div id="unanswered">
+        <div class="sAsw-section-header">
+            <i class="ri-question-line section-icon"></i>
+            <div class="sAsw-section-title">Cevaplanmamış Sorular</div>
+            <div class="sAsw-section-badge" id="unansweredCount">3</div>
+        </div>
+
+        @try
+        {
+            if (ViewBag.questionList != null && ViewBag.questionList.Count > 0)
+            {
+                int questionCount = 0;
+                foreach (var question in ViewBag.questionList)
+                {
+                    questionCount = questionCount + 1;
+                    string A = question.A_text;
+                    string B = question.B_text;
+                    string C = question.C_text;
+                    string D = question.D_text;
+
+                    <div class="question-card glass" animationDelay="0.05s;">
+                        <div class="q-label">SORU @questionCount</div>
+                        <div class="question-text">@question.questionText</div>
+                        <div class="options">
+                            @{
+                                if (!String.IsNullOrEmpty(A))
+                                {
+                                    @Ajax.ActionLink(A, "SurveyAnswerProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, surveyEvent = "answer", question_id = question.id, ABCD_options = "A" }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace })
+                                }
+                                if (!String.IsNullOrEmpty(B))
+                                {
+                                    @Ajax.ActionLink(B, "SurveyAnswerProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, surveyEvent = "answer", question_id = question.id, ABCD_options = "B" }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace })
+                                }
+                                if (!String.IsNullOrEmpty(C))
+                                {
+                                    @Ajax.ActionLink(C, "SurveyAnswerProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, surveyEvent = "answer", question_id = question.id, ABCD_options = "C" }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace })
+                                }
+                                if (!String.IsNullOrEmpty(D))
+                                {
+                                    @Ajax.ActionLink(D, "SurveyAnswerProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, surveyEvent = "answer", question_id = question.id, ABCD_options = "D" }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace })
+                                }
+                            }
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="sAsw-empty-state">
+                    <i class="fa fa-check-circle"></i> Tüm sorular cevaplandı.
+                </div>
+            }
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Home", "Home")); }
+        }
+
+        <div class="glass-card" id="SurveyFormList">
+            <div class="sAsw-section-header">
+                <i class="fa fa-check-circle" style="color:var(--rose);font-size:17px"></i>
+                <div class="sAsw-section-title">Cevaplanmış Sorular</div>
+                <div class="BellSurvey">
+                    <i class="fa fa-bell" id="SsClickBell"></i>
+                    @Ajax.ActionLink(" ", "SurveyAnswerProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, surveyEvent = "check" }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace }, new { @class = "fa fa-bell" })
+                </div>
+                <div class="sAsw-section-badge" id="answeredCount">0</div>
+            </div>
+            @try
+            {
+                if (ViewBag.answerList != null && ViewBag.answerList.Count > 0)
+
+                {
+                    int answerCount = 0;
+                    foreach (var item in ViewBag.answerList)
+                    {
+                        answerCount = answerCount + 1;
+                        <div class="answered-card glass" animationDelay="0.05s;">
+                            <div class="q-label">SORU @answerCount</div>
+                            <div class="sAsw-delete-btn">
+                                @Ajax.ActionLink(" ", "SurveyAnswerProfilDetails", "Profil", new { survey_id = ViewBag.survey_id, surveyEvent = "delete", answer_id = item.id, question_id = item.question_id }, new AjaxOptions { UpdateTargetId = "answerRefresh", InsertionMode = InsertionMode.Replace }, new { @class = "fa fa-trash" }) Sil
+                            </div>
+                            <div class="question-text">@item.questionText</div>
+                            @if (item.ABCD_options == "A")
+                            {
+                                <div class="answered-value"><i class="fa fa-check"></i> @item.A_text</div>
+                            }
+                            else if (item.ABCD_options == "B")
+                            {
+                                <div class="answered-value"><i class="fa fa-check"></i> @item.B_text</div>
+                            }
+                            else if (item.ABCD_options == "C")
+                            {
+                                <div class="answered-value"><i class="fa fa-check"></i> @item.C_text</div>
+                            }
+                            else if (item.ABCD_options == "D")
+                            {
+                                <div class="answered-value"><i class="fa fa-check"></i> @item.D_text</div>
+                            }
+                            else
+                            {
+                                <div class="sAsw-empty-state">
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="sAsw-empty-state">
+                        <i class="fa fa-coffee"></i> Cevaplanmış soru yok
+                    </div>
+                }
+            }
+            catch
+            {
+                if (!Response.IsRequestBeingRedirected)
+                { Response.Redirect(Url.Action("Home", "Home")); }
+            }
+        </div>
+    </div>
+
+
+    <div class="glass-card" id="refresh">
+        <div class="MsdDelete" id="SvDelete" style="max-height:100px;">
+            Etiketi kaldırmak istediğinize emin misiniz?
+            <div class="PdDeleteAction">
+                <i class="fa fa-close" id="SvDeleteClose"></i> &nbsp;&nbsp; | &nbsp;&nbsp; @Ajax.ActionLink(" ", "TagCheck", "Profil", new { eventAction = "remove", obje_id = Model.id, whom_id = Model.member_id }, new AjaxOptions { UpdateTargetId = "refresh", InsertionMode = InsertionMode.Replace, OnComplete = "closeSlide" }, new { @class = "fa fa-trash" })
+            </div>
+        </div>
+        @try
+        {
+            <div class="actionWr d-flex align-items-center gap-2 mb-3">
+                <div class="actionW">
+                    @Html.Action("NoticeEventHeart", "Home", new { obje_id = Model.id, sort = Model.sort, whom_id = Model.member_id, noticeTableSort = 0 })
+                </div>
+                <div class="actionW" id="refresh">
+                    @Html.Action("TagMyCheck", "MyProfil", new { whom_id = Model.member_id, obje_id = Model.id })
+                    <script>
+                        $(".TagMyCheck").children("span.selected").click(function () {
+                            $("#SvDelete").stop(true, true).slideDown("slow");
+                        });
+                        $("#SvDeleteClose").click(function () {
+                            closeSlide();
+                        });
+                        function closeSlide() {
+                            $("#SvDelete").stop(true, true).slideUp("slow");
+                        }
+                    </script>
+                </div>
+                <div class="flex-grow-1"></div>
+                <div class="actionW">
+                    @Html.Action("Complaint", "Home", new { obje_id = Model.id, sort = Model.sort, whom_id = Model.member_id, noticeTableSort = 0 })
+                </div>
+            </div>
+            <div class="actionW">
+                @Html.Action("Comment", "Home", new { obje_id = Model.id, sort = Model.sort, whom_id = Model.member_id, noticeTableSort = 0 })
+            </div>
+        }
+        catch
+        {
+            if (!Response.IsRequestBeingRedirected)
+            { Response.Redirect(Url.Action("Home", "Home")); }
+        }
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(document).on("click", ".sAsw-delete-btn", function (e) {
+            if ($(e.target).is("a")) return;
+            $(this).find("a")[0].click();
+        });
+        $("#unansweredCount").text($("#unanswered .question-card").length);
+        $("#answeredCount").text($("#SurveyFormList .answered-card").length);
+        $(document).on("click", "#SsClickBell", function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            const link = $(this).next("a");
+            if (link.length && !link.data("clicked")) {
+                link.data("clicked", true);
+                link.trigger("click");
+                setTimeout(function () {
+                    link.removeData("clicked");
+                }, 500);
+            }
+        });
+    });
+</script>
+
+
+

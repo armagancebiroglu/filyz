@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+@model WebWebWeb.Models.MemberShortCard
+
+<div class="SSContainer">
+    <div class="empty80"></div>
+    <div class="tab-content active">
+        <div class="" id="MessageContent">
+            <div class="message-item unread">
+                @try
+                {
+
+                    if (ViewBag.MessageList != null)
+                    {
+                        int yas = (int)(DateTime.Now.Year) - (int)((ViewBag.member.age).Year);
+                        string id = "MessageListWrp" + ViewBag.member.id.ToString();
+                        <div id="@id" class="message-header-wrapper">
+                            <div class="message-avatar-wrapper">
+                                <a href="@Url.Action("Profil", "Profil", new {member_id=ViewBag.member.id})">
+                                    <img src="@ViewBag.member.profil_media" class="message-avatar" />
+                                </a>
+                                @if (Convert.ToInt32(ViewBag.member.is_online) == 0)
+                        {
+                                    <div class="online-indicator un-selected"></div>
+                                }
+                                else
+                                {
+                                    <div class="online-indicator active-color"></div>
+                                }
+                            </div>
+                            <div class="message-info">
+                                <div class="message-header">
+                                    <div class="message-name">@ViewBag.member.nick_name</div>
+                                </div>
+                                <div class="message-meta">
+                                    <div class="message-meta-item">
+                                        <i class="fa fa-calendar"></i>
+                                        <span>Yaş:@yas</span>
+                                    </div>
+                                    <div class="message-meta-item">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>Şehri:@ViewBag.member.city</span>
+                                    </div>
+                                    <div class="message-meta-item">
+                                        <i class="fa fa-home"></i>
+                                        <span>Memleketi:@ViewBag.member.country</span>
+                                    </div>
+                                    <div class="message-meta-item">
+                                        <i class="fa fa-graduation-cap"></i>
+                                        <span>Eğitimi: @ViewBag.member.educational_status</span>
+                                    </div>
+                                    <div class="message-meta-item">
+                                        <i class="fa fa-heart"></i>
+                                        <span>Medeni Hali: @ViewBag.member.matiral_status</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="unread-badge fa fa-trash PdDelete" id="MDelete"></span>
+                            <div class="MSlider" id="MSlider">
+                                <div>Bu kişiyle tüm mesajlaşmayı silmek istidiğinizden emin misiniz?</div>
+                                <div class="">
+                                    <i class="fa fa-close PdClose" id="MClose"></i> &nbsp;&nbsp;|&nbsp;&nbsp;
+                                    @Html.ActionLink(" ", "ProfilMessage", "Profil", new { MessageEventAction = "deleteMessageAll", whom_id = ViewBag.member.id }, new { @class = "fa fa-trash" })
+                                </div>
+                            </div>
+                        </div>
+                        @Html.Action("Message", "Profil", new { whom_id = ViewBag.member.id })
+
+                    }
+                    else
+                    {
+                        <div class="siteNot">Hiç Mesaj Yok</div>
+                    }
+                }
+                catch
+                {
+                    if (!Response.IsRequestBeingRedirected)
+                    { Response.Redirect(Url.Action("Home", "Home")); }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="empty80">&nbsp;</div>
+</div>
+
+<script>
+    $(Document).ready(function () {
+        ////////////////////////////Message All delete
+        $("#MDelete").click(function () {
+            $("#MSlider").stop(true).slideDown("slow");
+        });
+        $("#MClose").click(function () {
+            $("#MSlider").stop(true).slideUp("slow");
+        });
+    });
+</script>

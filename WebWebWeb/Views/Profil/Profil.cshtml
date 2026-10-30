@@ -1,0 +1,145 @@
+﻿
+@model WebWebWeb.Models.MemberProfil
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+
+<div class="SSContainer">
+    <div class="topMargin"></div>
+    <div class="row">
+        <div class="profile-card">
+            <div class="profile-header">
+                @try
+                {
+                    if (!string.IsNullOrEmpty(Request.QueryString["member_id"]))
+                    {
+                        <div class="profile-image-wrapper">
+                            <img src="@ViewBag.p0" data-bs-toggle="modal" data-bs-target="#ModalProfilFoto" class="profile-image" />
+                            <div class="profile-settings">
+                                @if (Convert.ToInt32(Model.is_online) == 0)
+                                {
+                                    <span id="is_online" class="fa fa-circle cancel-color" style=" font-size:18px;"></span>
+                                }
+                                else
+                                {
+                                    <span id="is_online" class="fa fa-circle active-color" style=" font-size:18px;"></span>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        Response.Redirect(Url.Action("Info", "Default"));
+                    }
+
+                }
+                catch
+                {
+                    if (!Response.IsRequestBeingRedirected)
+                    { Response.Redirect(Url.Action("Info", "Default")); }
+                }
+                <div class="profile-info">
+                    <h1 class="profile-name">@ViewBag.p</h1>
+                    <div class="profile-stats">
+                        <div class="stat-item">@Html.Action("Favorite", "Profil", new { whom_id = Model.id })</div>
+                        <div class="stat-item">@Html.Action("Smile", "Profil", new { whom_id = Model.id })</div>
+                        <div class="stat-item">@Html.Action("SurveyCount", "Profil", new { whom_id = Model.id })</div>
+                        <div class="stat-item">@Html.Action("MessageCount", "Profil", new { whom_id = Model.id })</div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <div class="row">
+        <div class="profile-description">
+
+            <div class="enterDate">
+                Online:  @ViewBag.memberProfil.last_enter_date.Day @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(ViewBag.memberProfil.last_enter_date.Month)
+                <i class="fa fa-clock-o"></i> @ViewBag.memberProfil.last_enter_date.Hour.ToString() :@ViewBag.memberProfil.last_enter_date.Minute.ToString()
+            </div>
+            <div class="description-header">
+                <i class="fa fa-user"></i>
+                Hakkımda
+            </div>
+            <div class="description-text">
+                <p> @ViewBag.p1 &nbsp;@ViewBag.p3  &nbsp;@ViewBag.p2 &nbsp; @ViewBag.p4</p>
+            </div>
+            <div class="quote-section">
+                <i class="fa fa-quote-left"></i>&nbsp;@ViewBag.p5
+            </div>
+        </div>
+    </div>
+    <br />
+    @try
+    {
+        <div class="row">
+            <div class="album-section">
+                <div class="section-title">
+                    <i class="fa fa-image"></i>
+                    Albüm
+                </div>
+                <div class="album-grid">
+                    @Html.Action("ProfilAlbum", "Profil", new { member_id = Convert.ToInt32(Model.id), who_id = Convert.ToInt32(ViewBag.who_id) })
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="refresh">
+            @Html.Action("ShareStreemProfil", "Profil", new { member_id = Convert.ToInt32(Model.id), page = 0 })
+            <input type="hidden" value="@ViewBag.member_id" id="member_id" />
+        </div>
+    }
+    catch
+    {
+        if (!Response.IsRequestBeingRedirected)
+        { Response.Redirect(Url.Action("Home", "Home")); }
+    }
+    <div class="emptyBottom">&nbsp;</div>
+</div>
+<div class="modal fade glass" id="ModalProfilFoto" role="dialog" tabindex="10000">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <span type="button" class="modal-close" data-bs-dismiss="modal">&times;</span>
+            <h4 class="modal-title">profil fotoğrafım</h4>
+            <img src="@ViewBag.p0" style="width:100%; height:auto; box-shadow:0px 5px 5px grey;">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var page = 0;
+        var _inCallback = false;
+        function loadNotice() {
+            if (page > -1 && !_inCallback) {
+                _inCallback = true;
+                page++;
+               
+                $.get("/Profil/ShareStreemProfil?member_id=" + $("#member_id").val() + "&page=" + page, function (data) {
+                    if (data != '') {
+                        $("#refresh").append(data);
+                    }
+                    else {
+                        page = -1;
+                    }
+
+                    _inCallback = false;
+                   
+                });
+            }
+        }
+        var dcList = true;
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100) {               
+                loadNotice();
+            }
+        });
+    });
+</script>
+
+
+
+
+

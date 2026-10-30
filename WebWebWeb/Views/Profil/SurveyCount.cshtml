@@ -1,0 +1,18 @@
+﻿
+@try
+{
+     if (ViewBag.result>0)
+    {
+        <a href="@Url.Action("SurveyList","Profil",new { whom_id=ViewBag.whom_id})" class = "fa fa-edit stat-icon selected"></a><i>@ViewBag.result</i>
+    }
+    else
+    {
+        <a href="@Url.Action("SurveyList","Profil",new { whom_id=ViewBag.whom_id})" class="fa fa-edit stat-icon un-selected" ></a><i>@ViewBag.result</i>
+    }
+}
+catch
+{
+    if (!Response.IsRequestBeingRedirected)
+    { Response.Redirect(Url.Action("Home", "Home")); }
+}
+
