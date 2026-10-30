@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FileNames>
+  <Image name="Image">Image1</Image>
+  <Image180 name="Image180">Image1801</Image180>
+  <Image360 name="Image360">Image3601</Image360>
+  <Video name="Video">Video1</Video>
+  <Audio name="Audio">Audio1</Audio>
+  <Location name="Location">Location1</Location>
+</FileNames>

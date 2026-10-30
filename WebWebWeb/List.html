@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="islami evlilik sitesi, islami evlilik, muhafazakar eş bulma sitesi, müslüman eş bulma, müslüman hanımlar, tesettürlü hanımlar, tesettürlü eş bulma" />
+    <meta name="description" content="Evlilik öncesi eş adayları nasıl görüşmelidir? İslami ölçüler, mahremiyet kuralları, ailelerin rolü ve dikkat edilmesi gereken hususlar hakkında rehber bilgiler.">
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/StyleSheetGlassmorphism.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --rose: #e93f69;
+            --rose-deep: #c22a52;
+            --rose-soft: #ffe4ec;
+            --ink: #2a2029;
+            --ink-soft: #867b86;
+            --glass: rgba(255,255,255,.55);
+            --border: rgba(255,255,255,.6);
+            --r-lg: 28px;
+            --r-md: 20px;
+            --bosphorus: #274156;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            font-family: 'DM Sans',sans-serif;
+            color: var(--ink);
+            /*background: radial-gradient(1200px 600px at 15% -10%, rgba(233,63,105,.25), transparent 60%), radial-gradient(900px 500px at 90% 10%, rgba(39,65,86,.35), transparent 55%), linear-gradient(180deg,#fbe9ee 0%, #f6eef4 35%, #eef0f6 100%);*/
+            /*min-height: 100vh;*/
+            height:100%;
+        }
+        .bg-skyline {
+            position: fixed;
+            width:100vw;
+            inset: 0;
+            z-index: -1;
+            opacity: .16;
+            pointer-events: none;
+            background: linear-gradient(180deg, transparent 55%, var(--bosphorus) 55.5%), repeating-linear-gradient(90deg, var(--bosphorus) 0 18px, transparent 18px 46px);
+            -webkit-mask-image: linear-gradient(180deg, transparent, black 70%);
+            mask-image: linear-gradient(180deg, transparent, black 70%);
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .glass1 {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            box-shadow: 0 8px 30px rgba(42,32,41,.07);
+        }
+        h1.title {
+            font-size: clamp(30px,4.4vw,44px);
+            line-height: 1.1;
+            letter-spacing: -.03em;
+            font-weight: 800;
+            margin: 0 0 14px;
+            max-width: 15ch;
+        }
+
+            h1.title em {
+                font-style: normal;
+                color: var(--rose);
+            }
+
+        .hero-sub {
+            font-size: 15.5px;
+            color: var(--ink-soft);
+            max-width: 52ch;
+            line-height: 1.6;
+            margin: 0 0 34px;
+        }
+
+        /* ---------- Icon badge (replaces image) ---------- */
+        .icon-badge {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            flex: 0 0 auto;
+            background: var(--rose-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .icon-badge i {
+                font-size: 20px;
+                color: var(--rose-deep);
+            }
+
+     
+
+        /* ---------- List (text-only rows) ---------- */
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+
+        .row1 {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 24px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+            .row1:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 14px 34px rgba(42,32,41,.12);
+            }
+
+        .row-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+            .row-text h3 {
+                font-size: 16px;
+                line-height: 1.4;
+                letter-spacing: -.01em;
+                margin: 0 0 8px;
+                font-weight: 700;
+            }
+
+            .row-text p {
+                font-size: 13px;
+                color: var(--ink-soft);
+                line-height: 1.6;
+                margin: 0 0 12px;
+            }
+
+        .row1 .meta {
+            font-size: 11.5px;
+        }
+
+        /* ---------- CTA ---------- */
+        .cta {
+            padding: 44px 48px;
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+            .cta h3 {
+                font-size: 21px;
+                margin: 0 0 8px;
+                font-weight: 800;
+            }
+
+            .cta p {
+                margin: 0 0 22px;
+                color: var(--ink-soft);
+                font-size: 14px;
+            }
+
+        .cta-form {
+            display: flex;
+            gap: 8px;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+            .cta-form input {
+                flex: 1;
+                border: 1px solid var(--border);
+                background: rgba(255,255,255,.7);
+                border-radius: 100px;
+                padding: 12px 18px;
+                font-family: 'DM Sans';
+                font-size: 13.5px;
+                outline: none;
+            }
+
+            .cta-form button {
+                border: none;
+                background: var(--rose);
+                color: #fff;
+                font-weight: 700;
+                padding: 12px 22px;
+                border-radius: 100px;
+                cursor: pointer;
+                font-size: 13.5px;
+            }
+
+        footer {
+            padding: 8px 4px 0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12.5px;
+            color: var(--ink-soft);
+        }
+
+            footer .flinks {
+                display: flex;
+                gap: 18px;
+            }
+
+        @media (max-width:700px) {
+            .hero {
+                padding: 40px 30px 34px;
+            }
+        }
+
+        @media (max-width:560px) {
+            .row1 {
+                flex-direction: column;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <title> Neden Filiz.com? Evlilik Düşünenler İçin Yeni Bir Tanışma Yaklaşımı| Filiz.com</title>
+</head>
+<body>
+    <div class="bg-skyline">bu<br />ra <br />da <br />dır </div>
+    <div class="main-header" style="position:fixed; top:0px;">
+        <div class="containerLayout">
+            <div class="row h-100 align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center h-100">
+                        <!-- Logo -->
+                        <a href="/Home/Home" class="logo" id="logoLink">
+                            <img src="/Media/img/logo1.jpg" />
+                        </a>
+                        <!-- User Section -->
+                        <div class="wrpMainPrf">
+                            <div class="dropdown">
+                                <div class="notification-wrapper" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="fa fa-bell notification-icon"></span>
+                                    <span class="notification-badge">4</span>
+                                </div>
+                                <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                                    <div class="notification-header">Bildirimler</div>
+                                    <div class="notification-item">
+                                        <a href="#">
+                                            <img src="Media/img/cat.png" class="img-circle" width="36" height="36" style=" box-shadow:0px 5px 5px grey" />
+                                            <div>-CAT-</div>
+                                            <div class="title">
+                                                sizin profilinizi inceledi.
+                                            </div>
+                                            <div class="time">
+                                                16 Haziran&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> 16 :45
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="notification-item">
+                                        <a href="#">
+                                            <img src="Media/img/cat.png" class="img-circle" width="36" height="36" style=" box-shadow:0px 5px 5px grey" />
+                                            <div>-CAT-</div>
+                                            <div class="title">
+                                                size mesaj gönderdi.
+                                            </div>
+                                            <div class="time">
+                                                16 Haziran&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> 16 :36
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="notification-item">
+                                        <a href="#">
+                                            <img src="Media/img/cat.png" class="img-circle" width="36" height="36" style=" box-shadow:0px 5px 5px grey" />
+                                            <div>-CAT-</div>
+                                            <div class="title">
+                                                sizi gönderisinde etiketledi.
+                                            </div>
+                                            <div class="time">
+                                                16 Haziran&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> 13 :14
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="notification-item">
+                                        <a href="#">
+                                            <img src="Media/img/cat.png" class="img-circle" width="36" height="36" style=" box-shadow:0px 5px 5px grey" />
+                                            <div>-CAT-</div>
+                                            <div class="title">
+                                                size gülümsedi.
+                                            </div>
+                                            <div class="time">
+                                                16 Haziran&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> 13 :14
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <a>
+                                        <div class="notification-header">
+                                            <span class="fa fa-list"></span> tümünü gör
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <div class="menu-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="fa fa-ellipsis-v"></span>
+                                </div>
+                                <div class="dropdown-menu dropdown-menu-end menu-dropdown">
+                                    <a class="menu-item"><span class="fa fa-envelope"></span>Mesajlar</a>
+                                    <a class="menu-item"><span class="fa fa-star"></span>Favoriler</a>
+                                    <a class="menu-item"><span class="fa fa-heart"></span>Gülümseler</a>
+                                    <a class="menu-item"><span class="fa fa-eye"></span>Profil İnceleme</a>
+                                    <a class="menu-item"><span class="fa fa-pencil"></span>Anketler</a>
+                                    <a class="menu-item"><span class="fa fa-tags"></span>Etiketlediklerim</a>
+                                    <a class="menu-item"><span class="fa fa-paper-plane red"></span>Bize Yazın</a>
+                                    <a class="menu-item"><span class="fa fa-power-off red"></span>Çıkış</a>
+                                </div>
+                            </div>
+                            <div class="user-info-card">
+                                <div class="d-flex align-items-center gap-2 position-relative">
+                                    <a>
+                                        <img src="Media/img/bilge.png" class="avatar" />
+                                    </a>
+                                    <span class="username">FİLİZ</span>
+                                    <div id="OnlineDrop" class="status-ico">
+                                        <a class="fa fa-circle online"> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="SSContainer">
+        <div class="topMargin"></div>
+
+
+
+
+        <div class="list">
+            <a class="glass1 row1" href="Blok/filizden-not.html">               
+                <div class="icon-badge"><img src="Media/img/fikir.png"  class="avatar" /></div>
+                <div class="row-text">
+                    <span class="tag">Filiz'den Küçük Bir Hatırlatma</span>
+                    <h3>Esselamü Aleyküm</h3>
+                    <p>Bu platformu kurarken amacım insanların birbirlerini Allah'ın razı olacağı şekilde tanıyabilmelerine vesile olmaktı.</p>
+                    <div class="meta"><span><i class="ri-time-line"></i> 4 dk</span><span><i class="ri-calendar-line"></i> 15 Tem</span></div>
+                </div>
+            </a>
+            <a class="glass1 row1" href="Blok/evlilik-oncesi-tanisma-ve-gorusmede-islami-sinirlar.html">
+                <div class="icon-badge"><img src="Media/img/bilge.png" class="avatar" /></div>
+                <div class="row-text">
+                    <span class="tag">Tanışma</span>
+                    <h3>Tanışma ve Görüşmede İslami Sınırlar Nasıl Olmalıdır?</h3>
+                    <p> Eş adaylarının birbirlerini görmeleri, konuşmaları, beklentilerini paylaşmaları ve ...</p>
+                    <div class="meta"><span><i class="ri-time-line"></i> 4 dk</span><span><i class="ri-calendar-line"></i> 15 Tem</span></div>
+                </div>
+            </a>
+
+            <a class="glass1 row1" href="Blok/neden-evlilik-sitesi-kurduk.html">
+                <div class="icon-badge"><img src="Media/img/tereddut.png" class="avatar" /></div>
+                <div class="row-text">
+                    <span class="tag">Sosyal Medyadan Evlilik</span>
+                    <h3>Muhafazakâr Evlilik Siteleri Neden Revaçta?</h3>
+                    <p> Günümüzde evlilik düşünen birçok insanın karşılaştığı ortak bir sorun var: Uygun insanlarla tanışmak her geçen gün daha zor hale geliyor.</p>
+                    <div class="meta"><span><i class="ri-time-line"></i> 4 dk</span><span><i class="ri-calendar-line"></i> 15 Tem</span></div>
+                </div>
+            </a>
+            <a class="glass1 row1" href="Blok/evlilikte-buyuk-aile-ve-cekirdek-aile-dengesi.html">
+                <div class="icon-badge"> <img src="../Media/img/bilge.png" class="avatar" /></div>
+               
+                <div class="row-text">
+                    <span class="tag">Elilikte Aile</span>
+                    <h3>Evlilikte Büyük Aile ve Çekirdek Aile Dengesi</h3>
+                    <p> Günümüzde evlilik konuşulurken sıkça "ayrı ev", "çekirdek aile" ve "özgür yaşam" kavramları gündeme gelmektedir. Oysa aile sadece eşlerden ibaret değildir.</p>
+                    <div class="meta"><span><i class="ri-time-line"></i> 4 dk</span><span><i class="ri-calendar-line"></i> 15 Tem</span></div>
+                </div>
+            </a>
+            
+        </div>
+
+
+
+        <div class="emptyBottom">&nbsp;</div>
+    </div>
+
+    <div class="footerWrapper" style="position:fixed; bottom:0px;">
+        <div class="footer">
+            <div class="footer-item-wrapper"><a class="footer-item"><i class="fa fa-heart"></i><span>Filyz</span> </a></div>
+            <div class="footer-item-wrapper"><a class="footer-item"> <i class="fa fa-search"></i><span>Arama</span></a></div>
+            <div class="footer-item-wrapper"><a class="footer-item"> <i class="fa fa-pencil"></i><span>Anket</span></a></div>
+            <div class="footer-item-wrapper">
+                <a class="footer-item" id="chatIcon"> <i class="fa fa-comment"></i><span>Chat</span></a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Slayt resimleri
+            const images = [
+                '../../Media/img/1.jpg',
+                '../../Media/img/2.jpg',
+                '../../Media/img/3.jpg',
+                '../../Media/img/4.jpg',
+                '../../Media/img/5.jpg'
+            ];
+            let currentImage = 0;
+            // Sonraki resme geç
+            function nextBackground() {
+                currentImage = (currentImage + 1) % images.length;
+                // Yeni resmi önceden yükle
+                const img = new Image();
+                img.src = images[currentImage];
+                img.onload = function () {
+                    // Resim yüklendikten sonra arka planı değiştir
+                    document.body.style.backgroundImage = `url('${images[currentImage]}')`;
+                };
+            }
+            // Otomatik arka plan değişimini başlat (5 saniyede bir)
+            setInterval(nextBackground, 5000);
+        });
+    </script>
+</body>
+</html>

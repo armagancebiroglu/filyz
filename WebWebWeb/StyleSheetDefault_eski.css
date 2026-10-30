@@ -1,0 +1,5175 @@
+﻿body {
+    background-color: #f0f0f0;
+    /*background-color:#a52c71;*/
+    /*#ff0080;#f2088c*/
+    /*background-color: #ff0080;*/
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.container{
+    max-width:960px;
+}
+legend{
+    color:#ff0080;
+}
+.input-group 
+{
+    z-index:1;
+}
+h4 {
+    float: left;
+    margin-left: 15px;
+    font-size: 25px;
+    font-weight: 300;
+    color: #000;
+    opacity: 0.5;
+}
+button.close{
+    font-size:30px;
+}
+.centerDiv{
+    position:relative;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto; 
+}
+.backgrounFontColor{
+    background-color:#ff0080;
+    color:#fafafa;
+}
+.shadowDiv{
+     box-shadow:0px 5px 5px grey;
+}
+.erorMessage{
+    color:orangered;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.modalAlb{
+    top:75px;
+}
+.modalAlb-backdrop {
+    z-index: 0;
+}
+
+.headerLayout {
+    background-color: #ff0080;
+    height: 42px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    margin: 0px;
+    align-items: center;
+    z-index: 5;
+}
+
+.layoutCaption{
+    max-width:960px;
+    height:42px;
+    margin:0px;
+    position:relative;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto; 
+    background-color:#ff0080;   
+    color:#fff;
+    font-weight:700;
+}
+.leftLayoutMenuHomeIcon{
+   font-size:43px;
+    margin:3px;
+    text-decoration:none;
+    color:#fafafa;
+}
+.RightLayoutMenu{
+    float:right;   
+    position:relative;       
+}
+.RightLayoutMenu a span{
+     margin:10px 2px 0px 10px;
+     width:24px;
+}
+.RightLayoutMenuImg{
+    float:right;   
+    margin:5px 0px 5px 15px;
+    top:0px; 
+}
+.dropdown-menu{
+    min-width:90px;
+    
+}
+
+.dropdown-menu-isonline{
+   
+    text-align:left;
+}
+    .dropdown-menu-isonline li {
+        width: 80px;
+        max-width: 80px;
+    }
+    .dropdown-menu-isonline-gly {
+        font-size: 14px;
+        float: left;
+        vertical-align: middle;
+        text-decoration: none;
+        color: #fafafa;
+        margin-top: 5px;
+    }
+.dropdown-menu-online {
+    color: #43ee0f;
+    font-size: 10pt;
+}
+.dropdown-menu-offline {
+    color: #c0c0c0;
+    font-size: 10pt;
+}
+.dropdown-menu-isonline li span {
+    cursor: pointer;
+    margin: 0px 5px 0px 5px;
+    float: left;
+    font-size:18px;
+    vertical-align:middle;
+}
+.dropdown-menu-isonline li div a {
+    text-decoration: none;
+    color: #808080;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.dropdown-menu-right{   
+    background-color:#fff;
+    /*font-family: 'Oswald', sans-serif;*/
+    padding:0px; 
+}
+.verticalMenu{
+     width:220px;
+}
+.dropdown-menu-right li a span{
+   cursor:pointer;
+   margin:2px 0px 2px 0px;
+}
+.ceret{
+    right:2px;
+    /*color:#fafafa;*/
+    color:#fff;
+    font-size:25px;
+    position:absolute;
+    top:-16px;   
+}
+.badgeSpan {
+    background-color: #ff0080;
+    position: relative;
+    width: 50px;
+    height: 40px;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 0px;
+    text-align: center;
+    padding: 12px 12px 12px 13px;
+}
+    .badgeSpan span {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        font-size: 33px;
+        color:#fff;
+    }
+.NickName {
+    position: absolute;
+    bottom: -25px;
+    align-items: center;
+    color:#808080;
+    font-size: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index:-1;
+}
+.link-layout {
+    cursor: pointer;
+    text-decoration: none;
+    color: #fafafa;
+    font-size: 24px;
+}
+.link-layout:hover{
+    color:#fafafa;
+}
+.DropDownMenuLayoutSpan{
+    color:#ff0080;
+    font-size:16px;
+    float:right;
+    margin:10px;
+}
+.red{
+    color:#ff0080;
+}
+.DropDownMenuLayout{
+   margin-right:10px;
+    font-size:12px;
+    float:left;
+
+}
+.dropdown-menu-right li a i{
+     color:#ff0080;
+    font-size:18px;
+    float:right;
+    margin:10px;
+    position:relative;
+}
+.glyphicon-record:after {
+    content:"";
+}
+.online{
+    color:#43ee0f;
+    font-size:24px;    
+    position:relative;
+    vertical-align:middle;  
+}
+.offline{
+    color:#c0c0c0;
+    font-size:24px;
+    position:relative;
+    vertical-align:middle; 
+}
+.badgeNotice{
+    position:relative;
+    bottom:2px;
+    margin-top:10px;
+    width:30px;
+    height:30px;
+    border-radius:15px 15px;
+    border:3px solid #fff;
+    color:#fff;
+    background-color:#ff0080;
+    font-size:9pt;
+    font-weight:700;
+    text-align:center;
+    vertical-align:middle;
+    cursor:pointer;
+    padding:3px 3px 3px 2px;
+}
+.NoticeShortListWrapper{
+    position:absolute;
+    height:400px;
+    width:300px;
+    overflow-y:scroll;
+    right:-133px;
+}
+.NoticeShortListWrapper ul{
+    list-style:none;
+    margin-left:0px;
+    padding-left:0px;
+}
+.NoticeShortListWrapper li{
+    position:relative;
+    height:auto;
+    margin:0px;
+} 
+.NoticeShortListWrapper hr {
+    margin: 0px;
+    color: #808080;
+}
+    .NoticeShortListItemWrapper {
+        position: relative;
+        display: table-row;      
+        height: auto;
+    }
+.NoticeShortListItemImageDiv {
+    position: relative;
+    display: table-cell;
+    width: 45px;
+    height:45px;
+    padding-top: 0px;
+}
+    .NoticeShortListItemImageDiv img {
+        position: absolute;
+        top: 0px;
+        margin: 5px 3px 5px 5px;
+    }
+.NoticeShortListItemTextDiv {
+    float: right;
+    position: relative;
+    display: table-cell;
+    width: 235px;
+    /*text divini içine alan */
+}
+
+.NoticeShortListItemNick {
+    height: 20px;
+    position: relative;
+    float: left;
+    font-size: 9pt;
+    font-weight: 700;
+    font-style: italic;
+    color: #808080;
+    /*nick_name*/
+}
+.NoticeShortListItemText {
+    width: 100%;
+    position: relative;
+    float: left;
+    padding: 3px;
+    font-size: 8pt;
+    color: #808080;
+    /*text*/
+}
+.NoticeShortListItemDate {
+    position: relative;
+    float: right;
+    text-align: right;
+    display: table-cell;
+    width: 190px;
+    height: 20px;
+    font-style: italic;
+    font-size: 7pt;
+    color: #808080;
+    /*date*/
+}
+.noticeBoxFooter{
+    position:relative;
+    width:100%;
+    height:auto;
+    bottom:0px;
+    text-align:center;
+    color:#ff0080;
+    background-color:#c0c0c0;
+}
+.NoticePageWrp{
+    position:relative;
+    width:100%;
+    max-width:700px;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#fff;
+}
+    .NoticePageWrp li {
+        list-style-type: none;
+        margin-bottom:15px;
+    } 
+.NoticePageItemWrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-bottom: solid 1px #e6e6e6;
+    display: table;
+}
+.NoticePageImageDiv {
+    position: relative;
+    display: table-cell;
+    width: 60px;
+    height: 60px;
+    padding-top: 0px;
+    float:left;
+}
+.NoticePageTextDiv {
+    position: relative;
+    display: table-cell;
+    width:100%;
+}
+.NoticePageNick {
+    height: 20px;
+    position: relative;
+    float: left;
+    font-size: 12pt;
+    font-weight: 700;
+    font-style: italic;
+    color: #808080;
+}
+.NoticePageText {
+    width: 100%;
+    position: relative;
+    float: left;
+    padding: 3px;
+    font-size: 10pt;
+}
+.NoticePageDate {
+    position: relative;
+    float: left;
+    text-align: right;
+    display: table-cell;    
+    font-style: italic;
+    font-size: 9pt;
+    color: #808080;
+}
+.siteNot{
+    position:absolute;
+    top:30vh;
+    width:100%;
+    height:50px;
+    text-align:center;
+    max-width:960px;
+}
+/*********************HOME*****************/
+.emptyTop {
+    position: relative;
+    width: 100%;
+    height: 90px;
+}
+.ShareRouterFavori{
+    top: 42px;
+    background-color:#fafafa;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    margin: 0px;
+    align-items: center;
+    z-index: 2;    
+    border-bottom:1px dotted #ff0080;  
+   
+}
+.ShareRouterSendDiv{
+    max-width:960px;
+    padding:0px;
+    margin-top:5px;
+    margin-bottom:0px;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;   
+}
+.ShareRouterSendIco{
+    position:relative;
+    width:46px;
+    height:46px;
+    top:-2px;
+    float:left;
+    border:double 5px #ff0080;
+    border-radius:23px;
+    display:inline-block;
+}
+.ShareRouterSendIco a{
+    color:#ff0080;
+    font-size:30px;
+    top:5px;
+    left:5px;
+}
+.submenuHomeDiv {
+    top: 55px;
+    background-color:#fafafa;
+    height: 51px;
+    width: 100%;
+    position: fixed;
+    margin: 0px;
+    align-items: center;
+    z-index: 2;    
+    border-bottom:1px dotted #ff0080;
+}
+.rowsubmenuHome{
+    position:fixed;
+    width:100%;
+    max-width:960px;
+    padding:0px;
+    margin-top:40px;
+    margin-bottom:0px;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    z-index:1;
+}
+.submenuHome{
+    width:16.66%;
+    height:48px;
+    font-size:24px;
+    color:#ff0080; 
+    margin:0px;
+    position:relative;
+    float:left;
+    text-align:left;
+    padding:5px 0px 0px 10px;
+    background-color:#fafafa;
+    top:-3px;
+    border-bottom:1px dotted #ff0080;
+    text-align:center;
+}
+    .submenuHome a {
+        font-size: 28px;
+        color: #ff0080;
+        position: absolute;
+        text-decoration: none;
+        cursor: pointer;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+.centerCenter{
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto; 
+}
+.footerWrapper{
+    position:fixed;
+    width:100%;   
+    height:40px;
+    background-color:#f0f0f0;   
+    bottom:0px;  
+    z-index:10;
+}
+.footerItemWrapper{
+    position:relative;
+    width:100%;
+    max-width:960px;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    height:40px;
+    background-color:#808080;
+    color:#eeeeee;
+    bottom:0px;
+    font-size:30px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.footerItem{
+    position:relative;
+    width:20%;
+    height:40px;
+    text-align:center;
+    float:left;
+   color:#eeeeee;
+}
+.footerItem >a> span{
+    color:#eeeeee;
+     cursor:pointer;
+}
+.left-top{
+    position:fixed;
+    z-index:100;
+    background-color:#ff0000;
+    top:95px;
+    right:0px;
+    border:solid 1px #ff0080;
+    font-size:14pt;   
+}
+.left-top > img{
+    width:25px;
+}
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo-small {
+    color: #fff;
+    font-size: 25px;
+}
+.footerItemLogo 
+{
+    position:relative;
+    width:40px;
+    height:auto;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;    
+}
+.masterHeart {
+    position: relative;
+    font-size: 33px;
+    color: #fff;
+}
+.masterHeartEmpty {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    z-index: 2;
+    color: #ff0080;
+    font-size: 10px;
+}
+.masterP
+{
+    position:absolute;
+    right:8px;
+    top:-4px;
+    font-size:24px;
+    font-weight:700;
+    color:#ff0080;
+}
+.footer {
+    width: 100%;
+    height: 45px;
+    background-color: #f4511e;
+    padding: 10px;
+}
+.rounded {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color:#ff0080;
+    color: #fafafa;
+    font-size: 15pt;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    -webkit-padding-start: 10px;
+    padding: 0 0 0 0;
+    vertical-align: text-top;
+}
+.nav > li > a {
+    padding: 5px 5px;
+    margin: 0px;
+}
+.ShareMaterialheaderContent{
+    position:relative;
+    width:100%;
+    margin:0px;
+     top:-35px;
+}
+.ShareMaterialheaderContent form{
+    position:relative;
+    width:100%;
+   background-color:#f0f0f0;
+    margin:0px;
+    
+}
+.shareLocationItemHeader{
+     border-bottom:solid 1px #e6e6e6;
+     height:40px;
+     width:100%;
+     padding:2px;
+}
+.shareLocationItemHeader span{
+    text-align:center;
+    font-size:14pt;
+    color:#808080;
+    width:100%;
+}
+.ShareObjectWrapper{
+    position:relative;
+    width:100%;
+    height:auto;
+    min-height:60vh;
+}
+.ShareObjectWrapper{
+    position:relative;
+    width:100%;
+    height:auto;
+    min-height:60vh;
+}
+.ShareObjectWrapper360{
+        position:relative;
+    width:100%;
+    height:auto;
+    min-height:60vh;
+    }
+
+.ShareObjectFrame {
+    position: relative;
+    background: #E4E4E4;
+    width: 100%;
+    height:auto;
+    min-height:60vh;
+}
+ #ShareObjectPanaroma360Frame {
+        position:static;
+        background: #E4E4E4;
+        width: 100%;
+        height: 60vh;
+    }
+
+.ShareMaterialfooter{
+    position:relative;
+    width:100%;
+    height:auto;
+    padding:0px;
+    margin:5px 0px;
+}
+.ShareObjectTextWrp {
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 60px;
+    margin: 0px;
+    top: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+    background-color:#fff;
+    border: solid 1px #e4e4e4;
+}
+.ShareObjectText {
+    position: relative;
+    height: 60px;
+    display: table-cell;
+    color: #808080;
+    background-color: #e4e4e4;
+    margin: 0px;
+    padding: 0px;
+}
+.ShareTextInput {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    overflow-y: scroll;
+    border: none;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    font-size: 10pt;
+    color: #808080;
+    vertical-align: middle;
+}
+ .ShareObjectSend{
+     position:relative;
+     display:table-cell;
+     width:60px;
+     height:60px;
+     color:#c0c0c0;
+     font-size:33px;
+     text-align:left;
+    background-color:#e4e4e4;
+     vertical-align:middle;
+ }
+    .ShareObjectSend i {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        cursor: pointer;
+        float: left;
+    }
+    .ShareObjectSend span {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        cursor: pointer;
+        float: left;
+    }
+.ShareStreemObjectWrapper {
+    position: relative;  
+    width:auto;   
+    max-width: 700px;
+    height:auto;
+    margin: 35px;
+    padding:4px 0px;
+    box-shadow: 0px 5px 5px grey;
+    background-color: #fff;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x:hidden;
+    box-sizing:border-box;
+    border:solid 3px #fff;
+    border-radius:10px;
+    font-size:12px;
+}
+.shareStreemHeader {
+    border-bottom: solid 1px #e6e6e6;
+    height: 60px;
+    width: 100%;
+    padding: 2px;
+}
+ .ShareStreemMemberProfilImage{
+     position:relative;
+     float:left;
+     margin:3px 23px 3px 3px;
+ }
+ .ShareStreemOnline{
+     position:absolute;
+     left:45px;
+     top:0px;
+     font-size:16px;
+ }
+ .SharingObjectDate{
+     float:right;
+     width:auto;
+    margin:2px 0px 2px 10px;
+    top:0px;
+     position:absolute;
+     right:0px;
+ }
+ .SharingObjectDateHour{
+     float:right;
+     width:auto;
+     margin:2px 0px 2px 10px;
+     top:25px;
+     position:absolute;
+     right:0px;
+ }
+.ShareStreemNick
+{
+font-size: 11pt;
+    font-weight: 700;
+    color: #808080;
+}
+.ShareStreemAge {
+    width: auto;
+    margin: 2px 0px 2px 10px;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+}
+.ShareStreemCity {
+    width: auto;
+    margin: 2px 0px 2px 10px;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+}
+.SharingObjectDate {
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    padding-right: 10px;
+}
+.SharingObjectDateHour {
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    padding-right:10px;
+}
+
+.shareStreemContent{
+    position:relative;
+    width:100%;
+    height:auto;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;    
+}
+ .shareStreemContent> div> img{
+     height:auto;
+ }
+ .shareStreemContentImage {
+        position: relative;
+        width: 100%;
+        height:auto;
+    }
+.shareStreemContentImage > img{
+    width:100%;
+    margin:0px;
+    height:auto;
+}
+.shareStreemVideoWrp video{
+    position:relative;
+    width:100%;
+    height:auto;
+        
+}
+.shareStreemImgPanoramicWrp{
+    position:relative;
+    width:100vw;
+    max-width:700px;
+    height:62vw;
+    max-height:500px;
+    align-items:center;
+    margin-left:-5px;
+    margin-right:5px;
+    
+}
+.shareStreemLocationImg {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+    .shareStreemLocationImg > img {
+        width: 100%;
+        margin: 0px;
+        height: auto;
+    }
+.shareStreemAudioWrp{
+    width:100%;
+    height:auto;
+    
+}
+.shareStreemAudioWrp audio{
+    width:100%;
+    height:70px;
+    position:relative;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.shareStreemSurveyWrp {
+    position: relative;
+    width: 100vw;
+    max-width: 700px;
+    max-height: 500px;
+    align-items: center;
+    margin-left: -5px;
+    margin-right: 5px;   
+
+}
+.shareStreemSurveyFooter {
+    position:relative;
+    width:100%;
+    height:1px;
+   display:table;
+   text-align:center;
+}
+.shareStreemSurveyFooter > div {
+        position: relative;
+        width: 50%;
+        height:1px;
+        text-align: center;
+        display:table-cell;
+    }
+
+    .shareStreemSurveyFooter div:nth-child(1)> a {
+        position: absolute;
+        bottom: -40px;
+        left:50%;
+        color: #c0c0c0;
+        font-size: 28px;
+        text-decoration: none;
+        cursor: pointer;
+        z-index:1;
+    } 
+.ShareLocationIco {
+    position: relative;
+    float: left;
+    top: -6px;
+    margin: 0px 5px 0px 15px;
+    width: 42px;
+    height: 42px;
+    border-radius: 24px 24px;    
+    box-shadow: 0px 5px 5px grey;
+    text-align: center;
+    background-color: #e6e6e6;
+    z-index: 2;
+}
+.ShareLocationIco i{
+    color:#ff0080;
+    font-size:24px;
+    vertical-align:middle;
+    margin-top:5px;
+    cursor:pointer;
+}
+.ShareLocationIco div{
+    position:relative;
+    right:-33px;
+    top:-25px;
+    width:100px;
+    background-color:#E4E4E4;   
+    color:#808080;
+    border-radius:6px 6px;
+    font-size:9pt;
+    /*box-shadow: 0px 5px 5px grey;*/
+     /*z-index:-1;*/
+}
+ #ShareLocationFrame{
+        position:relative;
+        width:100vw;
+        max-width:700px;
+        height:60vh;
+    }
+
+.shareStreemImageText {
+    padding: 15px 10px 10px 15px;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    text-transform: capitalize;
+    white-space:pre-line;   
+}
+    .shareStreemImageText a {
+        text-decoration: none;
+        padding: 15px 10px 10px 15px;
+        font-size: 9pt;
+        font-style: italic;
+        color: #808080;
+        text-transform: capitalize;
+    }.shareStreemSurveyText {
+        padding: 15px 10px 10px 15px;
+        font-size: 12pt;
+        font-style: italic;
+        color: #808080;
+        text-transform: capitalize;
+    }
+.shareStreemLocationImg {
+    padding: 15px 10px 10px 15px;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    text-transform: capitalize;
+    white-space: pre-line;
+}
+    .shareStreemLocationImg >img
+    {
+        position:relative;
+        width:100%;
+    }
+    .shareStreemSurveyIcon {
+        position: relative;
+        float: left;
+        margin: 10px;
+        width: 75px;
+        height: 75px;
+    }
+    .shareStreemSurveyIcon span {
+        font-size: 70px;
+        color: #e6e6e6;
+    }
+.shareStreemFooter {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 2px;
+}
+.shareStreemFooterElementWrapper{
+    position:relative;
+    width:100%;
+ margin:0px;
+ padding:0px;
+}
+.SSEnjoyment {
+    position: relative;
+    float: left;
+    width: 33%;
+    margin: 0px;
+    text-align: left;
+    padding-left: 30px;
+    box-sizing: border-box;
+    text-decoration: none; 
+    font-size:28px;
+}
+.SSEnjoyment span{
+    cursor:pointer;
+}
+    .SSEnjoyment a {
+        cursor: pointer;
+        text-decoration: none;
+    }
+.SSComplaint {
+    position: relative;
+    width: 33%;
+    margin: 0px;
+    text-align: right;
+    right: 0px;
+    float: right;
+    padding-right: 30px;
+    box-sizing: border-box;
+    top: -5px;
+    font-size: 28px;
+}
+.SSComplaint i{
+    font-size:28px;
+    color: #c0c0c0;
+    cursor:pointer;
+   
+}
+.SSComplaint a{
+    font-size:28px;
+    color: #c0c0c0;
+    text-decoration:none;
+    cursor:pointer;
+}
+.SSComplaint a span{
+    font-size:28px;
+    color: #c0c0c0;
+    text-decoration:none;
+    cursor:pointer;
+}
+    .SSComplaint span {
+        font-size: 28px;        
+        text-decoration: none;
+        cursor: pointer;
+    }
+.SSComplaint a i{
+    font-size:14px;
+    color: #c0c0c0;
+    text-decoration:none;   
+}
+.SSTags {
+    position: relative;
+    width: 28%;
+    float: left;
+    margin: 0px;
+    text-align: center;
+    padding-left: 30px;
+    box-sizing: border-box;
+    font-size: 28px;
+}
+.SSTags span{
+    font-size:28px;
+    color:#c0c0c0;
+    cursor:pointer;
+}
+.SSTags i{
+    font-size:14px;
+    color:#c0c0c0;
+}
+.SSComment {
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    }
+.shareStreemLike {
+    position: relative;
+    float: left;
+    width:45px;
+}
+.shareStreemDislike {
+    position: relative;
+    float: left;
+    width: 40px;
+}
+.shareStreemLike a {
+    text-decoration: none;
+    color: #ff0080;
+    cursor: pointer;
+}
+.shareStreemLike i{
+    font-size:10px;
+    color:#ff0080;    
+}
+    .shareStreemLike span {
+        font-size: 28px;
+        color: #ff0080;
+        margin: 0px 5px;
+    }
+
+.shareStreemDislike a {
+    text-decoration: none;
+    color: #c0c0c0;
+    cursor:pointer;
+}
+
+
+    .shareStreemDislike span {
+        font-size: 28px;
+        color: #c0c0c0;
+      
+    }
+
+    .shareStreemDislike i {
+        font-size: 14px;
+        color: #c0c0c0;
+    
+    }
+/******/
+.shareStreemComplaint{   
+    font-size: 28px;   
+    width:50%;
+    float:right;
+}
+.shareStreemComplaint span{
+    cursor:pointer;
+}
+.shareStreemComplaint a{
+    font-size:10pt;
+     text-decoration: none;
+}
+.shareStreemComplaint ul li:last-child a{
+    font-size:12pt;
+    color:#fff;
+    background-color:#ff0080;
+}
+.SpanComplaintYes{
+    color:#ff0080;
+}
+.SpanComplaintNo{
+    color:#c0c0c0;
+}
+.shareStreemComment{
+    position:relative;    
+    width:100%;
+    height:auto;
+    min-height:1px;    
+}
+.shareStreemCommentIconCenterTop {
+    align-items: center;
+    margin-left: 50%;
+    margin-right: 50%;
+    position: absolute;
+    top: -42px;
+    z-index: 0;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+.shareStreemCommentIconCenterTop span{
+    height:45px;
+    width:45px;
+    text-decoration:none;
+    z-index:-1;
+    color:#c0c0c0;
+    position:relative;    
+    font-size:28px;
+}
+.shareStreemCommentIconCenterTop i{
+    height:25px;
+    width:25px;
+    z-index:-1;
+    position:absolute;
+    bottom:0px;
+    font-size:14px;
+    float:left;
+    left:32px;
+   top:15px;
+}
+
+.commentList{
+    width:100%;
+    text-align:left;
+    box-sizing:border-box;
+    display:table;
+}
+.messageContentCenter {
+    position:relative;
+    width:100%;
+    max-width:700px;
+    margin-left:auto;
+    margin-right:auto;
+    align-items:center;
+    background-color:#fff;
+    padding:3px;
+}
+.commentListItem {
+    position: relative;
+    border-top: solid 1px #e6e6e6;
+    margin-bottom: 15px;
+    min-height: 65px;
+}
+.commentListItemMember 
+{
+    position:relative;
+    width:100%;
+    height:auto;
+    display:table;
+    border-top:1px solid #c0c0c0;
+}
+    .commentListItemMember img {
+        float:left;
+        margin:10px;
+    }
+    .commentListItemMemberIdentity {
+        position: relative;
+        float: left;
+    }
+.commentListItemMemberIdentityNick {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #808080;
+    margin: 1px 5px 1px 5px;
+}
+.commentListItemMemberIdentityTxt {
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    margin: 1px 5px 1px 5px;
+}
+.commentListItemMemberRight {
+    position: relative;
+    float: right;
+    width: 30px;
+    font-size: 24px;
+    padding: 2px;
+    margin: 5px;
+    color: #c0c0c0;
+}
+.commentListItemMemberRight i{
+    cursor:pointer;
+}
+    .commentListItemMemberRight span {
+        cursor: pointer;
+    }
+    .commentListItemMemberDeleteSlider {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        background-color: #eeeeee;
+        display: none;
+        z-index:1;
+    }
+.commentListItemMemberDeleteSliderRight {
+    position: relative;
+    float: right;
+    font-size: 24px;
+    margin: 5px;
+    color: #c0c0c0;
+    text-decoration: none;
+}
+    .commentListItemMemberDeleteSliderRight i {        
+        cursor: pointer;
+    }
+.commentListItemMemberDeleteSliderRight a {
+    font-size: 24px;
+    color: #ff0080;
+    text-decoration: none;
+}
+    .commentListItemWrp {
+        position: relative;
+        display: none;
+        width: 100%;
+        height: auto;
+    }
+
+.commentListItemLeft {
+    position: relative;
+    width: 65px;
+    margin: 5px;
+}
+.commentListItemPhoto{
+    margin:5px;
+    float:left;
+}
+.commentListItemBanner{
+    position:relative;
+    width:100%;
+}
+.commentListItemNick {
+    float: left;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #808080;
+    padding: 2px 2px 2px 10px;
+}
+.commentListItemDate {
+    float: right;
+    margin-right:5px;
+    text-align:right;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+}
+.commentListItemText {
+    text-align: left;
+    width: 100%;
+    padding: 15px 10px 10px 15px;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    white-space:pre-line;
+}.commentListItemFooter{
+    text-align:right;
+}
+.commentListItemFooter span{
+    font-size:30px;
+    color:#c0c0c0;
+    text-decoration:none;
+}
+.shareStreemComment span{
+    cursor:pointer;
+}
+
+.commentTxtWrp {
+    width: 100%;
+    height: 90px;
+    padding: 0px;
+    margin: 0px;
+    display: table;   
+}
+.commentTxtRow{
+    display:table-row;
+    position:relative;
+    height:auto;
+    width:100%;
+    margin:0px;
+    padding-top:2px;
+    padding-bottom:0px;
+}
+.commentTxt{   
+    display:table-cell;
+    position:relative;
+}
+.commentSendBtn {
+    width: 65px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.ShareCommentTextInput{
+     position:relative;  
+     width:99%;
+     height:80px;
+     overflow-y:scroll;
+     border:none;
+     box-sizing: border-box;
+     font-size:12px;
+     font-style:italic;
+     color:#808080;
+     border:1px solid #e6e6e6;
+     padding:0px;
+     margin:0px 0px 0px 1px;
+     padding:2px;
+}
+
+.CommentSend{
+     position:relative;
+    font-size:40px;
+    vertical-align:middle;  
+    cursor:pointer;
+    color:#43ee0f;
+}
+.deleteCommentblock{
+    position:relative;
+    width:50px;   
+    font-size:11px;
+    color:#43ee0f;
+    background-color:transparent;
+    float:right;
+    right:5px;
+    top:-15px;
+    bottom:15px;
+}
+.deleteCommentblock span{
+    cursor:pointer;
+    color:#c0c0c0;
+    font-size:24px;
+}
+
+.deleteCommenthide{
+    position:absolute;
+    top:8px;    
+    height:100%;
+    width:100%; 
+     font-size:12px;     
+     background-color:#eeeeee;
+     text-align:left;
+     display:none;
+     border-bottom:solid 1px #e6e6e6;   
+     vertical-align:middle;
+     
+}
+.deleteCommentWrp {
+    position:relative;
+    display:table;
+    width:100%;
+}
+    .deleteCommentWrp div:nth-child(1) {
+        position: relative;
+        width: 70% auto;
+        display: table-cell;
+    }
+    .deleteCommentWrp div:nth-child(2) {
+        position: relative;
+        width:30%;
+        min-width:100px;
+        display: table-cell;
+
+    }
+.deleteCommenthide a{    
+     font-size:24px;
+     color:#ff0080;
+     text-decoration:none; 
+     margin-left:5px;
+     margin-right:5px; 
+     cursor:pointer; 
+}
+.deleteCommenthide i{    
+     font-size:24px;
+     color:#c0c0c0;
+     text-decoration:none;  
+     margin-left:5px;
+     margin-right:5px;
+     cursor:pointer;
+}
+.DeleteShareSliderInsideRightWrpMyProfil span {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #c0c0c0;
+    cursor: pointer;
+}
+
+.DeleteShareSliderInsideRightWrpMyProfil a {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #ff0080;
+    text-decoration: none;
+}
+
+
+/******FAVORI BANNER*/
+.memberBannerImgWrp{
+    position:relative;
+    height:53px;
+    width:auto;  
+    max-width:70%;
+    display:inline-block;
+    margin:0px;
+    margin-top:-2px; 
+    overflow:hidden;
+}
+.memberBannerImgItem{
+    position:relative;
+    width:52px;
+    height:52px;
+    display:inline-block;
+    margin-left:10px;
+    margin-top:0px;
+     z-index:1;
+}
+.memberBannerImgItem span{
+    position:absolute;
+    right:0px;
+    top:0px;
+}
+.favListNick{
+    font-size:10px;
+    font-weight:500;
+    text-align:center;
+    margin-top:-5px;
+}
+/******************************************create member page************************************************/
+
+.memberCreateList {
+    text-decoration: none;
+}
+    .memberCreateList > ul > li {
+        text-decoration: none;
+        list-style-type: decimal;
+    }
+.tabb {
+    color: #ff0080;
+    font-weight: 700;
+    font-size: 12pt;
+    text-decoration: none;
+    margin:10px;
+    float:left;
+}
+.tabb:hover{
+    text-decoration: none;
+    color:#c0c0c0;
+}
+.txtNick {
+    border: none;
+    background-color: #fafafa;
+    color: #ff0080;
+    width: auto;
+    font-size:20pt;
+}
+.memberCreateForm {
+    background-color: #fafafa;
+}
+.FormLogin {
+    background-color:#fafafa;
+    padding:15px;
+    border-radius:5px;
+    max-width:250px;
+}
+.wrapper_login {
+    color:#808080;
+    opacity: 1;
+}
+.forgotTxt 
+{
+    position:relative;
+    width:100%;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    color:#ff0080;
+    text-transform:uppercase;
+}
+form-control {
+    color: #808080;
+}.ligth-pink {
+    background-color: #ff80ab;
+}
+
+.dark-pink {
+    background-color:#fafafa;
+}
+P {
+    padding: 10px;
+}
+.link {
+    background-color:#ff0080;
+    color: #fff;
+    font-size: inherit;
+    font-weight: bold;
+    border-radius: 3px;
+}
+/**************************************Info sayfası login ve diğerleri*****************************************/
+.Infocontainer {
+  position:relative;
+  max-width:960px;
+  align-items:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+.infoFixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 110%;
+    z-index: 5;
+    height: auto;
+    min-height: 40px;
+    background-color: #ff0080;
+}
+.infoBanner {
+   
+}
+.logoInfo 
+{
+    position:relative;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    width:170px;
+}
+.heart {
+    float: left;
+    font-size: 45px;
+    color: #fff;
+}
+.heartEmpty 
+{
+    position:absolute;
+    font-size:12px;
+    top:8px;
+    left:8px;
+    color:#ff0080;
+    z-index:2;
+}
+.p {
+    position: relative;
+    float: left;
+    font-size: 33px;
+    font-weight: 700;
+    color: #ff0080;
+    margin-left: -26px;
+    margin-top: -7px;
+    z-index: 20;
+}
+.p_queue 
+{
+    position:relative;
+    float:left;
+    font-size:24px;
+    color:#fff;
+    text-align:left;
+    margin-left:-5px;
+    margin-top:10px;
+}
+.garge {
+
+}
+.backgroundInfo {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 200%;
+    /*background-image: url('Content/img/pattern.png');*/
+    /*background-repeat: repeat;*/
+}
+.infoBrif {
+    position:relative;
+    width:100%;
+    padding:0px 25px 0px 25px;
+
+}
+    .infoBrif > div {
+        position: relative;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #fafafa;
+        padding: 20px;
+        margin-top: 20px;
+        max-width:960px;
+        border-radius:5px;
+        box-shadow:rgba(0,0,0,0.5),10px 10px inset;
+    }
+.cellWR {
+    background-color: transparent;
+    padding: 10px 20px;
+    margin:0px;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+}
+.infoCell 
+{
+    position:relative;
+    width:100%;
+    min-height:250px;
+    border-radius:5px;
+    background-color:#fafafa;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+}
+.infoCellCapt 
+{
+    position:relative;
+    width:100%;
+    height:75px;
+}
+
+.infoCellCapt > div {
+    position:relative;
+    width:100%;
+    height:50px;
+    text-align:center;
+    color:#ff0080;
+    font-size: 50px;
+}
+.infoCellCont
+{
+
+}
+.infoWrp {
+    position: relative;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 960px;
+    text-align: left;
+    z-index: 0;
+    padding:50px 25px 0px 25px;
+}
+.certificate {
+    position: relative;
+    width: 100%;
+    height:40px;
+    text-align:left;
+    margin:0px;
+}
+    .certificate span:nth-child(1) {
+        position:absolute;
+        top:0px;
+        left:0px;
+        font-size:40px;
+        color:gold;
+        z-index:1;
+    }
+    .certificate span:nth-child(2) {
+        position: absolute;
+        top: 25px;
+        left: -3px;
+        font-size: 25px;
+        color: #e9ae0c;
+        -ms-transform: rotate(30deg); /* IE 9 */
+        -webkit-transform: rotate(30deg); /* Safari */
+        transform: rotate(30deg); /* Standard syntax */
+    }
+    .certificate > div {
+        position: absolute;
+        top: 10px;
+        left: 40px;
+        z-index: 1;
+        font-size: 20px;
+        width: auto;
+        height: auto;
+        background-color: #fff;
+        color: #e9ae0c;
+        text-align: left;       
+    }
+.infoCaption 
+{
+    position:relative;
+    width:100%;
+    font-size:33px;
+}
+.paddingInfomodalAlb {
+    padding: 10px;
+}
+.registerInfo {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ff0080;
+    color: #fff;
+    height: 33px;
+    margin-top: 5px;
+    text-align: center;
+    padding: 7px;
+    font-weight: 700;
+    cursor: pointer;
+}
+#forgot{
+    position:relative;
+}
+#loading {
+    position: relative;
+    width: 70px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    display:none;
+}
+    #loading > image {
+        width: 70px;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+.forgotPass{
+    position:relative;
+    width:100%;
+    max-width:500px;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#fafafa;
+    padding:0px 10px 10px 10px;
+    cursor:pointer;
+}
+.infoFooter{
+    position:relative;
+    width:100%;
+    padding:20px;
+    background-color:#808080;
+    color:#fff;
+    text-align:center;
+    min-height:70px;
+    font-size:12px;
+}
+    .infoFooter>a{
+        text-decoration:none;
+        cursor:pointer;
+        color:#fff;
+    }
+.infoMailHeader 
+{
+    position:relative;
+    width:100%;
+    height:30px;
+    text-align:right;
+    padding:3px 10px 3px 3px;
+}
+.infoMailHeader>a {
+    text-decoration:none;
+    color:#ff0080;
+    font-size:24px;
+    font-weight:700;
+}
+.infoMailTxt {
+    font-size: 10px;
+    color: #808080;
+    font-style: italic;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+.infoMailTxtArea {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    border: none;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-style: italic;
+    color: #808080;
+    border: 1px solid #e6e6e6;
+    padding: 0px;
+    margin: 0px 0px 0px 1px;
+    padding: 2px;
+    background-color: #f0f0f0;
+}
+.conditions{
+    position:relative;
+    width:100%;
+    max-width:800px;
+    height:auto;
+    padding:20px;
+    border-radius:5px;
+    background-color:#fafafa;
+    margin:50px 0px;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+/**************************MY PROFIL**********************************/
+.jumbotron {
+    text-align: center;
+    height: 150px;
+    margin: 0px;
+}
+.jumbotronProfil{
+    background-color: #808080;
+}
+.jumbotronMyProfil {
+    background-color: #ff0080;
+}
+
+.rowMyProfil{
+    position:relative;
+    width:auto;
+
+}
+
+.ProfilImageBox {
+    position: relative;
+    margin-bottom: 10px;
+    width: 200px;
+    height:240px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ProfilFoto {
+    position: relative;
+    z-index: 0;
+    width: 180px;
+    height: 180px;   
+}
+.ProfilOnline{
+    position:absolute;
+    right:0px;
+}
+.ProfilImageFooterProfil{
+     position: relative;
+    width: 200px;
+    height:40px;    
+   margin-bottom:10px;  
+}
+.ProfilAcitonIco {
+    position: relative;
+    width: 20%;
+    float: left;
+    font-size: 20px;
+}
+.ProfilAcitonIco a {
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+    .ProfilAcitonIco i {
+        font-size: 8px;
+    }
+
+.favIco {
+    position: relative;
+    width: 40%;
+    float: left;
+    font-size: 20px;    
+}
+.enterDate {
+    position: relative;
+    height: auto;
+    width: auto;
+    font-size: 12px;
+    color: #43ee0f;
+}
+.enterDate i{   
+    height: 12px;
+    color: #43ee0f;
+}
+.ProfilImageFooter {
+    position: relative;
+    width: 110%;
+    height: 30px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: -10px;
+}
+    .ProfilImageFooter div {
+        width: 20%;
+        text-align: center;
+        float: left;
+        padding-top: 5px;        
+    }
+    .ProfilImageFooter div a{
+        text-decoration:none;
+        color:#ff0080;
+        font-size:20px;
+        cursor:pointer;
+    }
+        .ProfilImageFooter div a i{
+            font-size:8pt;
+        }
+.ProfilImageBoxFooterDorp {
+    font-size: 9pt;    
+}
+ span.fa-cog{
+    font-size:24px; color:#e6e6e6; cursor:pointer; z-index:10;
+}
+    .ProfilImageBoxFooterDorp li {
+        width: 180px;
+        padding: 2px 5px 2px 5px;
+        color: #fff;
+    }
+        .ProfilImageBoxFooterDorp li a {
+            text-decoration: none;
+            font-size: 10pt;
+            color: #808080;
+            font-weight:700;
+        }
+        .ProfilImageBoxFooterDorpSpan {
+            color: #ff0080;
+        }
+
+        .IconCircle {   
+    width:40px;
+    height:40px;
+    background-color:#808080;
+    border-radius:20px 20px;
+    position:relative;
+    padding:9px 0px 0px 9px;      
+}
+.IconCircle a{
+    color:#fff;
+    font-size:20px;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.ProfilIcon{
+ position:relative;
+ width:auto;
+ height:auto;
+ float:left;
+ left:-20px;
+ top:-2px;
+}
+.bottom{
+     bottom:10px;
+}
+.right{
+    right:15px;
+}
+
+.top{
+    top:25px;
+}
+.CenterImg{
+    text-align:center;
+    margin:15px 0px 0px 0px;
+    padding-top:5px;
+    position:relative;
+}
+.topMargin{
+    width:100%;
+    height:65px;
+    position:relative;
+    background-color:transparent;
+}
+.textProfilWrapper {
+    position: relative;
+    color: #808080;
+    font-weight: bolder;
+    background-color: #fff;
+    border-radius: 18px 18px;
+    box-shadow: 0px 5px 5px grey;
+   
+}
+.textProfilCaption {   
+    background-color: transparent;
+    width: 100%;
+    padding: 0px 5px 0px 5px;
+    vertical-align: middle;
+    text-align: center;
+}
+    .textProfilCaption span {
+        text-align:center;
+        color: #808080;
+        font-weight: 700;
+        font-size: 14pt;
+    }
+.ProfilTextBody{
+   position:relative;
+    height:auto;
+    padding:20px;
+}
+.ProfilText{
+    font-style:italic;
+    font-weight:normal;
+    padding:10px;
+    white-space:pre-line;
+}
+.ProfilText i{
+    margin:3px;
+}
+.AlbumCaptionWrapper{
+    width:100%;
+    height:45px;
+    position:relative;
+    background-color:#ff0080;
+    color:#fafafa;
+    vertical-align:middle;
+}
+.AlbumCaptionWrapper span{
+    float:left;
+    position:relative;
+   font-size:35px;
+    margin:5px;
+}
+.myAlbumCaption{
+    font-size:16pt;
+    font-weight:bold;
+    position:relative;
+    height:auto;
+    width:45px;
+}
+.AlbumBoxFrame{
+    width: 100%;
+    height:auto;
+    margin: 0 auto;
+    position:relative;   
+}
+
+.AlbumBox{
+    width:31%;
+    padding-bottom:31%;  
+    margin:1%;
+    float:left;
+    position:relative;      
+}
+.AlbumAddIco {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: transparent;
+}
+    .AlbumAddIco a {
+        color: #e6e6e6;
+        font-size: 35pt;
+        vertical-align: middle;
+        margin: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+    }
+.AlbumAddIco span {
+        color: #e6e6e6;
+        font-size: 28pt;
+        vertical-align: middle;
+        margin: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+    }
+.share180icon {
+    color: #e6e6e6;
+    font-size: 28pt;
+    vertical-align: middle;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+.share360icon {
+    color: #e6e6e6;
+    font-size: 28pt;
+    vertical-align: middle;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+.AlbumHide{
+    display:none;
+    position:relative;
+    text-align:left;
+}
+
+.AlbumInsertPreviewDiv{
+    position:relative;
+    width:auto;
+    height:auto;
+    min-height:50vh;    
+    margin:5px 15px;
+    background-color:#e4e4e4;    
+}
+.AlbumInsertControlBar{
+    position:relative;
+    height:50px;    
+    width:100%;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+.AlbumInsertControl{
+    position:relative;
+    height:48px;
+    width:20%;
+    font-size:33px;
+    float:left;
+    top:0px;
+    margin:0px;
+    padding:0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+   
+}
+.AlbumInsertControl a{
+    color:#ff0080;
+    cursor:pointer;
+    font-size:33px;
+    text-decoration:none;     
+}
+.AlbumInsertControlInside{
+    position:relative;
+    width:55px;
+    height:55px;
+    vertical-align: middle;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.iconX {
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    top: 8px;
+    left: 15px;
+}
+.divIconY {
+    -webkit-transform: rotateX(65deg); /* Safari */
+    transform: rotateX(65deg); /* Standard syntax */
+    -ms-transform: rotateX(65deg);
+    background-color: transparent;
+    z-index: 1;
+    position: absolute;
+    top: 15px;
+    left: 8px;
+    bottom: 1px;
+}
+
+.iconY{
+    position:relative;
+     margin:0;
+     color:#b8b8b8;
+}
+.iconZ{
+    position:absolute;
+    top:-5px;
+    left:0px;
+    z-index:1;
+    color:#e6e6e6;    
+    margin:0;
+    
+}
+ .AlbumItemTypesIconWrapper{
+    
+    vertical-align: middle;
+    margin: 0px;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;   
+    cursor: pointer;
+    width:65px;
+    height:65px;
+    text-align:center;
+    border-radius:50%;
+    background-color:#fff;
+    opacity:0.5;
+    }
+    .AlbumItemTypesDiv {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        margin: 0px;
+        left: 13px;
+        top: 8px;
+        color: #808080;
+        font-size: 28pt;
+    }
+    .AlbumItemTypesDiv span{
+        color: #000;
+        font-size: 28pt;
+    }
+    .AlbumItemTypesDiv i{
+        color: #808080;
+        font-size: 28pt;
+    }
+    .AlbumdivIconY {
+        -webkit-transform: rotateX(65deg); /* Safari */
+        transform: rotateX(65deg); /* Standard syntax */
+        -ms-transform: rotateX(65deg);
+        background-color: transparent;
+        z-index: 10;
+        position: absolute;
+        left: 8px;
+        bottom: 1px;
+        top: 25px;
+    }
+
+.AlbumObjectSend {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    color: #c0c0c0;
+    font-size: 33px;
+    text-align: right;
+    background-color: #e4e4e4;
+    vertical-align: middle;
+    color:#ff0080;
+    padding:10px;
+}
+
+    .AlbumObjectSend i {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        cursor: pointer;
+        float: left;
+    }
+
+    .AlbumObjectSend span {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        cursor: pointer;
+        float: left;
+    }
+.ButtonHiden{
+   display:none;
+}
+
+.ScreenDelete{
+    position:absolute;
+    top:-50px;
+    left:15px;
+}
+.cropAreaWrapper{
+    position:relative;
+    width:100%;
+    height:auto;
+    top:0px;
+}
+.cropAreaInputDiv{
+
+}
+.cropAreaprofilImageDiv{
+    width:250px;
+   height:250px;
+   background-color:#e4e4e4;
+   padding:5px;
+   margin:5px;
+}
+.cropAreaprofilImageDivSaveButton{
+    position:absolute;
+    bottom:10px;
+    left:25px;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {   
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color:#fafafa;
+    background-color:#ff0080;
+    font-size:12pt;
+}
+#btnCrop {
+    display: none;
+}
+.custom-button {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color:#fafafa;
+    background-color:#ff0080;
+    font-size:12pt;
+}
+.textAlignLeft{
+    text-align:left;
+}
+.floatLeft{
+    left:30px;
+}
+.imageNorm{
+    position:relative;
+}
+
+ .SSEnjoymentMyProfil{
+    position:relative;
+    float:left;
+    width:33%;
+    margin:0px;
+    font-size:35px;
+    padding-left:30px;
+    box-sizing:border-box;
+ }
+ .SSCommentMyProfil{
+    position:relative;
+    float:left;
+    width:33%;
+    margin:5px;
+    text-align:center;
+    font-size:35px;
+    box-sizing:border-box;
+ }
+ .SSCommentMyProfil a{
+     color:#c0c0c0;
+     cursor:pointer;
+    text-decoration:none;
+ }
+ .SSDetailsMyProfil{
+    position:relative;
+    float:left;
+    width:33%;
+    text-align:right;
+    padding-right:30px;
+    box-sizing:border-box;
+    font-size:35px;
+ }
+  .SSDetailsMyProfil a{
+     color:#c0c0c0;
+     text-decoration:none;
+     cursor:pointer;    
+ }
+ .DeleteShareSliderMyProfil{
+     position:absolute;     
+     width:100%;
+     height:auto;
+     top:-3px;
+     background-color:#e6e6e6;
+     z-index:2;
+     display:none;
+ }
+.DeleteShareWrp {
+    position: relative;
+    display: table;
+    width: 100%;
+}
+    .DeleteShareWrp div:nth-child(1) {       
+        position: relative;
+        width: 70% auto;
+        display: table-cell;
+    }
+
+    .DeleteShareWrp div:nth-child(2) {
+        position: relative;
+        width: 30%;
+        min-width: 100px;
+        display: table-cell;
+    }
+ .DeleteShareSliderInsideRightWrpMyProfil{
+     position:relative;
+     float:right;
+     font-size:24px;
+     display:table-cell;
+ }
+
+ 
+ .shareStreemFooterCommentWrapper{
+    position:relative;
+    width:100%;
+    height:auto;
+    display:inline-block;    
+ }
+ .commentTxtWrpMyprofil{
+     position:relative;
+     width:100%;
+     height:auto;
+     background-color:#e6e6e6;
+     padding:1px;
+     margin:5px 0px 5px 0px;
+ }
+ .commentTxtWrpHome{
+     position:relative;
+     width:100%;
+     height:auto;
+     background-color:#e4e4e4;
+     padding:1px;
+ }
+/******************SHARESOBJECT DETAİLS********************/
+.ShareObjectDetailsBanner{
+    position:fixed;
+    top:42px;
+    width:100%;
+    max-width:960px;    
+    height:40px;
+    text-align:center;
+    background-color:#e6e6e6;  
+    color:#ff0080;
+    z-index:3;
+    margin:0px 0px 0px -15px;
+}
+.ShareObjectDetailsBanner a{
+    float:left;
+    font-size:33px;
+    margin:5px;
+    text-decoration:none;
+     color:#ff0080;
+}
+.ShareObjectDetailsBanner span{
+    text-align:center;
+    font-size:14pt;
+    color:#ff0080;
+    vertical-align:middle;
+    font-weight:700;
+}
+.ShareObjectDetailsBannerEmpty{
+    position:relative;
+    height:45px;
+    width:100%;
+    background-color:transparent;
+}
+
+        .ShareRouteSubCaption {
+            max-width: 960px;
+            height: 55px;
+            margin: 0px;
+            position: relative;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #fafafa;
+        }
+        .ShareRouteCaptionItems{
+            position:relative;
+            text-align:left;
+            float:left;
+            margin:5px;
+            font-size:24px;
+            color:#808080;
+            height:45px;
+            width:100%;
+        }
+        .ShareRouteCaptionItemsDiv {
+            position: relative;
+            width: 50px;
+            height: 55px;
+            float:left;
+            margin:0px;
+            z-index:1;
+        }
+        .ShareRouteCaptionItemsText {
+            position:relative;
+            display:inline-block;
+            height:45px;
+            margin-left: 15px;
+            font-size: 12pt;
+            font-weight: 300;
+            color: #000;
+            opacity: 0.5;
+        }
+        .ShareRouteCaptionItems span {
+        color:#808080;
+        font-size:24px;
+        }
+
+        .ShareRouteHide {
+            display: none;
+            position: relative;
+            top:0px;
+            padding:0px;
+            margin:0px;
+            background-color:#f0f0f0;
+            z-index:3;
+        }
+       .ShareRouteCaptionItemsWrapper{
+           position:absolute;
+          top:0px;
+           z-index:0;
+           background-color: #fafafa;
+       }
+       .shareItems{
+          position:absolute;
+          top:140px;
+          width:100%;
+          max-width:960px;
+          z-index:0;
+          background-color:#f0f0f0;
+       }
+.ShareObjectDetailsFooterEmpty{
+    width:100%;
+    height:65vh;
+    background-color:transparent;
+}
+.ShareObjectDetailsTagsWrp {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height:100%;
+    max-width: 960px;
+    margin: 0px 0px 0px -15px;   
+    top: 80px;
+    z-index: 2;
+   background-color:transparent;
+}
+.ShareObjectDetailsTags {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 80vh;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    background-color: #fff;
+    overflow: hidden;
+   
+}
+.ShareObjectDetailsTagsClose 
+{
+    position:relative;
+    width:100%;
+    height:40px;
+}
+.ShareObjectDetailsTagsClose span {
+    font-size: 24px;
+    color: #c0c0c0;
+    cursor: pointer;
+    float: right;
+}
+.ShareObjectDetailsEnjoyWrp {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    margin: 0px 0px 0px -15px;
+    top: 80px;
+    z-index: 2;
+    overflow:hidden;
+    background-color: transparent;   
+}
+.ShareObjectDetailsEnjoy {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 80vh;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    background-color: #fff;
+    overflow-y: scroll;
+    text-align: center;
+}
+.ShareObjectDetailsEnjoyClose {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+    .ShareObjectDetailsEnjoyClose span {
+        font-size: 24px;
+        color: #c0c0c0;
+        cursor: pointer;
+        float: right;
+    }
+.EnjoyMemberList {
+    position: relative;
+    display: block;
+    width: 196px;
+    height: auto;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    border-bottom: solid 1px #c0c0c0;  
+   
+}
+.EnjoyMemberListSpan {
+    position: relative;
+    display: block;
+    width: 96px;
+    height: auto;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.EnjoyMemberListSpan span{
+    position: absolute;
+    right: -10px;
+    font-size: 18px;
+}
+.EnjoyMemberListNick {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size: 12pt;
+    font-weight: 700;
+    color: #c0c0c0;
+}
+.EnjoyMemberListDate {
+    font-size: 10pt;
+    font-weight: 300;
+    font-style: italic;
+    color: #808080;
+}
+    .EnjoyMemberListDate span
+    {
+
+    }
+    .EnjoyMemberListTxt {
+        font-size: 10pt;
+        font-weight: 300;
+        font-style: italic;
+        color: #808080;
+    }
+.TagsContent {
+    position: relative;
+}
+.TagsContentCaption {
+    position:relative;
+    width:100%;
+    height:40px;
+}
+.TagsContentFavCaptionIco {
+    position: relative;
+    float: left;
+    width: 70%;
+    height: 40px;
+    font-size: 24px;
+    color: #c0c0c0;
+    text-align: center;
+    border-right: solid 1px #c0c0c0;
+    border-bottom: solid 1px #c0c0c0;
+}
+.TagsContentTagCaptionIco {
+    position: relative;
+    float: left;
+    width: 30%;
+    height: 40px;
+    font-size: 24px;
+    color: #c0c0c0;
+    text-align: center;
+    border-bottom: solid 1px #c0c0c0;
+}
+.TagFavoriteColumn {
+    position: relative;
+    float: left;
+    width: 70%;
+    height: 70vh;
+    overflow-y: scroll;
+    text-align: center;
+    border-right: solid 1px #c0c0c0;
+   
+}
+.TagFavoriteListProfilMedia 
+{
+    position:relative;
+    display:block;
+    width:96px;
+    height:auto;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:15px;
+    border-bottom:solid 1px #c0c0c0;
+}
+.TagFavoriteListProfilMediaLink a{
+    position:absolute;
+    right:-10px;
+    text-decoration:none;
+    color:#43ee0f;
+    font-size:24px;
+}
+.TagFavoriteListProfilMediaNick {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size: 12pt;
+    font-weight: 700;
+    color: #c0c0c0;
+}
+    .TagFavoriteListProfilMediaNick a {
+        position: relative;
+        width: 100%;
+        height: auto;
+        font-size: 12pt;
+        font-weight: 700;
+        color: #c0c0c0;
+        text-decoration:none;
+    }
+    .TagFavoriteListProfilMediaAge {
+        font-size: 10pt;
+        font-weight: 300;
+        font-style: italic;
+        color: #808080;
+    }
+
+ .TagListColumn {
+        position: relative;
+        float: left;
+        width: 30%;
+        height: 70vh;
+        overflow-y: scroll;
+        text-align: center;
+    }
+.TagListProfilMedia {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: auto;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;  
+    margin-top:15px;
+    border-bottom: solid 1px #c0c0c0;
+
+}
+
+.TagListProfilMediaLink a {
+    position: absolute;
+    right: -13px;
+    text-decoration: none;
+    color: #ff0080;
+    font-size: 18px;
+}
+
+.TagListProfilMediaNick {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #c0c0c0;
+}
+
+.TagListProfilMediaAge {
+    font-size: 8pt;
+    font-weight: 300;
+    font-style: italic;
+    color: #808080;
+}
+.ShareObjectDetailsSurveyWrp {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    margin: 0px 0px 0px -15px;
+    top: 80px;
+    z-index: 2;
+    overflow: hidden;
+    background-color: transparent;
+}
+.ShareObjectDetailsSurvey {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 80vh;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    background-color: #fff;
+    overflow-y: scroll;
+    text-align: center;
+}
+.ShareObjectDetailsSurveyClose {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+    .ShareObjectDetailsSurveyClose span {
+        font-size: 24px;
+        color: #c0c0c0;
+        cursor: pointer;
+        float: right;
+    }
+.tagCheck {
+    position: relative;
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+.tagCheck a{
+    text-decoration:none;
+}
+    /************************PROFIL ****************************/
+    .ProfilShareStreemWrapper{
+    position:relative;
+    width:100%;
+    margin-top:15px;
+    border-top:solid 1px #808080;
+}
+.ProfilAlbumWrapper{
+    position:relative;
+    width:100%;
+    height:auto;
+}
+
+/*************************FAVORITE*************************************/
+.FavoriteAllRow{
+    position:relative;
+    height:auto;
+    border-left:solid 3px #ff0080;
+    border-right:solid 3px #43ee0f;
+}
+.FavoriteIconsCaption{
+    position:relative;    
+    width:100%;
+    margin-top:25px;
+    height:auto;
+}
+.FavoriteIconsCaption div{
+    position:relative;
+    width:50%;
+    float:left;
+    font-size:30px;
+    text-align:center;
+    color:#fff;
+    height:48px;
+    padding-top:10px;
+}
+    .FavoriteIconsCaption div div{
+        position: relative;
+        width: 50px;        
+        font-size: 30px;
+        text-align: center;
+        color: #fff;
+        border-radius:25px;
+        background-color:#c0c0c0;
+    }
+    .FavoriteIconsCaption div a{
+    text-decoration:none;
+    color:#fff;
+    }
+.FavoriteIconsCaption div:nth-child(2) {
+    background-color:#43ee0f;
+}
+.FavoriteIconsCaption div:nth-child(1) {
+    background-color:#ff0080;
+}
+/**************/
+.memberCardListCaption {
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
+    height: auto;
+   
+}
+
+    .memberCardListCaption div {
+        position: relative;
+        width: 50%;
+        float: left;
+        font-size: 30px;
+        text-align: center;
+        color: #fff;
+        height: 48px;
+        background-color: #fff;
+        box-shadow: 0px 5px 5px grey;
+        
+    }
+        .memberCardListCaption div div {
+            position: relative;
+            width: 44px;
+            height:40px;
+            font-size: 22px;
+            text-align: center;
+            color: #fff;
+            border-radius: 22px;
+            background-color: #c0c0c0;
+            margin-left: 45%;
+            margin-right: 50%;
+            box-sizing: content-box;
+            vertical-align: middle;
+            padding-top:5px;
+        }
+        .memberCardListCaption div div a{
+        text-decoration:none;
+        color:#fff;
+        }
+
+            .memberCardListCaption div:nth-child(1) div:nth-child(1) {
+            background-color: #c0c0c0;
+        }
+
+        .memberCardListCaption div:nth-child(2) div:nth-child(1) {
+            background-color: #ff0080;
+        }
+.memberCardListWrp {
+position:relative;
+width:100%;
+max-width:800px;
+background-color:transparent;
+}
+.memberCardListItemWrp {
+    position: relative;
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+    height: auto;
+    padding: 3px;
+}
+
+.memberCardListItem {
+    position: relative;
+    float: left;
+    margin-left: 10%;
+    width: 100%;
+    margin-top: 25px;
+    height: auto;
+}
+.memberCardListItemTable {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0px 5px 5px grey;
+    background-color: #fff;
+}
+.memberCardListItemTableImg {
+    position:relative;
+    float:left;
+    width:auto;
+}
+.memberCardListItemTableImg img{
+    width:110px;
+    border:5px solid #fff;
+}
+    .memberCardListItemTableImgIsonlineIco {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0px;
+    right:0px;
+    background-color: transparent;
+    font-size: 18px;
+   padding:2px;
+}
+.memberCardListItemTableImgEvent 
+{
+    position:relative;
+    width:100%;
+    bottom:0px;
+    height:25px;
+}
+.memberCardListItemTableImgEvent div
+{
+ float:left;
+position:relative;
+ font-size: 24px;
+ margin-left:0px;
+       
+}
+.memberCardListItemTableImgEvent div a {
+ text-decoration: none;
+ margin-left: 2px;
+}
+
+.memberCardListItemTableInformation{
+   display:table-cell;   
+   width:100%;
+}
+
+    .memberCardListItemTableInformationRow {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin: 1px 5px 1px 15px;
+        font-size: 10pt;
+        font-weight: 100;
+        color: #808080;
+        font-style:normal;
+    }
+
+.memberCardListItemNick {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size:12pt;
+    font-weight:700;
+    color:#c0c0c0;
+}
+.memberCardListItemDate {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 1px 5px 1px 15px;
+    font-size: 10pt;
+    font-weight: 300;
+    font-style: italic;
+    color: #808080;
+}
+/**/
+.memberCardListItemAlt {
+    position: relative;   
+    width:100%;
+    margin-top: 25px;
+    float: right;
+    margin-right: 10%;    
+    text-align:right;
+}
+.memberCardListItemAltTable {
+    position: relative;
+    width: 100%;
+    max-width: 300px;  
+    box-shadow: 0px 5px 5px grey;
+    background-color: #fff;
+   display:table;
+   float:right;
+}
+.memberCardListItemTableAltImg {
+    width: 110px;
+    position: relative;
+    float: right;
+}
+    .memberCardListItemTableAltImg img {
+        width: 110px;
+        border: 5px solid #fff;
+    }
+.memberCardListItemTableAltInformation {
+position:relative;
+float:right;
+width:50%;
+}
+.memberCardListItemTableAltInformationRow {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 1px 15px 1px 0px;
+    font-size: 10pt;
+    font-weight: 100;
+    color: #808080;
+    font-style: normal;
+    text-align: right;
+}
+.memberCardListItemAltNick {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size: 12pt;
+    font-weight: 700;
+    color: #ff0080;
+    text-align:right;
+}
+.memberCardListItemAltDate {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 1px 15px 1px 0px;
+    font-size: 10pt;
+    font-weight: 300;
+    font-style: italic;
+    color: #808080;
+    text-align: right;
+}
+/********************************************************/
+.HistoryMemberListWrp {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+}
+.HistoryMemberListItemWrp {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    text-align: left;  
+}
+.HistoryMemberListItem {
+    position: relative;
+    float: left;
+    width: 100%;
+    max-width: 400px;
+    margin: 2px;
+    background-color: #fff;
+    box-shadow: 0px 5px 5px grey;
+    border-radius:5px;
+}
+.HistoryMemberListItemImg {
+    width: 80px;
+}
+.HistoryMemberListItemImg img {
+        width: 80px;
+        height: auto;
+        border-bottom: solid 5px #c0c0c0;
+    }
+.HistoryMemberListItemInfoWrp {
+    /*float: left;*/
+    width:auto;
+    display:table-cell;
+}
+.HistoryMemberListItemInfoNick {         
+    font-size: 11pt;
+    font-weight: 700;
+    color: #c0c0c0;
+    margin: 1px 5px 1px 5px;
+}
+.HistoryMemberListItemInfoMat {
+    width: auto;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    margin: 1px 5px 1px 5px;
+}
+.HistoryMemberListItemInfoTxt {
+    width: 99%;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    margin: 1px 5px 1px 5px;
+}
+.HistoryMemberListItemInfoDate {
+    width: auto;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    margin: 1px 5px 1px 5px;
+}
+/***********/
+.HistoryMemberAltListItemWrp {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: right;   
+}
+
+.HistoryMemberAltListItem {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 5px;
+    background-color: #fff;
+    float: right;
+    display: table;
+    box-shadow: 0px 5px 5px grey;
+    border-radius: 5px;
+}
+
+.HistoryMemberAltListItemImg {
+    position: relative;
+}
+.HistoryMemberAltListItemImg img {
+        width: 80px;
+        height: auto;
+        border-bottom: solid 5px #ff0080;
+    }
+.HistoryMemberAltListItemInfoWrp {
+    position: relative;
+}
+.HistoryMemberAltListItemInfoNick {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #ff0080;
+    margin: 1px 5px 1px 5px;
+}
+
+.HistoryMemberAltListItemInfoTxt {   
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    margin: 1px 5px 1px 5px;
+    height:auto;
+}
+
+.HistoryMemberAltListItemInfoDate {
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    margin: 1px 5px 1px 5px;
+}
+.HistoryMemberAltListItemInfoMat {
+    width: auto;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    margin:1px 5px 1px 5px;
+}
+/*******************************MESSAGES**********************************/
+.MessageListContent {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 1px;
+}
+.MessageList {
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    display: table;
+}
+.MessageListItemWrp {
+    position: relative;
+    border-top: solid 1px #e6e6e6;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    min-height: 70px;
+}
+.MessageListItem {
+    position: relative;
+    height: 70px;
+}
+.MessageListItem img {
+    float: left;
+    margin: 0px 10px;
+}
+.MessageListItemLeft {
+    position: relative;
+    width: 70px;
+    margin: 0px 5px;
+}
+.MessageListItemPhoto {
+    margin: 0px 5px;
+    float: left;
+}
+.MessageListItemBanner {
+    position: relative;
+    width: 100%;
+}
+.MessageListItemNick {
+    float: left;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #808080;
+    padding: 2px 2px 2px 10px;
+}
+.MessageListItemDate {
+    float: right;
+    margin-right: 5px;
+    text-align: right;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+}
+.MessageListItemText {
+    text-align: left;
+    width: 100%;
+    padding: 15px 10px 10px 15px;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    white-space: pre-line;
+}
+.MessageListItemFooter {
+    font-size: 30px;
+    color: #c0c0c0;
+    text-decoration: none;
+}
+.MessageListItemMemberDeleteSlider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-color: #eeeeee;
+    display: none;
+    margin:0px;
+}
+    .MessageListItemMemberDeleteSlider div:first-child {
+        font-size: 9pt;
+        font-style: italic;
+        color: #808080;
+        margin: 1px 5px 1px 5px;
+    }
+    
+    .MessageListItemMemberDeleteSliderRight {
+        position: relative;
+        float: right;
+        font-size: 24px;
+        margin: 5px;
+        color: #c0c0c0;
+        text-decoration: none;
+    }
+.MessageListItemMemberDeleteSliderRight a 
+{
+    text-decoration:none;
+    color:#ff0080;
+}
+.MessageListItemMemberDeleteSliderRight i {
+    cursor:pointer;
+    }
+.MessageListItemMemberIdentity {
+    position: relative;
+    float: left;
+}
+.MessageListItemMemberIdentityNick {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #808080;
+    margin: 1px 5px 1px 5px;
+}
+.MessageListItemMemberIdentityTxt {
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+    margin: 1px 5px 1px 5px;
+}
+.MessageListItemMemberRight {
+    position: relative;
+    float: right;
+    width: 30px;
+    font-size: 24px;
+    padding: 2px;
+    /*margin: 5px;*/
+    color: #c0c0c0;
+}
+.MessageListItemMemberRight i {
+    cursor: pointer;
+}
+.MessageListItemMemberRight span {
+    cursor: pointer;
+    position:absolute;
+    bottom:-15px;
+    left:5px;
+}
+.MessageListDown {
+    display:block;
+}
+.MessageListUp {
+    display:none;
+}
+.MessageListWrp {
+    position: relative;
+    padding:0px;
+    display: none;
+    width: 100%;
+    height: auto;   
+    margin:10px 0px;
+}
+
+.MessageActiveColor {
+    color: #ff0080;
+    text-decoration: none;
+}
+.MessageDefaultColor {
+    color: #c0c0c0;
+    text-decoration: none;
+}
+.MessageActiveColor i,.MessageDefaultColor i{
+     font-size:8pt;
+}
+
+/**********************SURVEY ANKET*****************/
+.surveyWrp {
+    position: relative;
+    display: table;
+    height: auto;
+    width: 100%;
+    max-width: 700px;
+    background-color: #fff;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom:10px;
+}
+.surveyDate {
+    position: relative;
+    width: 50px;
+    display: table-cell;
+    background-color: #ff0080;
+    color: #fff;
+    height: 35px;
+    text-align: center;
+    padding-top: 0px;
+    font-style:italic;
+    font-weight:700;
+}
+    .surveyDate span:nth-child(1) {
+        position: absolute;
+        top: 3px;
+        left:0px;
+        width: 100%;
+    }
+    .surveyDate span:nth-child(2) {
+        position: absolute;
+        top: 23px;
+        left: 0px;
+        width: 100%;
+    }
+    .surveyDate span:nth-child(3) {
+        position: absolute;
+        top: 43px;
+        left: 0px;
+        width: 100%;
+    }
+.surveyTextInput {
+    display: table-cell;
+    height: 55px;
+    font-size: 10pt;
+    font-style: italic;
+}
+   
+#SurveyText {
+    width: 100%;
+    border:none;
+}
+.surveySubmit {
+    width: 40px;
+    display: table-cell;
+    background-color: #ff0080;
+    color: #fff;
+    height: 55px;
+    text-align: center;
+    padding-top:15px;
+    vertical-align: middle;
+}
+    .surveySubmit i {
+        position: relative;
+        cursor: pointer;
+        margin-left:auto;
+        margin-right: auto;       
+        font-size: 24px;
+    }
+
+.SurvyeListWrp {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    color:#ff0080;
+    font-weight:700;
+    font-size:14pt;
+}
+    /****************************/
+.surveyHomeLink {
+    text-decoration: none;
+}
+.SurveyHomeFrame {
+    color: #ff0080;
+    background-color: #fff;
+    min-height: 45px;
+    padding: 10px;
+    margin: 20px 5px;
+    text-decoration: none;
+}
+.SurveyHomeFrameSelective {
+    color: #b8b8b8;
+    background-color: #fff;
+    min-height: 45px;
+    padding: 10px;
+    margin: 20px 5px;
+    text-decoration: none;
+}
+.SurveyHomeCount {
+    position: relative;
+    float: left;
+    width: 70px;
+    min-height: 45px;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 24px;
+    text-align: left;
+    margin-right:10px;
+}
+.SurveyItemHomeCaption {
+    text-transform: capitalize;
+    font-style: italic;
+}
+.pHr{
+    border:1px solid #ff0080;
+}
+.SurveyHomeMemberListWrp {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.SurveyHomeMemberPercent{
+    color:#ff0080;
+    font-size:24px;
+    font-weight:700;
+}
+.SurveyHomeMemberPercent:after {
+    color: #ff0080;
+    font-size: 10pt;
+}
+.note{
+    position:relative;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+    max-width:700px;
+    background-color:#ff0080;
+    padding:15px;
+}
+.note span{
+    position:relative;
+    margin:15px;
+    font-size:24px;
+}
+.note, .note > a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+}
+.BigNote {
+    text-decoration: none;
+    font-size: 18px;
+    color: #ff0080;
+}
+    .BigNote span
+    {
+        background-color:#ff0080;
+        color:#fff;
+        padding:10px;
+    }
+    .SmallNote {
+        position: relative;
+        width: 100%;
+        height: 25px;
+        font-size: 9pt;
+        color: #ff0080;
+        font-style: italic;
+    }
+/*********************/
+.SurveyItemFrameCaption {
+    text-transform: capitalize;
+    font-style: italic;
+}
+    .SurveyItemFrameCaption span{
+        font-size:8pt;
+        margin-top:0px;
+    }
+.SurveyItemFrameCaption a
+{
+    text-decoration:none;
+    font-size:11pt;
+    color:#808080;
+}.SurveyItemFrame {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    padding: 3px;
+}
+.SurveyItemFrameCaptionPassive {
+    text-transform: capitalize;
+    font-style: italic;
+}
+.SurveyItemFrameCaptionPassive a{
+    text-transform: capitalize;
+    font-style: italic;
+    text-decoration:none;
+    color:#c0c0c0;
+    font-size:12pt;
+    font-weight:300;
+}
+    .SurveyItemFrameCaptionPassive span {
+        font-size: 8pt;
+        margin-top: 0px;
+    }
+.SurveyItemDeleteDiv {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-color: #eeeeee;
+    display: none;
+    z-index: 20;
+    margin: 0px;
+    font-size: 11pt;
+    font-style: italic;
+    font-weight: 300;
+    padding: 5px;
+    color: #808080;
+    text-align:left;
+}
+.SurveyItemDeleteDivRight {
+    position: relative;
+    float: right;
+    font-size: 24px;
+    margin:-15px 5px;
+    color: #c0c0c0;
+    text-decoration: none;
+}
+    .SurveyItemDeleteDivRight span {
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    .SurveyItemDeleteDivRight a {
+        text-decoration: none;
+        color: #ff0080;
+        cursor: pointer;
+        font-size: 18px;
+    }
+.SurveyDeleteTrigger 
+{
+    cursor:pointer;
+}
+.warningSurvey 
+{
+    position:relative;
+    font-size:9pt;
+    font-style:italic;
+    color:#ff0080;
+}
+.SurveyItemFrame hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+    .SurveyItemDate {
+        float: right;
+        font-size:9pt;
+        font-style:italic;
+        font-weight:300;
+        color:#c0c0c0;
+        text-align:right;
+    }
+.SurveyItemControls{
+    position:relative;
+    display:table;
+    text-align:right;
+    width:100%;
+    height:30px;
+    font-size:18px;
+}
+    .SurveyItemControls div span{
+        color:#c0c0c0;
+        font-size:18px;
+        margin:2px 5px;
+    }
+    .SurveyItemControls a {
+        color: #c0c0c0;
+        font-size: 18px;
+        margin: 2px 5px;
+        text-decoration: none;
+    }
+   
+    /**********/
+    .SurveyQuestionItem {
+        position: relative;
+        width: 100%;
+        position: absolute;
+        visibility: hidden;
+    }
+.questionItemwrp {
+    position:relative;
+    width:100%;
+    height:auto;
+    text-align:left;
+    font-size:12pt;
+    color:#808080;
+    font-weight:300;
+    font-style:italic;
+    padding:10px 35px 10px 15px;
+}
+    .questionItemwrp i {
+        position: relative;
+        width: 20px;
+        height: auto;
+        float: left;
+    }
+.OptionText
+{
+   padding-left:15px;
+   color:#808080; 
+   text-transform:capitalize;
+}
+.OptionText i{       
+    position:relative;
+    margin-left:-20px;
+}
+
+.SurveyQuestionDeleteDiv {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    left: 0px;
+    top: 0px;
+    background-color: #eeeeee;
+    z-index: 20;
+    margin: 0px;
+    font-size: 11pt;
+    font-style: italic;
+    font-weight: 300;
+    padding: 5px;
+    color: #808080;
+    text-align: left;
+}
+.SurveyQuestionDeleteTrigger {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    font-size:18px;
+    cursor:pointer;
+    color:#c0c0c0;
+}
+.SurveyDetailsFrame {
+    position: relative;
+    width: 100%;
+   max-width:700px;
+   background-color:#fff;
+   align-items:center;
+   margin-left:auto;
+   margin-right:auto;
+}
+    .SurveyDetailsFrame .SSComment {       
+        background-color: #fff;       
+    }
+/**/
+.SurveyDetailsCaption {
+    position: relative;
+    width: 100%;
+    height:auto;
+    text-transform: capitalize;
+    font-style: italic;
+    font-size:14pt;
+    padding:10px 10px 10px 10px;
+    color:#808080;    
+}
+.SurveyDetailsSend 
+{
+    position:relative;
+    height:auto;
+    min-height:70px;
+    text-align:right;
+    width:100%;   
+}
+.SurveyDetailsSend span {
+    font-size:24px;
+    color:#c0c0c0;
+    margin:30px 10px 10px 10px;
+    cursor:pointer;
+}
+.SurveyShareWrp {
+    position: absolute;
+    width: 100%;
+    max-width: 930px;
+    height: auto;
+    display: none;
+    z-index: 1;
+    top: 0px;
+}
+.surveyQuestionPreRender {
+    position: relative;
+    width: 100%;
+    background-color: #e6e6e6;
+}
+.surveyQuestionChekc 
+{
+    position:relative;    
+    text-align:right;
+    margin:10px 30px;
+}
+    .surveyQuestionChekc input {
+        display: none;
+    }
+    .surveyQuestionChekc i {
+        font-size: 24px;
+        color: #43ee0f;
+        cursor: pointer;
+    }
+
+.surveyEditDetailsInput {
+    position: relative;
+    width: 90%;
+    height: auto;
+    background-color: #e6e6e6;
+    display: table;
+    padding: 5px;
+}
+.surveyEditQuestionTextInput {
+    display: table-cell;
+    height: 55px;
+    font-size: 10pt;
+    font-style: italic;
+    display:table-cell;
+    background-color:#fff;
+}
+#SurveyEditQeustionText {
+    width: 100%;
+    border: none;
+}
+
+.surveyEditDetailsSubmit {
+    width: 40px;
+    display: table-cell;
+    background-color: #ff0080;
+    color: #fff;
+    height: 55px;
+    text-align: center;
+    padding-top: 15px;
+    vertical-align: middle;
+}
+
+    .surveyEditDetailsSubmit i {
+        position: relative;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 24px;
+    }
+.Text { 
+    position: absolute;
+    visibility: hidden;
+    padding:5px;
+    font-size:12pt;
+    color:#808080;
+    font-style:italic;
+    font-weight:300;
+   
+}
+.LabelSurvey {
+    font-size: 12pt;
+    color: #808080;
+    font-style: italic;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+.activeSurvey {
+    position: relative;
+    visibility: visible;
+}
+.questionBtn{
+    display:none;
+}
+.QuestionTextArea {
+    font-size: 9pt;
+    width: 100%;
+    border: none;
+}
+.OptionTextArea {
+    font-size: 9pt;
+}
+.surveyEditDetailsOptionInput {
+    position: relative;
+    width: 80%;
+    height: auto;
+    background-color: #e6e6e6;
+    display: table;
+    padding: 5px;
+}
+.surveyEditDetailsOptionSubmit {
+    width: 30px;
+    display: table-cell;
+    background-color: #fff;
+    color: #ff0080;
+    height: 35px;
+    text-align: center;
+    padding-top: 10px;
+    vertical-align: middle;
+}
+
+.surveyEditDetailsOptionSubmit i {
+        position: relative;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+    }
+.surveyEditOptionTextInput {
+    display: table-cell;
+    height: 55px;
+    font-size: 10pt;
+    font-style: italic;
+    display: table-cell;
+    background-color: #fff;
+}
+.OptionTextArea {
+    width: 100%;
+    height: 55px;
+    border: none;
+}
+.QuestionText i{
+    font-weight:700;
+}
+.QuestionText 
+{
+    font-weight:700;
+    text-transform:capitalize;
+}
+.surveyDelete {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-color: #eeeeee;
+    display: none;
+    z-index: 20;
+    margin: 0px;
+    font-size: 11pt;
+    font-style: italic;
+    font-weight: 300;
+    padding: 5px;
+    color: #808080;
+    text-align: left;
+}
+.SurveyProfilMemberCardBanner{
+    position:relative;
+    width:100%;
+    height:auto;
+    background-color:#fff;
+    display:table;
+    margin:10px 0px;
+    padding:10px;
+}
+.SurveyProfilItemControls{
+    position:relative;
+    display:table;
+   border-bottom:solid 1px #e6e6e6;
+    width:100%;
+    height:24px;
+    max-height:24px;
+    margin:10px 0px 0px 0px;
+}
+
+.SuveyProfilItemListControl {
+    position: relative;
+    display: table;
+    width: 40px;
+    height: 20px;
+    font-size: 18px;
+    float: right;
+}
+.SuveyProfilItemListControl span{
+    position:absolute;
+    top:2px;
+    right:5px;
+    font-size:18px;
+}
+.SuveyMyProfilItemListControl {
+    position: relative;
+    display: table;
+    width: 52px;
+    height: 20px;
+    font-size: 18px;
+    float: right;
+}
+    .SuveyMyProfilItemListControl div i {
+        font-size: 14px;
+        font-weight:300;
+    }
+    .SuveyMyProfilItemListControl i {
+        font-size: 14px;
+        font-weight: 300;
+    }
+    .SuveyMyProfilItemListControl .shareStreemCommentIconCenterTop span {
+        top: 42px;
+        left:-20px;
+    }
+    .SuveyMyProfilItemListControl .shareStreemCommentIconCenterTop i {
+        position: absolute;
+        top: 47px;
+        left:20px;
+    }
+.ProfilSurveyDetailsWrp{
+    position:relative;
+    background-color:#fff;
+    width:100%;
+    max-width:700px;
+    height:auto;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+    .ProfilSurveyDetailsWrp .SSComment{
+        display:table;
+        background-color: #fff;
+    }
+.SelectedText {
+    padding-left: 15px;
+   
+    text-transform: capitalize;
+}
+    .SelectedText span {
+        color: #fff;
+        background-color: #ff0080;
+    }
+    .OptionText a {
+    color: #808080;
+    text-decoration: none;
+}
+.hoverQuestion :hover {
+    color: #fff;
+    background-color: #ff0080;
+}
+.SurveyBell {
+    text-align: right;
+    height: 1px;
+}
+    .SurveyBell a {
+        position:absolute;
+        color: #ff0080;
+        font-size: 18px;
+        cursor: pointer;
+        top:10px;
+        right:10px;
+        text-decoration: none;
+    }
+        .SurveyBell a:visited {
+           
+        }
+.SurveyAnswerForm 
+{
+    position:relative;
+    width:100%;
+    max-width:700px;   
+    border:double 5px #c0c0c0;
+    border-radius:10px;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    background-color:#fff;
+}
+.SurveyAnswerIcon {
+    position: relative;
+    margin: 10px;
+    width: 100%;
+    height: 75px;
+}
+.SurveyAnswerIcon span {
+    font-size: 70px;
+    color: #e6e6e6;
+}
+
+/*************SEARCH************/
+.SearchContainer {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto; 
+}
+.SearchNickName {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}
+.searchWrp {
+    position: relative;
+    width: 100%;
+}
+
+.searchTxtwrp {
+    position: relative;
+    float: left;
+    border-radius: 20px;
+    background-color: #ff0080;
+    width: 250px;
+    height: 40px;
+    margin: 5px;
+    padding: 8px 10px 8px 10px;
+}
+.searchTxtwrp input {
+        border: none;
+        background-color: #fff;
+        color: #ff0080;
+        font-size: 11pt;
+        font-weight: 700;
+        width: 100%;
+        border-radius: 10px;
+    }
+.searchBtn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    color: #ff0080;
+    border-radius: 20px;
+    margin:5px 5px 5px 0px;
+    background-color: #ff0080;
+    float: left;
+    padding: 9px;
+    cursor:pointer;
+}
+.searchBtn label{
+    font-size:24px;
+    color:#fff;
+}
+.SearchNameCloseSpan{
+    position:absolute;
+    text-align:center;
+    width:auto;
+    height:auto;
+    float:right;
+    top:5px;
+    right:10px;
+    font-size:24px;
+    color:#ff0080;
+    cursor:pointer;
+}
+.customSearch {
+    position: absolute;
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding:30px 5% 0% 5%;
+    color:#fff;
+    font-style:italic;
+    display: none;
+    z-index: 2;
+}
+.customSearchUp 
+{
+    float:right;
+    margin:10px;
+    font-size:24px;
+}
+.customSearchUp span {
+    position:absolute;
+   cursor:pointer;
+   z-index:1;
+   top:5px;
+}
+.customSearchCriteria {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.SearchMemberList {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:#fff;
+}
+.SearchMemberListItem {
+    position: relative;
+    border-bottom: solid 1px #c0c0c0;
+    float: left;
+    background-color: #fff;
+    box-shadow: 0px 5px 5px grey;
+    height: auto;
+    width: 24%;
+    height: auto;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    padding:1%;
+}
+.SearchMemberListItem figure a image {
+    position: relative;
+    width:auto;
+    margin: 1%;
+    height: auto;
+}
+.SearchViewScreen{   
+    padding:10px;
+    display:table;
+    width:100%;
+    background-color:#fff;
+}
+.SearchViewScreenPhoto{   
+    float:left;
+}
+.SearchViewScreenPhoto image {
+    border-radius: 50%;
+}
+.SearchViewScreenContent 
+{   
+    float:left;
+}
+.SearchViewScreenOnLineIco {
+    position: absolute;
+    width:35px;
+    height:35px;
+    font-size:24px;
+}
+.SearchViewScreenAction{
+   height:30px;
+}
+.SearchViewScreenAction> span, .SearchViewScreenAction > a {
+        float: left;
+        margin-left: 10px;
+        font-size: 24px;
+        text-decoration:none;
+    }
+.SearchViewScreenNick a{
+    font-size:12pt;
+    font-weight:700;
+    color:#c0c0c0;
+    text-decoration:none;
+    margin-left:10px;
+}
+.SearchViewScreenInfo {
+    font-size:10pt;
+    font-style:italic;
+    color:#808080;
+}
+
+.SearchViewScreenInfo {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+}
+.SearchViewScreenNotice 
+{
+    position:relative;
+    width:100%;
+    height:70px;
+    text-align:center;
+    color:#ff0080;
+    margin-top:50px;
+}
+.customSearchCriteriaItem {
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    color: #808080;
+    margin: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.customSearchCriteriaItem span{  
+    color: #808080;    
+    cursor: pointer;
+    text-decoration: none;    
+}
+    .customSearchCriteriaItem a {
+        color: #808080;
+        cursor: pointer;
+        text-decoration: none;
+    }
+.SearchLocation {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.SearchLocationFrame {
+    position: relative;
+    width: 100%;
+    height: 50vh; 
+}
+.SearchLocationListFrame {
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.SearchLocationItem {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    display: table;
+    height: auto;
+    box-shadow: 0px 5px 5px grey;
+    background-color: #fff;
+    margin: 20px 0px 10px 0px;
+    padding: 10px;
+}
+
+.SearchLocationItemLeft {
+    position: relative;
+    display: table-cell;
+    width:75px;
+    height:auto;
+}
+.SearchLocationItemRight {
+    position: relative;
+    display: table-cell;
+}
+.SearchLocationItemRightRowOn {
+    position: relative;
+    height: auto;
+}
+    .SearchLocationItemNickName{
+        height: auto;
+        position:absolute;
+        top:0px;
+        font-size: 11pt;
+        font-weight: 700;
+        font-style: italic;
+        color: #808080;
+}
+.SearchLocationItemDate {
+    position: absolute;
+    top: 0px;
+    right: 0px;    
+    margin-right: 5px;
+    text-align: right;
+    font-size: 9pt;
+    font-style: italic;
+    color: #808080;
+}
+.SearchLocationItemRightRowUnder{
+    position: relative;
+    display: table-cell;    
+}
+.SearchLocationItemRightRowUnder> a {
+    white-space: pre-wrap;
+    color: #808080;
+    font-size: 11pt;
+    font-style: italic;
+    text-decoration:none;
+}
+.SearchLocationOnline {
+    position: absolute;
+    left: 55px;
+    top: 0px;
+    font-size: 16px;
+}
+.customMarker {
+    position: absolute;
+    cursor: pointer;
+    background: #ff0080;
+    width: 65px;
+    height: 65px;
+    margin-left: -30px;
+    margin-top: -75px;
+    border-radius: 50%;
+    padding: 0px;
+}
+
+    .customMarker:after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 22px;
+        border-width: 10px 10px 0;
+        border-style: solid;
+        border-color: #ff0080 transparent;
+        display: block;
+        width: 0;
+    }
+
+    .customMarker > img {
+        width: 61px;
+        height: 61px;
+        margin: 2px;
+        border-radius: 30px;
+    }
+.line {
+    position: relative;
+    width: auto;
+    height: auto;
+    white-space: pre;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #808080;
+    margin:5px;
+}
+    .line a {
+        text-decoration: none;
+        color: #808080;
+    }
+    .line i {
+        padding: 3px;
+        background-color: #fff;
+    }
+    SearchActive{
+        background-color:#ff0080;
+        color:#fff;
+    }
+    /***********SVRX***********/
+    .svrxBanner {
+        position: relative;
+        margin: 0;
+        text-align: center;
+        background-color: #fafafa;
+        box-shadow: 0px 5px 5px grey;
+        padding: 5px;
+    }
+.SvrxControl {
+    position: relative;
+    height: 48px;
+    width: 16%;
+    font-size: 33px;
+    float: left;
+    top: 0px;
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+    .SvrxControl a {
+        color: #ff0080;
+        cursor: pointer;
+        font-size: 33px;
+        text-decoration: none;
+    }
+.ShareViewScreen {
+    padding: 10px;
+    display: table;
+    width: 100%;
+}
+.ShareTextArea {
+    width: 100%;
+    border: dashed 1px #ff0080;
+    color: #ff0080;
+    font-style: italic;
+    padding: 5px;
+}
+
+.ShareViewScreen i {
+    font-size: 24px;
+    color: #ff0080;
+    float: right;
+    margin: 10px;
+    cursor: pointer;
+}
+.ShareCloseSpan {
+    position: relative;
+    text-align: center;
+    width: auto;
+    height: auto;
+    float: right;
+    margin: 10px;
+    font-size: 24px;
+    color: #ff0080;
+    cursor: pointer;
+}
+.ShareAlert{
+    position:relative;
+    width:100%;
+    height:50px;
+    color:#ff0080;
+    font-style:italic;
+    text-align:center;
+    font-size:18px;
+}
+/***********************CHAT************************/
+.containerChat {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ChatWrp {
+    position:relative;
+    width: 100%;
+    max-width: 700px;
+    height: 90%;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #fff;
+    margin-top:20px;
+    box-shadow: 0px 1px 5px 5px grey;
+}
+
+.OnRow {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+}
+
+.ChatLeftContent {
+    position: relative;
+    display: table-cell;
+    height:80vh;
+}
+.ChatRightContent {
+    position: relative;
+    display: table-cell;
+    width: 100%;
+    padding: 10px 0px;
+    overflow-y: scroll;
+    background-color: #e6e6e6;
+    height:80%;
+}
+#WRPChatFormWRP {
+    background-color: #fafafa;
+}
+.ChatSearchNickName {
+    position: absolute;
+    top: 0px;
+    z-index:1;
+}
+.ChatTxtwrp {
+    position: relative;
+    float: left;
+    border-radius: 20px;
+    border: solid 1px #ff0080;
+    width: 150px;
+    height: 40px;
+    margin: 5px;
+    background-color: #fff;
+}
+
+    .ChatTxtwrp input {
+        position:absolute;
+        top:0px;
+        left:20px;
+        border: none;
+        background-color: #fff;
+        color: #ff0080;
+        font-size: 12px;
+        font-weight: 700;
+        width: 110px;
+        height:38px;
+        border-radius: 10px;
+    }
+
+.ChatBtn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    border-radius: 20px;
+    margin: 5px 5px 5px 0px;
+    border: solid 1px #ff0080;
+    background-color: #fff;
+    float: left;
+    padding: 9px;
+    cursor: pointer;
+}
+
+    .ChatBtn label {
+        position:absolute;
+        top:7px;
+        left:7px;
+        font-size: 24px;
+        color: #ff0080;
+        cursor:pointer;
+    }
+.ChatTxtFrame{
+    position:absolute;
+    width:100%;
+    bottom:0px;
+}
+.ChatTxtFrame > label{
+    position: relative;
+   width:50px;
+   height:50px;
+   color:#ff0080;
+   font-size:45px;
+   float:left;
+   margin:15px 10px;
+   cursor:pointer;
+}
+
+    .ChatTxtFrame textarea {
+        position: relative;
+        width: 75%;
+        bottom: 0px;
+        float: left;
+        border-radius: 20px;
+        border: 1px solid #ff0080;
+        margin: 10px 0px 10px 10px;
+        font-size: 11pt;
+        padding: 5px;
+        color: #808080;
+        background-color:#fff;
+        z-index:1;
+    }   
+    .DisplyFrame{
+    position:absolute;
+    top:0px;
+    color:#808080;
+    font-size:12pt;
+    padding:50px 0px 50px 0px;
+    width:100%;
+    height:100%;
+    float:left;
+    background-color:#fff;
+    visibility:hidden;
+}
+        .DisplyFrame > ul > li {
+            list-style: none;
+            text-align: left;
+        }
+        .DisplyFrame > ul {
+         
+            background-color: #fff;
+        }
+        .talkingFrame {
+            cursor: pointer;
+        }
+.ChatList {
+    position: relative;
+    width: 85px;
+    height:80%;
+    float: left;
+    font-size: 12px;
+    color: #808080;
+    overflow-y: scroll;
+    padding: 10px 0px;
+}
+.activeChat{
+    border:solid 5px #43ee0f;
+}
+.ChatNote {
+    position: absolute;
+    bottom: 40px;
+    width:auto;
+    padding:3px;
+    background-color:transparent;
+    font-size:11px;
+    right:0px;
+    text-align:right;
+}
+.ChatNoteTalkingFrame {
+    position: absolute;
+    bottom: 110px;
+    right: 0px;
+    width: 225px;
+    height: auto;
+    font-size: 11px;
+    background-color: yellow;  
+    visibility:hidden;
+}
+#chatClose 
+{
+    position:absolute;
+    right:5px;
+    bottom:5px;
+    color:#808080;
+    z-index:1;
+}
+.ChatFormNot {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+    min-height: 70px;
+    padding: 15px;
+    padding: 5px;
+    color: #808080;
+    font-size: 9px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0px 1px 5px 5px grey;
+    text-align: left;
+    visibility: hidden;
+    cursor:cell;
+}
+.ChatNoteTalkingFrame > span {
+    font-size: 15px;
+    color: red;
+}
+.ChatNote > div > div{
+    color:#fff;
+    font-size:12px;    
+    background-color:#808080;
+}
+.ChatNote > div > image {
+    cursor:pointer;
+}
+/********************************setting******************************************/
+.SettingContent {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    padding:5px 30px 30px 30px;
+    background-color:#fff;
+    box-shadow :0px 1px 5px 5px grey;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+    .SettingContent >ul >li
+    {
+        margin:10px;
+        cursor:pointer;
+        color:#808080;
+    }
+    .SettingContent > ul > li:hover{       
+        color: #ff0080;
+        background-color:#e6e6e6;
+    }
+    .SettingOk {
+        position: relative;
+        float: right;
+        width: 70px;
+        height: 40px;
+        border: solid 1px #ff0080;
+        color: #fff;
+        background-color: #ff0080;
+        font-size: 18px;
+        margin: 25px;
+        padding: 7px;
+        text-align: center;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+.SettingCancel {
+    position: relative;
+    float: left;
+    width: 70px;
+    height: 40px;
+    border: solid 1px #ff0080;
+    color: #fff;
+    background-color: #ff0080;
+    font-size: 18px;
+    margin: 25px;
+    padding: 7px;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.SettingmodalAlbFooterCenter{
+    position:relative;
+    width:100%;
+    text-align:center;
+}
+#Note{
+    text-align:center;
+}
+.SettingCaption {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 24px;
+    color: #c0c0c0;
+}
+.SettingDeleted {
+    position: relative;
+    width: 100%;
+    height: 25px;
+    padding: 3px;
+    color: #fff;
+    background-color: #ff0080;
+    border-radius: 12px;
+    text-align: center;
+}
+/*********************MESSAGE SITE*********************/
+.Messagetbx {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    border: none;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-style: italic;
+    color: #808080;
+    border: 1px solid #e6e6e6;
+    padding: 0px;
+    margin: 0px 0px 0px 1px;
+    padding: 2px;
+}
+.MsgCpt 
+{
+    position:relative;
+    width:100%;
+    height:auto;
+    text-align:center;
+    font-size:24px;
+    color:#c0c0c0;
+}
+.MsgMailTxt 
+{
+    position:relative;
+    width:100%;
+    height:auto;
+}
+.MsgMailTxt >input{
+    position:relative;
+    width:100%;
+    border:solid 1px #c0c0c0;
+    font-size:15px;
+}
+.MessageTextWrp {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+}
+.MessageSend > label {
+    float: right;
+    color: #fff;
+    font-size: 18px;
+    height: 40px;
+    background-color: #ff0080;
+    border-radius: 20px;
+    padding: 8px;
+    cursor:pointer;
+}
+.MessageText {
+    position: relative;
+    color: #808080;
+    background-color: #e4e4e4;
+    margin: 0px;
+    padding: 0px;
+}
+.MessageSend{
+    position:relative;
+    width:100%;
+    height:30px;
+    padding:10px;
+}
+/************************HOW NASIL YAPILIR**********************/
+.howBanner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 24px;
+    color: #808080;
+}
+.howItemWrp 
+{
+    position:relative;
+    width:100%;
+    height:auto;
+}
+.howCaption {
+    position:relative;
+    font-size: medium;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    padding: 3px 5px;
+    font-weight: 600;
+    color: #808080;
+    border-bottom: solid 1px #c0c0c0;
+    cursor: pointer;
+}
+.howContent{
+    position:relative;    
+    text-align:left;
+    padding:3px;
+    background-color:#eeeeee;
+    width:100%;
+    overflow-x:scroll;
+    overflow-y:hidden;
+    height:250px;
+    display:none;
+}
+.howContentFrame 
+{
+    position:relative;
+    width:2500px;    
+    height:auto;
+}
+.howContentItem {
+    position: relative;
+    float: left;
+    text-align: left;
+    margin:5px 10px;
+    color: #808080;
+    background-color: #fff;
+    width: 300px;
+    height: 220px;
+    box-shadow: 0px 1px 5px 5px grey;
+    display: inline;
+    padding:5px;
+}
+.howContentItem>img {
+    position:relative;
+    width:100%;
+}
+/***********EDITOR************/
+.EditorCaptionItemsWrapper {
+    position: relative;
+    width: 100%;
+    background-color: #fafafa;
+    padding-top: 5px;
+}
+.EditorCaptionItems {
+    position: relative;
+    width: 14%;
+    float: left;
+    text-align: center;
+    background-color: #fff;   
+    font-size: 24px;
+    color: #808080;
+    height: 45px;
+}
+.EditorListEditIco {
+    position: relative;
+    float: right;
+    font-size: 28px;
+    margin: 10px;
+    color: #ff0080;
+    text-decoration: none;
+    height: 45px;
+    z-index: 5;
+    cursor: pointer;
+}
+.EditorListEditIcoUpdate {
+    position: relative;
+    float: right;
+    font-size: 28px;
+    margin: 10px;
+    color: #43ee0f;
+    text-decoration: none;
+    height: 45px;
+    z-index: 5;
+    cursor:pointer;
+}
+.EditorShareWrep {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.AdminViewWrp{
+    position:relative;
+    width:100%;
+}
+    .AdminViewWrp > div {
+        position: relative;
+        width: 33%;
+        float: left;
+        text-align: center;
+        padding:3px;
+        border:1px solid #c0c0c0;
+        background-color:#fafafa;
+    }
+    .AdminViewWrp > div > div {
+        position: relative;
+        width: 100%;
+        font-size: 10pt;
+        text-align: center;
+    }
+    .AdminViewWrp > div>span {
+        position: relative;
+        width: 100%;
+        font-size:33px;
+        font-weight:700;
+        align-items:center;
+        color:#ff0080;
+    }
+    /*******************Complaint*****************/
+.compItem {
+    position: relative;
+    width: 100%;
+    height:auto;
+    margin: 10px;
+    background-color: #fafafa;
+    box-shadow: 0px 1px 5px 5px grey;
+}
+.compItemCaption 
+{
+    position:relative;
+    width:100%;
+    height:88px;    
+    margin-bottom:10px;
+    padding:5px;
+}
+.compWho {
+    position:relative;
+    float:left;
+    width:75px;
+    margin:3px;
+    text-align:center;
+}
+.compEvent 
+{
+    position:relative;
+    float:right;
+    width:auto;
+    height:100%;
+}
+.compTxt 
+{
+    position:relative;
+    width:100%;
+    height:auto;
+    margin:15px;
+}
+.compBody {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    border-top: 1px solid #c0c0c0;
+    text-align: left;
+    padding: 5px;
+}
+    .compBody > img {
+        position: relative;
+        margin: 0px 5px 5px 0px;
+        width: 100%;
+        height: auto;
+    }
+.compTxtDiv {
+    position: relative;
+    width:100%;
+    padding:15px;
+}
+.compShareDeleteLink {
+    position: relative;
+    float:right;
+    z-index:2;
+    font-size: 22px;
+    font-weight: 700;
+    color: red;
+    cursor: pointer;
+    margin: 10px;
+}
+/*******************************************/
+.EditorShareItemWRP{
+    position:relative;
+    width:100%;
+    background-color:#fafafa;
+    margin:5px 0px;
+    padding:10px;
+}
+.EditorShareItemCaption{
+    position:relative;
+    width:100%;
+    height:auto;
+    border-bottom:solid 1px #c0c0c0;
+}
+.EditorShareItemProfilImage {
+    position: relative;
+    /*float: left;*/
+    margin: 3px 23px 3px 3px;
+}
+.EditorShareItemBody{
+    position:relative;
+    width:100%;
+    height:auto;
+    text-align:center;
+}
+.EditorShareItemBody>img{
+    position:relative;
+    width:100%;
+    max-width:700px;
+    height:auto;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+.EditorShareItemTXT{
+    position:relative;
+    width:100%;
+    height:auto;
+    border-bottom:solid 1px #c0c0c0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

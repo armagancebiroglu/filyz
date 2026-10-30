@@ -1,0 +1,270 @@
+﻿:root {
+    --main-color: #e93f69;
+    --active-color: #00e676;
+    --passive-color: #968d96;
+    --selected-color: #e93f69;
+    --un-selected-color: #968d96;
+    --white-color: #ffffff;
+    --accent: #e93f69;
+    --cancel-color: #ff4757;
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --input-bg: rgba(255, 255, 255, 0.7);
+    --text-color: #0d0d0d;
+    --textLight-color: #f0f0f0;
+}
+
+/* ================== GLOBAL ================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #fff url('../../Content/img/1.jfif') center / cover no-repeat fixed;
+    transition: background-image 1.5s ease-in-out;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    color: var(--text-color);
+}
+
+/* ================== UTILITIES ================== */
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================== LOGIN ================== */
+
+.login-container {
+    width: 90%;
+    max-width: 650px;
+    margin: auto;
+    padding: 10px 40px;
+    border-radius: 20px;
+    text-align: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.erorMessage {
+    display: block;
+    text-align: left;
+    color: orangered;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+}
+
+/* ================== TYPOGRAPHY ================== */
+
+h2 {
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    font-weight: 900;
+    color: var(--main-color);
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 10px;
+}
+
+p.intro {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+/* ================== FORM ================== */
+
+form {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-control-text,
+.form-control-password {
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--input-bg);
+    border: 1px solid rgba(0,0,0,0.1);
+    font-size: 16px;
+}
+
+    .form-control-text:focus,
+    .form-control-password:focus {
+        background: #fff;
+        border-color: var(--main-color);
+        box-shadow: 0 0 0 3px rgba(233,63,105,0.3);
+        outline: none;
+    }
+
+.login-btn {
+    background: var(--main-color);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .login-btn:hover {
+        background: #fff;
+        color: var(--main-color);
+    }
+
+/* ================== LINKS ================== */
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+    .links a {
+        color: var(--main-color);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+/* ================== modalAlb ================== */
+
+.modalAlb-content {
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 450px;
+    margin: auto;
+}
+
+.modalAlb-title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.modalAlb-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* ================== HEADER ================== */
+
+.main-header {
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    backdrop-filter: blur(5px);
+    background: rgba(255,255,255,0.1);
+}
+
+/* ================== MENU ================== */
+
+.menu-item {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+    .menu-item:hover {
+        background: rgba(102,126,234,0.1);
+        transform: translateX(4px) scale(1.05);
+    }
+
+/* ================== USER ================== */
+
+.user-info-card {
+    border-radius: 50px;
+    padding: 6px 16px;
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+}
+
+/* ================== HOME ================== */
+
+.LayoutRenderBody {
+    margin-top: 140px;
+    min-height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+/* ================== POST ================== */
+
+.post-card {
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.post-text {
+    font-size: 14px;
+}
+
+/* ================== ACTION ================== */
+
+.action-btn {
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 16px;
+}
+
+    .action-btn.active {
+        color: var(--accent);
+    }
+
+/* ================== COMMENT ================== */
+
+.comment-body {
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.comment-input {
+    border-radius: 25px;
+    padding: 8px;
+}
+
+/* ================== STATES ================== */
+
+.online {
+    color: var(--active-color);
+}
+
+.offline {
+    color: var(--cancel-color);
+}
+
+.selected {
+    color: var(--selected-color);
+}
+
+.un-selected {
+    color: var(--un-selected-color);
+}
