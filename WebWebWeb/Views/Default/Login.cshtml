@@ -1,0 +1,15 @@
+﻿
+@model WebWebWeb.Models.MemberLogin
+
+@using (Ajax.BeginForm("Login", "Default", new AjaxOptions { UpdateTargetId = "loginForm", HttpMethod = "POST", InsertionMode = InsertionMode.ReplaceWith }))////Html.BeginForm("Login", "Default", FormMethod.Post)
+{
+    @Html.AntiForgeryToken()
+   
+        @Html.TextBoxFor(mbox => mbox.nick_name, "nick_name_login", new { id = "nick_name_login", @class = "form-control-text", @placeholder = "Üye Kodu Giriniz" })
+        @Html.PasswordFor(mbox => mbox.password, new { @class = "form-control-password", @placeholder = "Şifre Giriniz" })
+        @Html.CheckBox("remember_me", false, new { @class = "checkbox-inline", style = "width:2px; height:2px; visibility: hidden; position :absolute" })        
+        <div>@Html.ValidationMessageFor(mbox => mbox.nick_name, "", new { @class = "erorMessage" })</div>
+        <div>@Html.ValidationMessageFor(mbox => mbox.password, "", new { @class = "erorMessage" })</div>
+        <input type="submit" name="enter" value="Giriş" class="login-btn" /> 
+}
+
