@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <meta name="keywords" content="islami evlilik sitesi, islami evlilik, muhafazakar eş bulma sitesi, müslüman eş bulma, müslüman hanımlar, tesettürlü hanımlar, tesettürlü eş bulma" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="~/StyleSheetGlassmorphism.css" rel="stylesheet" />
+    @*<link href="~/StyleSheetDefault.css" rel="stylesheet" />*@
+    <title>Filyz.com</title>
+    <style>
+        /*body {
+            background-image: url('../../Content/img/flowers.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }*/
+    </style>
+</head>
+<body>
+    <div class="backgroundInfo"></div>
+    <div>
+        @RenderBody()
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Slayt resimleri
+            const images = [
+                '../../Media/img/1.jpg',
+                '../../Media/img/2.jpg',
+                '../../Media/img/3.jpg',
+                '../../Media/img/4.jpg',
+                '../../Media/img/5.jpg'
+            ];
+
+            let currentImage = 0;
+
+            // Sonraki resme geç
+            function nextBackground() {
+                currentImage = (currentImage + 1) % images.length;
+
+                // Yeni resmi önceden yükle
+                const img = new Image();
+                img.src = images[currentImage];
+                img.onload = function () {
+                    // Resim yüklendikten sonra arka planı değiştir
+                    document.body.style.backgroundImage = `url('${images[currentImage]}')`;
+                };
+            }
+
+            // Otomatik arka plan değişimini başlat (5 saniyede bir)
+            setInterval(nextBackground, 5000);
+        });
+    </script>
+</body>
+</html>

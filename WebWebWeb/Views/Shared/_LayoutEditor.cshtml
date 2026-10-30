@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.intellisense.js"></script>
+    <link href="~/StyleSheetDefault.css" rel="stylesheet" />
+    
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="headerLayout">
+        <div class="layoutCaption centerDiv">
+            <a href="@Url.Action("Editor", "xzgqhjk")"><span class="fa fa-home leftLayoutMenuHomeIcon"></span></a>
+            <a href="@Url.Action("Comp", "xzgqhjk")"><span class=" fa fa-bolt leftLayoutMenuHomeIcon" style="float:right; font-size:33px;"></span></a>
+            <a href="@Url.Action("Index", "xzgqhjk")"><span class="fa fa-power-off leftLayoutMenuHomeIcon" style="float:right; font-size:33px;"></span></a>
+            <a href="@Url.Action("ChangePasswordEditor", "xzgqhjk")"><span class="fa fa-lock leftLayoutMenuHomeIcon" style="float:right; font-size:33px;"></span></a>
+            <a href="@Url.Action("Admin", "xzgqhjk")"><span class="fa fa-bank leftLayoutMenuHomeIcon" style="float:right; font-size:33px;"></span></a>
+        </div>
+    </div>
+    <br /><br /><br /><br />
+    <div class="container">
+        <div class="EditorCaptionItemsWrapper">
+            <div class="EditorCaptionItems"><a href="@Url.Action("imageEditor", "xzgqhjk")" class="glyphicon glyphicon-picture"></a></div>
+            <div class="EditorCaptionItems">
+                <div id="Share180PanaromaGet">
+                    <div class="ShareRouteCaptionItemsDiv">
+                        <i class="fa fa-photo iconZ"></i>
+                        <a href="@Url.Action("imagePanoramicEditor", "xzgqhjk")" class="fa fa-male AlbumTrigger iconX"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="EditorCaptionItems">
+                <div class="ShareRouteCaptionItemsDiv">
+                    <i class="fa fa-photo iconZ"></i>
+                    <div class="divIconY">
+                        <i class="fa fa-refresh fa-spin iconY"></i>
+                    </div>
+                    <a href="@Url.Action("imagePanoramic360Editor", "xzgqhjk")" class="fa fa-male AlbumTrigger iconX"></a>
+                </div>
+            </div>
+            <div class="EditorCaptionItems"><a href="@Url.Action("videoEditor", "xzgqhjk")" class="glyphicon glyphicon-facetime-video"></a></div>
+            <div class="EditorCaptionItems"><a href="@Url.Action("audioEditor", "xzgqhjk")" class="glyphicon glyphicon-volume-up"></a></div>
+            <div class="EditorCaptionItems"><a href="@Url.Action("LocationEditor", "xzgqhjk")" class="glyphicon glyphicon-map-marker"></a></div>
+            <div class="EditorCaptionItems"><a href="@Url.Action("SurveyEditor", "xzgqhjk")" class="glyphicon glyphicon-edit"></a></div>
+        </div>
+        @RenderBody()
+    </div>
+</body>
+</html>
